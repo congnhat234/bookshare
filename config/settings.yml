@@ -1,0 +1,14 @@
+timeoutable:
+  timeout: 30
+  notification_alert: <%= 30.seconds.ago %>
+password:
+  token_number: 4
+  splitter: ""
+  small_letter_array: <%= ("a".."z").to_a %>
+  capital_letter_array: <%= ("A".."Z").to_a %>
+  number_array: <%= ("0".."9").to_a %>
+  special_character_array: <%= ("#".."&").to_a %>
+  pdf_birthday_format: "%d%b%Y"
+flash_message:
+  not_show: ["timeout", "sweetify"]
+accept_image: "image/jpeg,image/gif,image/png"

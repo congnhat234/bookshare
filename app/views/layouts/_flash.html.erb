@@ -1,0 +1,8 @@
+<% flash.each do |key, value| %>
+  <% unless Settings.flash_message.not_show.include? key.to_s %>
+    <div id="flash" class="flash-alert text-center alert <%= flash_class(key) %>">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <%= value %>
+    </div>
+  <% end %>
+<% end %>

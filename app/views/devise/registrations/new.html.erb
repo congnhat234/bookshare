@@ -1,0 +1,77 @@
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area bg-image--6">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="bradcaump__inner text-center">
+          <h2 class="bradcaump-title">My Account</h2>
+          <nav class="bradcaump-content">
+            <a class="breadcrumb_item" href="index.html">Home</a>
+            <span class="brd-separetor">/</span>
+            <span class="breadcrumb_item active">My Account</span>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Bradcaump area -->
+<!-- Start My Account Area -->
+<section class="my_account_area pt--80 pb--55 bg--white">
+  <div class="container">
+    <div class="row content-center">
+      <div class="col-lg-6 col-12">
+        <div class="my__account__wrapper">
+          <h3 class="account__title">Registration</h3>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="account__form">
+              <div class="input__box">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
+              <div class="input__box">
+                <%= f.label :password %>
+                <%= f.password_field :password, autocomplete: "current-password" %>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+              </div>
+              <div class="input__box">
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              </div>
+              <div class="input__box">
+                <%= f.label :name %>
+                <%= f.text_field :name, autocomplete: "name" %>
+              </div>
+              <div class="input__box">
+                <%= f.label :phone %>
+                <%= f.telephone_field :phone, autocomplete: "phone" %>
+              </div>
+              <div class="input__box">
+                <%= f.label :address %>
+                <%= select_tag :country, options_for_select([["Việt Nam", "vn"]], ["Việt Nam", "VN"]), id: "select-country" %>
+                <%= select_tag :province, options_for_select(Province.all.map{|province| [province.name, province.id]}), id: "select-province" %>
+                <%= select_tag :district, options_for_select(Province.first.districts.map{|district| [district.name, district.id]}), id: "select-district" %>
+                <%= select_tag :ward, options_for_select(District.first.wards.map{|ward| [ward.name, ward.id]}), id: "select-ward" %><br><br>
+                <%= f.label :street %>
+                <%= text_field_tag :street, value = nil, eid: "stret", autocomplete: "street" %>
+                <%= f.hidden_field :address, id: "address" %>
+              </div>
+              <div class="input__box">
+                <%= f.label :avatar %>
+                <%= f.file_field :avatar, accept: Settings.accept_image %>
+              </div>
+              <div class="form__btn">
+                <%= f.submit "Sign up" %>
+              </div>
+              <%= render "devise/shared/links" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End My Account Area -->

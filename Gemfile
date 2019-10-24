@@ -6,10 +6,14 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem "config"
+gem "devise"
+gem "mysql2"
+gem "omniauth"
+gem "omniauth-facebook"
+gem "pnotify-rails"
 gem "rails", "~> 5.1.7"
 gem "rubocop", "~> 0.54.0", require: false
-# Use sqlite3 as the database for Active Record
-gem "sqlite3"
 # Use Puma as the app server
 gem "puma", "~> 3.7"
 # Use SCSS for stylesheets
@@ -38,6 +42,7 @@ gem "jquery-rails"
 
 group :development, :test do
   gem "byebug", platforms: %i(mri mingw x64_mingw)
+  gem "pry"
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"

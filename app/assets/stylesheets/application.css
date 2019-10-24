@@ -15,4 +15,5 @@
  *= require plugins
  *= require style
  *= require custom
+ *= require select2/dist/css/select2.min
 */
