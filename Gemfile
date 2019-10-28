@@ -6,8 +6,13 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem "carrierwave"
 gem "config"
 gem "devise"
+gem "faker"
+gem "kaminari"
+gem "mini_magick"
+gem "money"
 gem "mysql2"
 gem "omniauth"
 gem "omniauth-facebook"

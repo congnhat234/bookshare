@@ -1,5 +1,5 @@
 <!-- Header -->
-<header id="wn__header" class="<%= 'oth-page' if ['sessions', 'registrations'].include? controller_name %> header__area header__absolute sticky__header">
+<header id="wn__header" class="<%= "oth-page" unless ["static_pages"].include? controller_name %> header__area header__absolute sticky__header">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-6 col-lg-2">
@@ -17,7 +17,7 @@
               <div class="megamenu mega03">
                 <ul class="item item03">
                   <li class="title">Shop Layout</li>
-                  <li><a href="shop-grid.html">Shop Grid</a></li>
+                  <li><%= link_to "Shop", books_path %></li>
                   <li><a href="single-product.html">Single Product</a></li>
                 </ul>
                 <ul class="item item03">
@@ -43,11 +43,9 @@
               <div class="megamenu mega03">
                 <ul class="item item03">
                   <li class="title">Categories</li>
-                  <li><a href="shop-grid.html">Biography </a></li>
-                  <li><a href="shop-grid.html">Business </a></li>
-                  <li><a href="shop-grid.html">Cookbooks </a></li>
-                  <li><a href="shop-grid.html">Health & Fitness </a></li>
-                  <li><a href="shop-grid.html">History </a></li>
+                  <% @categories.each do |category| %>
+                    <li><a href="shop-grid.html"><%= category.name%> </a></li>
+                  <% end %>
                 </ul>
                 <ul class="item item03">
                   <li class="title">Customer Favourite</li>
@@ -110,7 +108,7 @@
             <li class="drop"><a href="blog.html">Blog</a>
               <div class="megamenu dropdown">
                 <ul class="item item01">
-                  <li><a href="blog.html">Blog Page</a></li>
+                  <li><%= link_to "Blog page", posts_path %></li>
                   <li><a href="blog-details.html">Blog Details</a></li>
                 </ul>
               </div>
