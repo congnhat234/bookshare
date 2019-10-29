@@ -20,3 +20,6 @@
 //= require flash
 //= require address_picker
 //= require select2/dist/js/select2.min
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
