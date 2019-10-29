@@ -44,7 +44,9 @@
                 <ul class="item item03">
                   <li class="title">Categories</li>
                   <% @categories.each do |category| %>
-                    <li><a href="shop-grid.html"><%= category.name%> </a></li>
+                    <li><%= link_to category_path(category) do %>
+                      <%= category.name %> <span>(<%= category.books.size %>)</span>
+                    <% end %></li>
                   <% end %>
                 </ul>
                 <ul class="item item03">

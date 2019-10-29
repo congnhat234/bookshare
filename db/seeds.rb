@@ -49,5 +49,18 @@ end
     user_id: user,
     activated: true,
     book_type: type)
-  BookPhoto.create!(book_id: book.id, file_name: "default.png")
+end
+
+30.times do |n|
+  title = Faker::Book.title
+  preview = Faker::Books::Lovecraft.paragraph
+  content = Faker::Books::Lovecraft.paragraphs
+  view = Faker::Number.number(digits: 5)
+  user = Faker::Number.between(from: 1, to: 4)
+  Post.create!(title: title,
+    preview: preview,
+    content: content,
+    view: view,
+    photo: "",
+    user_id: user)
 end

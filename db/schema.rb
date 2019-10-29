@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191025024603) do
+ActiveRecord::Schema.define(version: 20191029031231) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "email", default: "", null: false
@@ -73,6 +73,18 @@ ActiveRecord::Schema.define(version: 20191025024603) do
     t.index ["province_id"], name: "index_districts_on_province_id"
   end
 
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "title"
+    t.text "preview"
+    t.text "content"
+    t.integer "view", default: 0
+    t.string "photo"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "provinces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "name"
     t.string "code"
@@ -124,6 +136,7 @@ ActiveRecord::Schema.define(version: 20191025024603) do
   add_foreign_key "books", "users"
   add_foreign_key "categories", "categories", column: "parent_id"
   add_foreign_key "districts", "provinces"
+  add_foreign_key "posts", "users"
   add_foreign_key "wards", "districts"
   add_foreign_key "wards", "provinces"
 end

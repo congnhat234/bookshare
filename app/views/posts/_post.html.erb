@@ -1,0 +1,21 @@
+<!-- Start Single Post -->
+<article class="blog__post d-flex flex-wrap">
+  <div class="thumb">
+    <%= link_to post_path(post) do %>
+      <img src="assets/blog/blog-3/1.jpg" alt="blog images">
+    <% end %>
+  </div>
+  <div class="content">
+    <h4><%= link_to post.title, post_path(post) %></h4>
+    <ul class="post__meta">
+      <li>Posts by : <%= link_to post.user.name, user_path(post.user) %>
+      <li class="post_separator">/</li>
+      <li><%= post.updated_at %></li>
+    </ul>
+    <p><%= post.preview %></p>
+    <div class="blog__btn">
+      <%= link_to "Read more", post_path(post) %>
+    </div>
+  </div>
+</article>
+<!-- End Single Post -->

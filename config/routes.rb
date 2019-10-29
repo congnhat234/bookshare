@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   resources :books
   resources :posts
+  resources :categories, only: %i(show)
+  resources :users, only: %i(show)
 end

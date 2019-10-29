@@ -4,4 +4,6 @@ class Book < ApplicationRecord
   belongs_to :user
 
   mount_uploaders :photos, BookPhotoUploader
+
+  enum book_type: [:selling, :exchange, :share]
 end

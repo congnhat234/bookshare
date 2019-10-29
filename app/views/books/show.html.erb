@@ -692,7 +692,9 @@
             <h3 class="wedget__title">Product Categories</h3>
             <ul>
               <% @categories.each do |category| %>
-                <li><a href="#"><%= category.name %> <span>(<%= category.books.size %>)</span></a></li>
+                <li><%= link_to category_path(category) do %>
+                  <%= category.name %> <span>(<%= category.books.size %>)</span>
+                <% end %></li>
               <% end %>
             </ul>
           </aside>
