@@ -8,7 +8,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "carrierwave"
 gem "config"
-gem "devise"
+gem "devise", ">= 4.7.1"
 gem "faker"
 gem "i18n-js"
 gem "kaminari"
