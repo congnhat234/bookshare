@@ -3023,15 +3023,15 @@ nav.menu ul li a {
   background: #3cc8df none repeat scroll 0 0;
 }
 .product .product__thumb .hot__box.color--3::after {
-  border-color: transparent #3cc8df transparent transparent;
-  border-right: 6px solid #3cc8df;
+  border-color: transparent transparent transparent #3cc8df;
+  /* border-right: 6px solid #3cc8df; */
 }
 .product .product__thumb .hot__box.color--4 {
   background: #da7187 none repeat scroll 0 0;
 }
 .product .product__thumb .hot__box.color--4::after {
-  border-color: transparent #da7187 transparent transparent;
-  border-right: 6px solid #da7187;
+  border-color: transparent transparent transparent #da7187;
+  /* border-right: 6px solid #da7187; */
 }
 .product .product__thumb .hot__box::after {
   -moz-border-bottom-colors: none;
@@ -4656,7 +4656,7 @@ h3.widget-title-modal {
 }
 .post__itam .content .post__time span {
   display: inline-block;
-  float: left;
+  /* float: left; */
   font-size: 13px;
   margin-bottom: 15px;
 }
@@ -5698,11 +5698,15 @@ h3.widget-title-modal {
   margin-left: -10px;
   margin-right: -10px;
 }
-.wn__pagination {
+.wn__pagination,
+.pagination {
   margin-top: 0px;
   text-align: center;
 }
 .page-blog .wn__pagination {
+  margin-top: 30px;
+}
+.page-blog .pagination {
   margin-top: 30px;
 }
 .wn__pagination li {
@@ -5725,6 +5729,36 @@ h3.widget-title-modal {
   text-align: center;
 }
 .wn__pagination li a:hover {
+  border-color: #363636;
+  color: #363636;
+}
+
+.pagination .page, .pagination .next, .pagination .last {
+  display: inline-block;
+}
+.pagination .current {
+  border-color: #363636;
+  color: #363636;
+}
+.pagination .page a,
+.pagination .next a,
+.pagination .last a,
+.pagination .current {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border-bottom: 2px solid transparent;
+  color: #777;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0 5px;
+  padding: 0 13px;
+  text-align: center;
+}
+.pagination .page a:hover,
+.pagination .next a:hover,
+.pagination .last a:hover,
+.pagination .current {
   border-color: #363636;
   color: #363636;
 }
@@ -5858,7 +5892,7 @@ h3.widget-title-modal {
   clear: none;
   color: #ffffff;
   display: inline-block;
-  float: right;
+  /* float: right; */
   font-size: 16px;
   font-weight: 400;
   height: 50px;

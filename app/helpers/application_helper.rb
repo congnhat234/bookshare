@@ -16,16 +16,19 @@ module ApplicationHelper
   end
 
   def number_to_currency_format number
-    # if /\A[-+]?\d+\z/.match?(number.to_s) || /\A[+-]?(\d+\.\d+)?\Z/.match?(number.to_s)
-    #   Money.new(number.to_f.round(3), @company.currency).format
-    # else
-    #   number
-    # end
+    if /\A[-+]?\d+\z/.match?(number.to_s) || /\A[+-]?(\d+\.\d+)?\Z/.match?(number.to_s)
+      Money.new(number.to_f.round(3), "VND").format
+    else
+      number
+    end
   end
 
   def full_title page_title = ""
-    # company_name = @company.name
-    # return company_name if page_title.empty?
-    # company_name + " | " + page_title
+    base_title = I18n.t "helpers.base_title"
+    if page_title.blank?
+      base_title
+    else
+      page_title + " | " + base_title
+    end
   end
 end

@@ -1,7 +1,7 @@
 <!-- QUICKVIEW PRODUCT -->
 <div id="quickview-wrapper">
   <!-- Modal -->
-  <div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
+  <div class="modal fade" id="productmodal-<%= book.id %>" tabindex="-1" role="dialog">
     <div class="modal-dialog modal__container" role="document">
       <div class="modal-content">
         <div class="modal-header modal__header">
@@ -17,7 +17,7 @@
             </div>
             <!-- end product images -->
             <div class="product-info">
-              <h1>Simple Fabric Bags</h1>
+              <h1><%= book.title %></h1>
               <div class="rating__and__review">
                 <ul class="rating">
                   <li><span class="ti-star"></span></li>
@@ -32,31 +32,12 @@
               </div>
               <div class="price-box-3">
                 <div class="s-price-box">
-                  <span class="new-price">$17.20</span>
-                  <span class="old-price">$45.00</span>
+                  <span class="new-price"><%= number_to_currency_format book.price * (100 - book.discount) / 100 %></span>
+                  <span class="old-price"><%= number_to_currency_format book.price %></span>
                 </div>
               </div>
               <div class="quick-desc">
-                Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
-              </div>
-              <div class="select__color">
-                <h2>Select color</h2>
-                <ul class="color__list">
-                  <li class="red"><a title="Red" href="#">Red</a></li>
-                  <li class="gold"><a title="Gold" href="#">Gold</a></li>
-                  <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                  <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                </ul>
-              </div>
-              <div class="select__size">
-                <h2>Select size</h2>
-                <ul class="color__list">
-                  <li class="l__size"><a title="L" href="#">L</a></li>
-                  <li class="m__size"><a title="M" href="#">M</a></li>
-                  <li class="s__size"><a title="S" href="#">S</a></li>
-                  <li class="xl__size"><a title="XL" href="#">XL</a></li>
-                  <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-                </ul>
+                <%= book.description %>
               </div>
               <div class="social-sharing">
                 <div class="widget widget_socialsharing_widget">

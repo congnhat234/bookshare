@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191021035429) do
+ActiveRecord::Schema.define(version: 20191025024603) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,41 @@ ActiveRecord::Schema.define(version: 20191021035429) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "book_photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "file_name"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_photos_on_book_id"
+  end
+
+  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "title"
+    t.float "price", limit: 24
+    t.integer "quantity", default: 0
+    t.float "rating", limit: 24, default: 0.0
+    t.integer "view", default: 0
+    t.text "description"
+    t.float "discount", limit: 24, default: 0.0
+    t.integer "book_type"
+    t.boolean "activated", default: true
+    t.bigint "category_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.json "photos"
+    t.index ["category_id"], name: "index_books_on_category_id"
+    t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "name"
+    t.bigint "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "fk_rails_82f48f7407"
   end
 
   create_table "districts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -84,6 +119,10 @@ ActiveRecord::Schema.define(version: 20191021035429) do
     t.index ["province_id"], name: "index_wards_on_province_id"
   end
 
+  add_foreign_key "book_photos", "books"
+  add_foreign_key "books", "categories"
+  add_foreign_key "books", "users"
+  add_foreign_key "categories", "categories", column: "parent_id"
   add_foreign_key "districts", "provinces"
   add_foreign_key "wards", "districts"
   add_foreign_key "wards", "provinces"

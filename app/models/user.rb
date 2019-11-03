@@ -3,4 +3,6 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable,
     :confirmable, :lockable, :timeoutable, :trackable, :omniauthable
   validates_with PasswordValidator
+
+  has_many :books, dependent: :destroy
 end

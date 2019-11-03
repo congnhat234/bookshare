@@ -12,3 +12,5 @@ password:
 flash_message:
   not_show: ["timeout", "sweetify"]
 accept_image: "image/jpeg,image/gif,image/png"
+books:
+  per_page: 12
