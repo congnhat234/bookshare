@@ -5,4 +5,5 @@ class User < ApplicationRecord
   validates_with PasswordValidator
 
   has_many :books, dependent: :destroy
+  has_many :posts, dependent: :destroy
 end

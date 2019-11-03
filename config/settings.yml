@@ -14,3 +14,5 @@ flash_message:
 accept_image: "image/jpeg,image/gif,image/png"
 books:
   per_page: 12
+posts:
+  per_page: 6

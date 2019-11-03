@@ -26,7 +26,9 @@
             <h3 class="wedget__title">Product Categories</h3>
             <ul>
               <% @categories.each do |category| %>
-                <li><a href="#"><%= category.name %> <span>(<%= category.books.size %>)</span></a></li>
+                <li><%= link_to category_path(category) do %>
+                  <%= category.name %> <span>(<%= category.books.size %>)</span>
+                <% end %></li>
               <% end %>
             </ul>
           </aside>
@@ -69,7 +71,7 @@
             </ul>
           </aside>
           <aside class="wedget__categories sidebar--banner">
-            <img src="assets/others/banner_left.jpg" alt="banner images">
+            <img src="/assets/others/banner_left.jpg" alt="banner images">
             <div class="text">
               <h2>new products</h2>
               <h6>save up to <br>

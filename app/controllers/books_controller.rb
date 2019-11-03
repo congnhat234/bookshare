@@ -11,5 +11,8 @@ class BooksController < ApplicationController
 
   def find_book
     @book = Book.find_by(id: params[:id])
+    return if @book
+    flash.now[:danger] = "Not found"
+    redirect_to books_path
   end
 end
