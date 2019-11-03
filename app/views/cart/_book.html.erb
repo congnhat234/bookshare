@@ -1,0 +1,19 @@
+<tr>
+  <td class="product-thumbnail">
+      <%= link_to book_path(book) do %>
+        <img src="/assets/product/sm-3/1.jpg" alt="product img">
+      <% end %>
+    </td>
+  <td class="product-name"><%= link_to book.title, book_path(book) %></td>
+  <td class="product-price"><span class="amount"><%= number_to_currency_format book.price_discounted %></span></td>
+  <td class="product-quantity">
+    <input type="number" class="cart-qty" id="input-qty-<%= book.id %>%" value="<%= book.total_quantity %>"
+      min="1" max="<%= book.quantity %>" data-book-id="<%= book.id %>">
+  </td>
+  <td class="product-subtotal" id="total-price-<%= book.id %>"><%= number_to_currency_format book.get_total_price %></td>
+  <td class="product-remove">
+    <%= link_to cart_remove_path(id: book.id), method: :delete, data: { confirm: t("alert.confirm") } do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,6 @@
+en:
+  alert:
+    confirm: "Are you sure?"
+    error[add_cart]: "Fail to add book to cart"
+    error[update_cart]: "Fail to update cart"
+    success[add_cart]: "Added book to cart"

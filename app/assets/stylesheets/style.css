@@ -6542,10 +6542,12 @@ input[type="submit"] {
   padding: 0 26px;
   text-transform: capitalize;
   transition: all 0.3s ease 0s;
+  border: 1px solid #919191;
 }
 .cart__btn__list li a:hover {
   background: #e59285 none repeat scroll 0 0;
   color: #fff;
+  border: 1px solid #e59285;
 }
 .cartbox-total {
   background: #f6f6f6 none repeat scroll 0 0;
@@ -6663,7 +6665,7 @@ input[type="submit"] {
   color: #3f3f3f;
   display: block;
   font-weight: 700;
-  height: 1em;
+  /* height: 1em; */
   line-height: 1;
   padding: 10px 0;
   text-align: center;
