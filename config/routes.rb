@@ -14,8 +14,11 @@ Rails.application.routes.draw do
 
   resources :books
   resources :posts
+  get "/publish/:id", to: "posts#publish", as: "publish_post"
+  get "/unpublish/:id", to: "posts#unpublish", as: "unpublish_post"
   resources :categories, only: %i(show)
   resources :users, only: %i(show)
+  get "/:id/posts", to: "users#posts", as: "user_posts"
   get "/cart", to: "cart#index"
   post "/cart/add", to: "cart#add"
   delete "cart/remove/:id", to: "cart#remove", as: "cart_remove"

@@ -4,3 +4,8 @@ en:
     error[add_cart]: "Fail to add book to cart"
     error[update_cart]: "Fail to update cart"
     success[add_cart]: "Added book to cart"
+    success[add_post]: "Added post"
+    success[update_post]: "Updated post"
+    success[deleted_post]: "Deleted post"
+    error[delete_post]: "Fail to delete post"
+    error[update_post]: "Fail to update post"

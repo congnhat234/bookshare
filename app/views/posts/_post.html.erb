@@ -2,15 +2,46 @@
 <article class="blog__post d-flex flex-wrap">
   <div class="thumb">
     <%= link_to post_path(post) do %>
-      <img src="assets/blog/blog-3/1.jpg" alt="blog images">
+      <%= image_tag post.photo_url, alt: post.title %>
     <% end %>
   </div>
   <div class="content">
     <h4><%= link_to post.title, post_path(post) %></h4>
+    <% if user_signed_in? && post.user_id == current_user.id %>
+      <div class="more">
+        <button class="more-btn">
+          <i class="fas fa-ellipsis-h"></i>
+        </button>
+        <div class="more-menu">
+          <div class="more-menu-caret">
+            <div class="more-menu-caret-outer"></div>
+            <div class="more-menu-caret-inner"></div>
+          </div>
+          <ul class="more-menu-items" role="menu" aria-labelledby="more-btn">
+            <li class="more-menu-item" role="presentation">
+              <%= link_to t(".edit"), edit_post_path(post), class: "more-menu-btn", role: "menuitem" %>
+            </li>
+            <% if post.unpublish? %>
+              <li class="more-menu-item" role="presentation">
+                <%= link_to t(".publish"), publish_post_path(post), class: "more-menu-btn", role: "menuitem" %>
+              </li>
+            <% elsif post.publish? %>
+              <li class="more-menu-item" role="presentation">
+                <%= link_to t(".unpublish"), unpublish_post_path(post), class: "more-menu-btn", role: "menuitem" %>
+              </li>
+            <% end %>
+            <li class="more-menu-item" role="presentation">
+              <%= link_to t(".delete"), post_path(post), class: "more-menu-btn", role: "menuitem",
+                method: :delete, data: { confirm: t("alert.confirm") } %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
     <ul class="post__meta">
-      <li>Posts by : <%= link_to post.user.name, user_path(post.user) %>
+      <li>Posts by : <%= link_to post.user.name, user_path(post.user) %></li>
       <li class="post_separator">/</li>
-      <li><%= post.updated_at %></li>
+      <li><%= l post.updated_at, format: :short %></li>
     </ul>
     <p><%= post.preview %></p>
     <div class="blog__btn">

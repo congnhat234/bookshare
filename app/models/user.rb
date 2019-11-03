@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include FriendlyIdHash
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable,
     :confirmable, :lockable, :timeoutable, :trackable, :omniauthable

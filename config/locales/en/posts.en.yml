@@ -1,0 +1,14 @@
+en:
+  posts:
+    form:
+      title: "Title"
+      photo: "Photo"
+      preview: "Preview"
+      content: "Content"
+    post:
+      edit: "Edit"
+      delete: "Delete"
+      publish: "Publish"
+      unpublish: "Unpublish"
+    index:
+      add_post: "Add new post"
