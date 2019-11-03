@@ -1,0 +1,5 @@
+vi:
+  layouts:
+    header:
+      home: "Trang chủ"
+      shop: "Cửa hàng"

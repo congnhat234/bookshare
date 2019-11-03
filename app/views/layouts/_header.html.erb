@@ -12,8 +12,8 @@
       <div class="col-lg-8 d-none d-lg-block">
         <nav class="mainmenu__nav">
           <ul class="meninmenu d-flex justify-content-start">
-            <li class="drop with--one--item"><%= link_to "Home", root_path %></li>
-            <li class="drop"><a href="#">Shop</a>
+            <li class="drop with--one--item"><%= link_to t(".home"), root_path %></li>
+            <li class="drop"><a href="#"><%= t ".shop" %></a>
               <div class="megamenu mega03">
                 <ul class="item item03">
                   <li class="title">Shop Layout</li>
@@ -222,13 +222,17 @@
                   </strong>
                   <div class="switcher-options">
                     <div class="switcher-currency-trigger">
-                      <span class="currency-trigger">English01</span>
-                      <ul class="switcher-dropdown">
-                        <li>English02</li>
-                        <li>English03</li>
-                        <li>English04</li>
-                        <li>English05</li>
-                      </ul>
+                      <% if cookies[:language] == "en" %>
+                        <span id="selected_language" class="currency-trigger">English</span>
+                        <ul class="switcher-dropdown">
+                          <li class="language_option" data-language="vi">Tiếng Việt</li>
+                        </ul>
+                      <% else %>
+                        <span id="selected_language" class="currency-trigger">Tiếng Việt</span>
+                        <ul class="switcher-dropdown">
+                          <li class="language_option" data-language="en">English</li>
+                        </ul>
+                      <% end %>
                     </div>
                   </div>
                 </div>

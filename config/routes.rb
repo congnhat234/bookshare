@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/home", to: "static_pages#home"
   post "/load-districts", to: "address#load_districts"
   post "/load-wards", to: "address#load_wards"
+  get "/language", to: "static_pages#set_language"
 
   resources :books
   resources :posts

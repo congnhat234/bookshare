@@ -12,4 +12,10 @@ $(document).ready(function() {
       type: params.type
     });
   });
+
+  $('.language_option').on('click', function() {
+    language = $(this).attr('data-language');
+    window.location.href = "/language?locale=" + language;
+  });
+
 });
