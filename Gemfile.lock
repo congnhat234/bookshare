@@ -307,7 +307,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.2)
   config
-  devise
+  devise (>= 4.7.1)
   faker
   i18n-js
   jbuilder (~> 2.5)
