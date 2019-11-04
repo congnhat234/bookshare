@@ -1,0 +1,5 @@
+en:
+  cart:
+    index:
+      continue_shopping: "Continue shopping"
+      empty_cart: "Cart is empty!"

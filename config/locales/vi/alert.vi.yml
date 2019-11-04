@@ -1,0 +1,6 @@
+vi:
+  alert:
+    confirm: "Bạn có chắc không?"
+    error[add_cart]: "Thêm sách vào giỏ hàng không thành công"
+    error[update_cart]: "Cập nhật giỏ hàng không thành công"
+    success[add_cart]: "Đã thêm sách vào giỏ hàng"

@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
 
   def set_language
     store_location
-    cookies[:language] = params[:locale]
+    cookies.permanent[:language] = params[:locale]
     redirect_back fallback_location: root_path
   end
 end

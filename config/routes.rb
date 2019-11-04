@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   resources :posts
   resources :categories, only: %i(show)
   resources :users, only: %i(show)
+  get "/cart", to: "cart#index"
+  post "/cart/add", to: "cart#add"
+  delete "cart/remove/:id", to: "cart#remove", as: "cart_remove"
+  put "cart/update/:id", to: "cart#update", as: "cart_update"
 end
