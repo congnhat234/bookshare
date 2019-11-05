@@ -26,4 +26,7 @@ $(document).ready(function () {
       $(document).on('mousedown', hideMenu)
     }
   })
+  $('#user_role').select2({
+    width: '100%'
+  });
 })

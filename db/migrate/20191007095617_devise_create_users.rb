@@ -37,8 +37,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :phone
       t.string :address
       t.string :avatar
-      t.integer :role
-      t.integer :verify
+      t.integer :role, default: 0
+      t.integer :verify, default: 0
 
       t.timestamps null: false
     end

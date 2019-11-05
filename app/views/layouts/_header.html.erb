@@ -167,7 +167,7 @@
                       <div class="setting__menu">
                         <span><a href="#">Compare Product</a></span>
                         <% if user_signed_in? %>
-                          <span><%= link_to current_user.name, edit_user_registration_path %></span>
+                          <span><%= link_to current_user.name, user_path(current_user) %></span>
                           <span><a href="#">My Wishlist</a></span>
                           <span><%= link_to "Sign out", destroy_user_session_path, method: :delete %></span>
                         <% else %>
