@@ -36,10 +36,9 @@
         </div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
-        <div class="profile-userbuttons">
+        <div class="profile-userbuttons" id="user-action">
           <% if @user.id != current_user.id %>
-            <button type="button" class="btn btn-success btn-sm">Follow</button>
-            <button type="button" class="btn btn-danger btn-sm">Message</button>
+            <%= render "follow" %>
           <% else %>
             <%= link_to "Edit", edit_user_registration_path, class: "btn btn-success btn-sm" %>
           <% end %>

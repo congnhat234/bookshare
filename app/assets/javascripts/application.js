@@ -26,3 +26,4 @@
 //= require cart
 //= require posts
 //= require preview_image
+//= require relationship

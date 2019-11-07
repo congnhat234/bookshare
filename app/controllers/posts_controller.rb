@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, except: %i(index new create user_posts)
   def index
-    @posts = Post.publish.page(params[:page]).per Settings.posts.per_page
+    @posts = Post.publish.order("updated_at DESC").page(params[:page]).per Settings.posts.per_page
   end
 
   def show

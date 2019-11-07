@@ -1,0 +1,5 @@
+vi:
+  users:
+    follow:
+      follow: "Theo dõi"
+      unfollow: "Bỏ theo dõi"
