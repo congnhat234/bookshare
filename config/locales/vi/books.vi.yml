@@ -1,0 +1,10 @@
+vi:
+  books:
+    title:
+      selling: "Cửa hàng"
+      sharing: "Sách được chia sẻ"
+      exchange: "Trao đổi sách"
+      all: "Tất cả sách"
+    index:
+      home: "Trang chủ"
+      all: "Tất cả"

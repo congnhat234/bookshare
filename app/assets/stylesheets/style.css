@@ -2954,7 +2954,8 @@ nav.menu ul li a {
   display: block;
 }
 .product .product__thumb a img {
-  width: 100%;
+  width: 270px;
+  height: 340px;
 }
 .product .product__thumb a.second__img {
   left: 0;

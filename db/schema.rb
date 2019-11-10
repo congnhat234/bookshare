@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191105112301) do
+ActiveRecord::Schema.define(version: 20191109211731) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "email", default: "", null: false
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 20191105112301) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "title"
-    t.float "price", limit: 24
-    t.integer "quantity", default: 0
+    t.float "price", limit: 24, default: 0.0
+    t.integer "quantity", default: 1
     t.float "rating", limit: 24, default: 0.0
     t.integer "view", default: 0
-    t.text "description"
+    t.text "description", limit: 4294967295
     t.float "discount", limit: 24, default: 0.0
     t.integer "book_type"
     t.boolean "activated", default: true
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20191105112301) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "photos"
+    t.text "brief_description"
     t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["user_id"], name: "index_books_on_user_id"
   end

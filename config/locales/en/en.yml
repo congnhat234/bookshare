@@ -4,3 +4,4 @@ en:
       default: "%Y-%m-%d %H:%M:%S"
       long: "%B %d, %Y %H:%M"
       short: "%Y-%m-%d %H:%M"
+      s_short: "%y/%m/%d"

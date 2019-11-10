@@ -1,0 +1,10 @@
+en:
+  books:
+    title:
+      selling: "Shop"
+      sharing: "Share boooks"
+      exchange: "Exchange books"
+      all: "All books"
+    index:
+      home: "Home"
+      all: "All"

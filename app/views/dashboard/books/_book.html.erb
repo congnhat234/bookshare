@@ -1,0 +1,19 @@
+<tr>
+  <td><%= link_to book.title, book_path(book) %></td>
+  <td><%= book.category.name %></td>
+  <td><%= number_to_currency_format book.price %></td>
+  <td><%= book.quantity %></td>
+  <td><%= book.rating %></td>
+  <td><%= book.view %></td>
+  <td><%= book.discount %></td>
+  <td><%= book.activated %></td>
+  <td><%= l book.created_at, format: :s_short %></td>
+  <td>
+    <%= link_to edit_dashboard_book_path(book) do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <%= link_to dashboard_book_path(book), method: :delete, data: { confirm: t("alert.confirm") } do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </td>
+</tr>
