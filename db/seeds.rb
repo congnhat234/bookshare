@@ -56,7 +56,7 @@ end
   preview = Faker::Books::Lovecraft.paragraph
   content = Faker::Books::Lovecraft.paragraphs
   view = Faker::Number.number(digits: 5)
-  user = Faker::Number.between(from: 1, to: 4)
+  user = 1
   Post.create!(title: title,
     preview: preview,
     content: content,
