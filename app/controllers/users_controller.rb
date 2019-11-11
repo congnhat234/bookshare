@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: %i(show posts)
+  before_action :find_user, only: %i(show posts books)
   layout "dashboard/application", only: %i(index)
 
   def index
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def books
     @books = @user.books.page(params[:page]).per Settings.books.per_page
+    render "books/index"
   end
 
   private

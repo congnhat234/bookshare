@@ -3,7 +3,7 @@
   <div class="product__thumb">
     <%= link_to book, class: "first__img" do %>
       <% if book.photos.any? %>
-        <%= image_tag book.photos[0].url if book.photos.any? %>
+        <%= image_tag book.photos[0].url %>
       <% else %>
         <%= image_tag "/assets/fallback/default.jpg" %>
       <% end %>
@@ -21,12 +21,14 @@
     <div class="action">
       <div class="actions_inner">
         <ul class="add_to_links">
-          <li><a class="buynow" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
-          <li>
-            <%= link_to "javascript:void(0)", class: "cart", "data-book-id": book.id do %>
-              <i class="bi bi-shopping-cart-full"></i>
-            <% end %>
-          </li>
+          <% if book.selling? %>
+            <li><a class="buynow" href="cart.html"><i class="bi bi-shopping-bag4"></i></a></li>
+            <li>
+              <%= link_to "javascript:void(0)", class: "cart", "data-book-id": book.id do %>
+                <i class="bi bi-shopping-cart-full"></i>
+              <% end %>
+            </li>
+          <% end %>
           <li><a class="wishlist" href="wishlist.html"><i class="bi bi-heart-beat"></i></a></li>
           <li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal-<%= book.id %>"><i class="bi bi-search"></i></a></li>
         </ul>

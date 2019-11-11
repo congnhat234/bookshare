@@ -14,3 +14,5 @@ vi:
     success[deleted_book]: "Đã xóa sách"
     error[delete_book]: "Xóa sách không thành công"
     error[update_book]: "Cập nhật sách không thành công"
+    error[collect_book]: "Không thể nhận sách"
+    success[collect_book]: "Đã nhận sách"

@@ -1,9 +1,13 @@
 <tr>
   <td class="product-thumbnail">
-      <%= link_to book_path(book) do %>
-        <img src="/assets/product/sm-3/1.jpg" alt="product img">
+    <%= link_to book_path(book) do %>
+      <% if book.photos.any? %>
+        <%= image_tag book.photos[0].url %>
+      <% else %>
+        <%= image_tag "/assets/fallback/default.jpg" %>
       <% end %>
-    </td>
+    <% end %>
+  </td>
   <td class="product-name"><%= link_to book.title, book_path(book) %></td>
   <td class="product-price"><span class="amount"><%= number_to_currency_format book.price_discounted %></span></td>
   <td class="product-quantity">

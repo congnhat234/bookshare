@@ -14,3 +14,5 @@ en:
     success[deleted_book]: "Deleted book"
     error[delete_book]: "Fail to delete book"
     error[update_book]: "Fail to update book"
+    error[collect_book]: "Fail to collect book"
+    success[collect_book]: "Collected book"
