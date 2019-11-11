@@ -1,15 +1,14 @@
 default: &default
+  adapter: mysql2
   encoding: utf8
   pool: 5
-
+  username: root
+  password: 123qwe!@#
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  adapter: mysql2
-  socket: /var/run/mysqld/mysqld.sock
   database: bookshare_development
-  username: root
-  password: 123qwe!@#
 
 staging:
   <<: *default
@@ -25,7 +24,4 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
   database: bookshare_production
-  username: bookshare
-  password: <%= ENV['BOOKSHARE_DATABASE_PASSWORD'] %>
