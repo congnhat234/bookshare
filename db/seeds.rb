@@ -27,7 +27,7 @@ User.create!(
   Category.create!(name: name)
 end
 
-50.times do |n|
+20.times do |n|
   title  = Faker::Book.title
   description = Faker::Book.author + " " + Faker::Book.publisher
   quantity = Faker::Number.between(from: 10, to: 200)
@@ -36,7 +36,7 @@ end
   rating = Faker::Number.decimal(l_digits: 1, r_digits: 1)
   view = Faker::Number.number(digits: 5)
   discount = Faker::Number.between(from: 5, to: 70)
-  user = Faker::Number.between(from: 1, to: 4)
+  user = 1
   type = Faker::Number.between(from: 0, to: 2)
   book = Book.create!(title: title,
     description: description,
