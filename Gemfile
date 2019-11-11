@@ -14,7 +14,6 @@ gem "i18n-js"
 gem "kaminari"
 gem "mini_magick"
 gem "money"
-gem "mysql2"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "pnotify-rails"
@@ -52,6 +51,7 @@ group :development, :test do
   gem "pry"
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15"
+  gem "mysql2"
   gem "selenium-webdriver"
 end
 
@@ -60,6 +60,11 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
+end
+
+group :production do
+  gem "fog", "1.42"
+  gem "pg", "0.20.0"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
