@@ -21,7 +21,7 @@ gem "rails", "~> 5.1.7"
 gem "rails-i18n"
 gem "rubocop", "~> 0.54.0", require: false
 # Use Puma as the app server
-gem "puma", "~> 3.7"
+gem "puma"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
