@@ -1,11 +1,12 @@
 default: &default
   encoding: utf8
   pool: 5
-  socket: /var/run/mysqld/mysqld.sock
+
 
 development:
   <<: *default
   adapter: mysql2
+  socket: /var/run/mysqld/mysqld.sock
   database: bookshare_development
   username: root
   password: 123qwe!@#
@@ -16,7 +17,11 @@ staging:
 
 test:
   <<: *default
+  adapter: mysql2
+  socket: /var/run/mysqld/mysqld.sock
   database: bookshare_test
+  username: root
+  password: 123qwe!@#
 
 production:
   <<: *default
