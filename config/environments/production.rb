@@ -102,4 +102,5 @@ Rails.application.configure do
     :user_name      =>  ENV["MAIL_SERVER_EMAIL_USERNAME"],
     :password       =>  ENV["MAIL_SERVER_EMAIL_PASSWORD"],
     :enable_starttls_auto => true
+  }
 end
