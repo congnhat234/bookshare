@@ -1,3 +1,4 @@
 vi:
   flash:
     not_found_post: "Không tìm thấy bài viết"
+    not_found_book: "Không tìm thấy sách"

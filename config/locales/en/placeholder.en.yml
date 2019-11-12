@@ -3,3 +3,6 @@ en:
     enter_title: "Enter title"
     enter_preview: "Enter preview"
     enter_content: "Enter content"
+    enter_price: "Enter price"
+    enter_brief_description: "Enter brief description"
+    enter_quantity: "Enter quantity"

@@ -9,3 +9,8 @@ vi:
     success[deleted_post]: "Đã xóa bài viết"
     error[delete_post]: "Xóa bài viết không thành công"
     error[update_post]: "Cập nhật bài viết không thành công"
+    success[add_book]: "Đã thêm sách"
+    success[update_book]: "Đã cập nhật sách"
+    success[deleted_book]: "Đã xóa sách"
+    error[delete_book]: "Xóa sách không thành công"
+    error[update_book]: "Cập nhật sách không thành công"

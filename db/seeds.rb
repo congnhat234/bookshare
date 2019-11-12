@@ -33,7 +33,7 @@ end
   quantity = Faker::Number.between(from: 10, to: 200)
   price = Faker::Number.between(from: 50000, to: 500000)
   category_id = Faker::Number.between(from: 1, to: 5)
-  rating = Faker::Number.decimal(l_digits: 1, r_digits: 1)
+  rating = 0
   view = Faker::Number.number(digits: 5)
   discount = Faker::Number.between(from: 5, to: 70)
   user = 1

@@ -3,3 +3,6 @@ vi:
     enter_title: "Nhập tiêu đề"
     enter_preview: "Nhập tóm tắt nội dung"
     enter_content: "Nhập nội dung"
+    enter_price: "Nhập giá"
+    enter_brief_description: "Nhập mô tả tóm tắt"
+    enter_quantity: "Nhập số lượng"

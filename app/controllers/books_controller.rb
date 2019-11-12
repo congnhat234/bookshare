@@ -1,10 +1,34 @@
 class BooksController < ApplicationController
-  before_action :find_book, only: %i(show edit update)
+  before_action :find_book, only: %i(show)
+
   def index
     @books = Book.page(params[:page]).per Settings.books.per_page
+    @title = t "books.title.all"
+    @type = "all"
   end
 
   def show
+  end
+
+  def selling
+    @books = Book.selling.page(params[:page]).per Settings.books.per_page
+    @title = t "books.title.selling"
+    @type = "selling"
+    render :index
+  end
+
+  def sharing
+    @books = Book.sharing.page(params[:page]).per Settings.books.per_page
+    @title = t "books.title.sharing"
+    @type = "sharing"
+    render :index
+  end
+
+  def exchange
+    @books = Book.exchange.page(params[:page]).per Settings.books.per_page
+    @title = t "books.title.exchange"
+    @type = "exchange"
+    render :index
   end
 
   private

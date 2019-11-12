@@ -9,3 +9,8 @@ en:
     success[deleted_post]: "Deleted post"
     error[delete_post]: "Fail to delete post"
     error[update_post]: "Fail to update post"
+    success[add_book]: "Added book"
+    success[update_book]: "Updated book"
+    success[deleted_book]: "Deleted book"
+    error[delete_book]: "Fail to delete book"
+    error[update_book]: "Fail to update book"

@@ -1,12 +1,21 @@
 class UsersController < ApplicationController
   before_action :find_user, only: %i(show posts)
+  layout "dashboard/application", only: %i(index)
+
+  def index
+  end
 
   def show
+    @books = @user.books.limit Settings.books.per_page
   end
 
   def posts
     @posts = @user.posts.page(params[:page]).per Settings.posts.per_page
     render "posts/index"
+  end
+
+  def books
+    @books = @user.books.page(params[:page]).per Settings.books.per_page
   end
 
   private
