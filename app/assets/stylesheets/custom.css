@@ -137,3 +137,12 @@
   transform: translate(0, 0) scale(1);
   pointer-events: auto;
 }
+
+.form-control {
+  font-size: 1em;
+  line-height: 1;
+}
+
+label {
+  font-weight: bold;
+}

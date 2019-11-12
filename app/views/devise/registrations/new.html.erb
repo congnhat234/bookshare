@@ -31,6 +31,10 @@
                 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
               </div>
               <div class="input__box">
+                <%= f.label :role %>
+                <%= f.select :role, User.roles.map{|role| [role[0].humanize, role[0]]} %>
+              </div>
+              <div class="input__box">
                 <%= f.label :password %>
                 <%= f.password_field :password, autocomplete: "current-password" %>
                 <% if @minimum_password_length %>
