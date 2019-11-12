@@ -9,6 +9,7 @@ ruby "2.4.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "carrierwave"
+gem "ckeditor"
 gem "config"
 gem "devise", ">= 4.7.1"
 gem "faker"
