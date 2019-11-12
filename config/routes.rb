@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   post "/cart/add", to: "cart#add"
   delete "cart/remove/:id", to: "cart#remove", as: "cart_remove"
   put "cart/update/:id", to: "cart#update", as: "cart_update"
+  resources :relationships, only: %i(create destroy)
 end

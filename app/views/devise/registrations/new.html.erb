@@ -55,13 +55,7 @@
               </div>
               <div class="input__box">
                 <%= f.label :address %>
-                <%= select_tag :country, options_for_select([["Việt Nam", "vn"]], ["Việt Nam", "VN"]), id: "select-country" %>
-                <%= select_tag :province, options_for_select(Province.all.map{|province| [province.name, province.id]}), id: "select-province" %>
-                <%= select_tag :district, options_for_select(Province.first.districts.map{|district| [district.name, district.id]}), id: "select-district" %>
-                <%= select_tag :ward, options_for_select(District.first.wards.map{|ward| [ward.name, ward.id]}), id: "select-ward" %><br><br>
-                <%= f.label :street %>
-                <%= text_field_tag :street, value = nil, eid: "stret", autocomplete: "street" %>
-                <%= f.hidden_field :address, id: "address" %>
+                <%= f.text_field :address, autocomplete: "address" %>
               </div>
               <div class="input__box">
                 <%= f.label :avatar %>

@@ -1,0 +1,6 @@
+<% if current_user.following? @user %>
+  <%= button_tag t(".unfollow"), class: "btn btn-sm", id: "unfollow-btn", "data-relationship-id": find_relationship.id %>
+<% else %>
+  <%= button_tag t(".follow"), class: "btn btn-success btn-sm", id: "follow-btn", "data-user-id": @user.hash_id %>
+<% end %>
+<button type="button" class="btn btn-danger btn-sm">Message</button>

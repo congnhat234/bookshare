@@ -2,7 +2,6 @@ $(document).ready(function() {
   $('.cart').on('click', function () {
     var book_id = $(this).attr('data-book-id');
     var qty = $("#qty").val();
-    console.log(book_id, qty);
     $.ajax({
       url: '/cart/add',
       type: 'POST',

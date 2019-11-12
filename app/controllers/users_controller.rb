@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.friendly.find(params[:id])
-    return if @user
+    return if @user && @user.confirmed?
     flash[:danger] = I18n.t "flash.not_found_user"
     redirect_to root_path
   end
