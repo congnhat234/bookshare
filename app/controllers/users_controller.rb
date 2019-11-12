@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: %i(show posts books)
+  before_action :authenticate_user!, only: %i(index)
   layout "dashboard/application", only: %i(index)
 
   def index

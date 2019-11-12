@@ -37,11 +37,13 @@
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
         <div class="profile-userbuttons" id="user-action">
-          <% if @user.id != current_user.id %>
-            <%= render "follow" %>
-          <% else %>
-            <%= link_to "Edit", edit_user_registration_path, class: "btn btn-success btn-sm" %>
-            <%= link_to "Dash board", users_path, class: "btn btn-warning btn-sm" %>
+          <% if user_signed_in? %>
+            <% if current_user.id != @user.id %>
+              <%= render "follow" %>
+            <% else %>
+              <%= link_to "Edit", edit_user_registration_path, class: "btn btn-success btn-sm" %>
+              <%= link_to "Dash board", users_path, class: "btn btn-warning btn-sm" %>
+            <% end %>
           <% end %>
         </div>
         <!-- END SIDEBAR BUTTONS -->
