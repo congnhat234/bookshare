@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   has_many :book_photos, dependent: :destroy
+  has_many :sharing_books
   belongs_to :category
   belongs_to :user
 

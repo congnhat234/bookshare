@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191109211731) do
+ActiveRecord::Schema.define(version: 20191110160500) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "email", default: "", null: false
@@ -110,6 +110,19 @@ ActiveRecord::Schema.define(version: 20191109211731) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "sharing_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.bigint "book_id"
+    t.integer "quantity", default: 1
+    t.bigint "owner_id"
+    t.bigint "collector_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.index ["book_id", "collector_id"], name: "index_sharing_books_on_book_id_and_collector_id", unique: true
+    t.index ["book_id"], name: "index_sharing_books_on_book_id"
+    t.index ["collector_id"], name: "index_sharing_books_on_collector_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

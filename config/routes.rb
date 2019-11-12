@@ -31,5 +31,7 @@ Rails.application.routes.draw do
   resources :relationships, only: %i(create destroy)
   namespace :dashboard do
     resources :books
+    resources :sharing_books, except: %i(show new edit)
+    get "/sharing_books/requests", to: "sharing_books#request_book"
   end
 end

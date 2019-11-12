@@ -55,9 +55,15 @@
                 </div>
                 <div class="box-tocart d-flex">
                   <span>Qty</span>
-                  <input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
+                  <input id="qty" class="input-text qty" name="qty" min="1" max="<%= @book.quantity %>" value="1" title="Qty" type="number">
                   <div class="addtocart__actions">
-                    <button class="tocart cart" type="submit" title="Add to Cart" data-book-id="<%= @book.id %>">Add to Cart</button>
+                    <% if @book.selling? %>
+                      <button class="tocart cart" type="submit" title="Add to Cart" data-book-id="<%= @book.id %>">Add to Cart</button>
+                    <% elsif @book.sharing? %>
+                      <button class="tocart collect" type="submit" title="Collect" data-book-id="<%= @book.id %>">Collect</button>
+                    <% elsif @book.exchange? %>
+                      <button class="tocart exchange" type="submit" title="Exchange" data-book-id="<%= @book.id %>">Exchange</button>
+                    <% end %>
                   </div>
                   <div class="product-addto-links clearfix">
                     <a class="wishlist" href="#"></a>

@@ -47,51 +47,29 @@
             </p>
           </a>
         </li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+        <li class="nav-item has-treeview <%= 'menu-open' if controller_name == 'sharing_books' %>">
+          <a href="#" class="nav-link <%= 'active' if controller_name == 'sharing_books' %>">
             <i class="nav-icon fas fa-copy"></i>
             <p>
-              Layout Options
+              Sharing
               <i class="fas fa-angle-left right"></i>
               <span class="badge badge-info right">6</span>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="pages/layout/top-nav.html" class="nav-link">
+              <%= link_to dashboard_sharing_books_requests_path,
+                class: "nav-link #{'active' if controller_name == 'sharing_books' && action_name == 'request_book'}" do %>
                 <i class="far fa-circle nav-icon"></i>
-                <p>Top Navigation</p>
-              </a>
+                <p>Requests</p>
+              <% end %>
             </li>
             <li class="nav-item">
-              <a href="pages/layout/boxed.html" class="nav-link">
+              <%= link_to dashboard_sharing_books_path,
+                class: "nav-link #{'active' if controller_name == 'sharing_books' && action_name == 'index'}" do %>
                 <i class="far fa-circle nav-icon"></i>
-                <p>Boxed</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Fixed Sidebar</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Fixed Navbar</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/layout/fixed-footer.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Fixed Footer</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Collapsed Sidebar</p>
-              </a>
+                <p>Collection</p>
+              <% end %>
             </li>
           </ul>
         </li>

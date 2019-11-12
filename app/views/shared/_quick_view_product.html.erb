@@ -12,7 +12,11 @@
             <!-- Start product images -->
             <div class="product-images">
               <div class="main-image images">
-                <img alt="big images" src="/assets/product/big-img/1.jpg">
+                <% if book.photos.any? %>
+                  <%= image_tag book.photos[0].url if book.photos.any? %>
+                <% else %>
+                  <%= image_tag "/assets/fallback/default.jpg" %>
+                <% end %>
               </div>
             </div>
             <!-- end product images -->
@@ -37,7 +41,7 @@
                 </div>
               </div>
               <div class="quick-desc">
-                <%= book.description %>
+                <%= book.brief_description %>
               </div>
               <div class="social-sharing">
                 <div class="widget widget_socialsharing_widget">
@@ -51,7 +55,13 @@
                 </div>
               </div>
               <div class="addtocart-btn">
-                <a href="#">Add to cart</a>
+                <% if book.selling? %>
+                  <%= link_to "add to cart", "javascript:void(0)", class: "cart", "data-book-id": book.id %>
+                <% elsif book.sharing? %>
+                  <%= link_to "Collect", "javascript:void(0)", class: "collect", "data-book-id": book.id %>
+                <% elsif book.exchange? %>
+                  <%= link_to "Exchange", "javascript:void(0)", class: "exchange", "data-book-id": book.id %>
+                <% end %>
               </div>
             </div>
           </div>

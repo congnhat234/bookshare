@@ -41,4 +41,28 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('.collect').on('click', function () {
+    var book_id = $(this).attr('data-book-id');
+    var qty = $("#qty").val();
+    $.ajax({
+      url: '/dashboard/sharing_books',
+      type: 'POST',
+      cache: false,
+      data: {
+        id: book_id,
+        qty: qty
+      },
+      success: function (data) {
+        if (data.status == "success") {
+          alert(I18n.t("alert.success[collect_book]"));
+        } else {
+          alert(I18n.t("alert.error[delete_book]"));
+        }
+      },
+      error: function () {
+        alert(I18n.t("alert.error[collect_book]"));
+      }
+    });
+  });
 });

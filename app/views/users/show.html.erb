@@ -60,9 +60,10 @@
               <% end %>
             </li>
             <li>
-              <a href="#" target="_blank">
-                <i class="fas fa-ok"></i>
-                Tasks </a>
+              <%= link_to user_books_path(@user) do %>
+                <i class="fas fa-book"></i>
+                User books
+              <% end %>
             </li>
             <li>
               <a href="#">

@@ -21,5 +21,6 @@ module Bookshare
     config.i18n.default_locale = :vi
     config.time_zone = "Asia/Ho_Chi_Minh"
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
+    config.middleware.use I18n::JS::Middleware
   end
 end
