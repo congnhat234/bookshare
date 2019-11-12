@@ -99,7 +99,7 @@ Rails.application.configure do
     :address        =>  ENV["MAIL_SERVER_ADDRESS"],
     :port           =>  ENV["MAIL_SERVER_PORT_MAILER"],
     :domain         =>  ENV["MAIL_SERVER_DOMAIN"],
-    :authentication =>  ENV["MAIL_SERVER_AUTHENTICAION"],
+    :authentication =>  :plain,
     :user_name      =>  ENV["MAIL_SERVER_EMAIL_USERNAME"],
     :password       =>  ENV["MAIL_SERVER_EMAIL_PASSWORD"],
     :enable_starttls_auto => true
