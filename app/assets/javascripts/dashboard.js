@@ -8,7 +8,7 @@
 //= require admin-lte/dist/js/adminlte
 //= require admin-lte/plugins/chart.js/Chart.min
 //= require admin-lte/dist/js/demo
-//= require admin-lte/plugins/summernote/summernote-bs4.min
+//= require summernote-bs4.min
 //= require admin-lte/dist/js/pages/dashboard3
 //= require i18n
 //= require i18n.js
