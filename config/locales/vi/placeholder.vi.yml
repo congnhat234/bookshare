@@ -1,0 +1,5 @@
+vi:
+  placeholder:
+    enter_title: "Nhập tiêu đề"
+    enter_preview: "Nhập tóm tắt nội dung"
+    enter_content: "Nhập nội dung"

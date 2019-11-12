@@ -24,3 +24,5 @@
 //= require i18n.js
 //= require i18n/translations
 //= require cart
+//= require posts
+//= require preview_image

@@ -1,0 +1,5 @@
+en:
+  action:
+    save: "Save"
+    reset: "Reset"
+    cancel: "Cancel"

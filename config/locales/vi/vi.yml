@@ -1,2 +1,6 @@
 vi:
-  hello: "Xin chào"
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M:%S"
+      long: "%B %d, %Y %H:%M"
+      short: "%d-%m-%Y %H:%M"

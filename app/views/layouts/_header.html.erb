@@ -82,13 +82,15 @@
                 </ul>
               </div>
             </li>
-            <li class="drop"><%= link_to "Blog", posts_path %>
-              <div class="megamenu dropdown">
-                <ul class="item item01">
-                  <li><%= link_to "Blog page", posts_path %></li>
-                  <li><%= link_to "Your blog", posts_path %></li>
-                </ul>
-              </div>
+            <li class="drop <%= "with--one--item" if !user_signed_in? %>"><%= link_to "Blog", posts_path %>
+              <% if user_signed_in? %>
+                <div class="megamenu dropdown">
+                  <ul class="item item01">
+                    <li><%= link_to t(".blog_page"), posts_path %></li>
+                      <li><%= link_to t(".my_blog"), user_posts_path(current_user) %></li>
+                  </ul>
+                </div>
+              <% end %>
             </li>
             <li><a href="contact.html">Contact</a></li>
           </ul>

@@ -1,2 +1,6 @@
 en:
-  hello: "Hello world"
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M:%S"
+      long: "%B %d, %Y %H:%M"
+      short: "%Y-%m-%d %H:%M"

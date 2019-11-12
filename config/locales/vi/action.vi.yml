@@ -1,0 +1,5 @@
+vi:
+  action:
+    save: "Lưu"
+    reset: "Đặt lại"
+    cancel: "Hủy bỏ"
