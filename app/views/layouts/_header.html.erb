@@ -4,9 +4,9 @@
     <div class="row">
       <div class="col-md-6 col-sm-6 col-6 col-lg-2">
         <div class="logo">
-          <a href="index.html">
+          <%= link_to root_path do %>
             <img src="/assets/logo/logo.png" alt="logo images">
-          </a>
+          <% end %>
         </div>
       </div>
       <div class="col-lg-8 d-none d-lg-block">
@@ -151,36 +151,26 @@
       <div class="col-lg-12 d-none">
         <nav class="mobilemenu__nav">
           <ul class="meninmenu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Pages</a>
-              <ul>
-                <li><a href="about.html">About Page</a></li>
-                <li><a href="portfolio.html">Portfolio</a>
+            <li><%= link_to t(".home"), root_path %></li>
+            <li><%= link_to t(".shop"), selling_books_path %></li>
+            <li><%= link_to t(".books"), books_path %>
+                <ul>
+                  <% @categories.each do |category| %>
+                    <li><%= link_to category_path(category) do %>
+                      <%= category.name %> <span>(<%= category.books.size %>)</span>
+                    <% end %></li>
+                  <% end %>
+                </ul>
+            </li>
+            <li><%= link_to t(".share"), sharing_books_path %></li>
+            <li><%= link_to t(".exchange"), exchange_books_path %></li>
+            <li><%= link_to "Blog", posts_path %>
+              <% if user_signed_in? %>
                   <ul>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                    <li><%= link_to t(".blog_page"), posts_path %></li>
+                      <li><%= link_to t(".my_blog"), user_posts_path(current_user) %></li>
                   </ul>
-                </li>
-                <li><a href="my-account.html">My Account</a></li>
-                <li><a href="cart.html">Cart Page</a></li>
-                <li><a href="checkout.html">Checkout Page</a></li>
-                <li><a href="wishlist.html">Wishlist Page</a></li>
-                <li><a href="error404.html">404 Page</a></li>
-                <li><a href="faq.html">Faq Page</a></li>
-                <li><a href="team.html">Team Page</a></li>
-              </ul>
-            </li>
-            <li><a href="shop-grid.html">Shop</a>
-              <ul>
-                <li><a href="shop-grid.html">Shop Grid</a></li>
-                <li><a href="single-product.html">Single Product</a></li>
-              </ul>
-            </li>
-            <li><a href="blog.html">Blog</a>
-              <ul>
-                <li><a href="blog.html">Blog Page</a></li>
-                <li><a href="blog-details.html">Blog Details</a></li>
-              </ul>
+              <% end %>
             </li>
             <li><a href="contact.html">Contact</a></li>
           </ul>

@@ -1,5 +1,8 @@
+require "./lib/recommendation.rb"
+
 class User < ApplicationRecord
   include FriendlyIdHash
+  include Recommendation
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable,
     :confirmable, :lockable, :timeoutable, :trackable, :omniauthable
@@ -14,6 +17,9 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :sharing_books
 
+  has_many :liked_posts, foreign_key: "user_id", dependent: :destroy
+  has_many :l_posts, through: :liked_posts, source: :post
+
   before_save :downcase_email
 
   mount_uploader :avatar, PhotoUploader
@@ -21,6 +27,8 @@ class User < ApplicationRecord
   validates_with PasswordValidator
 
   enum role: [:normal_user, :charity_organization, :seller]
+
+  recommends :posts
 
   def follow other_user
     active_relationships.create(followed_id: other_user.id)
@@ -32,6 +40,18 @@ class User < ApplicationRecord
 
   def following? other_user
     following.include? other_user
+  end
+
+  def liked_post? post
+    l_posts.include? post
+  end
+
+  def like_post post
+    liked_posts.create post_id: post.id
+  end
+
+  def unlike_post post
+    l_posts.delete post
   end
 
   private

@@ -1,0 +1,13 @@
+<li>
+  <div class="post-wrapper d-flex">
+    <div class="thumb">
+      <%= link_to post do %>
+        <%= image_tag post.photo_url %>
+      <% end %>
+    </div>
+    <div class="content">
+      <h4><%= link_to post.title, post %></h4>
+      <p><%= l post.updated_at, format: :s_short %></p>
+    </div>
+  </div>
+</li>

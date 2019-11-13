@@ -8,6 +8,7 @@ end
 ruby "2.4.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem "activerecord-session_store"
 gem "carrierwave"
 gem "ckeditor"
 gem "config"
@@ -23,6 +24,13 @@ gem "omniauth-facebook"
 gem "pnotify-rails"
 gem "rails", "~> 5.1.7"
 gem "rails-i18n"
+# Use Redis adapter to run Action Cable in production
+gem "redis"
+gem "redis-namespace"
+gem "redis-rails"
+gem "redis-rack-cache"
+gem "sidekiq"
+gem "recommendable"
 gem "rubocop", "~> 0.54.0", require: false
 # Use Puma as the app server
 gem "puma"
@@ -42,8 +50,7 @@ gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
