@@ -3,3 +3,5 @@ vi:
     index:
       continue_shopping: "Tiếp tục mua sắm"
       empty_cart: "Giỏ hàng rỗng!"
+      checkout: "Thanh toán"
+      home: "Trang chủ"

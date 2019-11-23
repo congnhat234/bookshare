@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_many :liked_posts, foreign_key: "user_id", dependent: :destroy
   has_many :l_posts, through: :liked_posts, source: :post
 
+  has_many :orders
+
   before_save :downcase_email
 
   mount_uploader :avatar, PhotoUploader
