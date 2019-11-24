@@ -22,5 +22,15 @@ module Bookshare
     config.time_zone = "Asia/Ho_Chi_Minh"
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
     config.middleware.use I18n::JS::Middleware
+    config.active_record.default_timezone = :local
+    config.active_job.queue_adapter = :sidekiq
+    config.session_store :active_record_store
+    config.generators do |g|
+      g.template_engine nil #to skip views
+      g.test_framework  nil #to skip test framework
+      g.assets  false
+      g.helper false
+      g.stylesheets false
+    end
   end
 end

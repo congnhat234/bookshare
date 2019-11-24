@@ -10,10 +10,6 @@ development:
   <<: *default
   database: bookshare_development
 
-staging:
-  <<: *default
-  database: <%= ENV["DATABASE_NAME"] %>
-
 test:
   <<: *default
   adapter: mysql2

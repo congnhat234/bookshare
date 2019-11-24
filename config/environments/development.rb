@@ -26,6 +26,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.active_job.queue_adapter = :sidekiq
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
 
@@ -60,4 +62,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.middleware.use I18n::JS::Middleware
+  Money.locale_backend = :i18n
 end

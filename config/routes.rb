@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]
+  mount Sidekiq::Web => '/sidekiq'
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admins, controllers: {
     sessions: "admins/sessions"
@@ -29,6 +32,8 @@ Rails.application.routes.draw do
   delete "cart/remove/:id", to: "cart#remove", as: "cart_remove"
   put "cart/update/:id", to: "cart#update", as: "cart_update"
   resources :relationships, only: %i(create destroy)
+  resources :liked_posts, only: %i(create destroy)
+  resources :orders
   namespace :dashboard do
     resources :books
     resources :sharing_books, except: %i(show new edit)

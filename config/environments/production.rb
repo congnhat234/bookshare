@@ -104,4 +104,5 @@ Rails.application.configure do
     :password       =>  ENV["MAIL_SERVER_EMAIL_PASSWORD"],
     :enable_starttls_auto => true
   }
+  Money.locale_backend = :i18n
 end
