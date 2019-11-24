@@ -2,15 +2,14 @@ require 'redis'
 
 rails_root = Rails.root || File.dirname(__FILE__) + "/../.."
 rails_env = Rails.env || "development"
-redis_config = YAML.load_file(rails_root.to_s + "/config/redis.yml")
-redis_config.merge! redis_config.fetch(Rails.env, {})
-redis_config.symbolize_keys!
+uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379/")
 
 Recommendable.configure do |config|
   # Recommendable's connection to Redis.
   #
   # Default: localhost:6379/0
-  config.redis = Redis.new(:host => redis_config[:host], :port => redis_config[:port], :db => 0)
+
+  config.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password, :db => 0)
 
   # A prefix for all keys Recommendable uses.
   #
