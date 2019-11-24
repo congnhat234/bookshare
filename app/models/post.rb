@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :liked_posts, foreign_key: "post_id", dependent: :destroy
+  has_many :users, through: :liked_posts
 
   mount_uploader :photo, PhotoUploader
 

@@ -27,3 +27,5 @@
 //= require posts
 //= require preview_image
 //= require relationship
+//= require like_post
+//= require admin-lte/plugins/summernote/summernote-bs4.min

@@ -1,0 +1,16 @@
+<span><%= @post.liked_posts.count %></span>
+<% if user_signed_in? %>
+  <% if current_user.liked_post?(@post) %>
+    <%= link_to "javascript:void(0)", class: "unlike-btn", "data-liked-post-id": find_liked_post.id do %>
+      <i class="fas fa-heart text-danger"></i>
+    <% end %>
+  <% else %>
+    <%= link_to "javascript:void(0)", class: "like-btn", "data-post-id": @post.id do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= link_to "javascript:void(0)" do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+<% end %>

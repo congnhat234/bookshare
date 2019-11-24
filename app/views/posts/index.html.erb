@@ -44,64 +44,10 @@
           <!-- End Single Widget -->
           <!-- Start Single Widget -->
           <aside class="widget recent_widget">
-            <h3 class="widget-title">Recent</h3>
+            <h3 class="widget-title">Recommend for you</h3>
             <div class="recent-posts">
               <ul>
-                <li>
-                  <div class="post-wrapper d-flex">
-                    <div class="thumb">
-                      <a href="blog-details.html"><img src="/assets/blog/sm-img/1.jpg" alt="blog images"></a>
-                    </div>
-                    <div class="content">
-                      <h4><a href="blog-details.html">Blog image post</a></h4>
-                      <p>	March 10, 2015</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="post-wrapper d-flex">
-                    <div class="thumb">
-                      <a href="blog-details.html"><img src="/assets/blog/sm-img/2.jpg" alt="blog images"></a>
-                    </div>
-                    <div class="content">
-                      <h4><a href="blog-details.html">Post with Gallery</a></h4>
-                      <p>	March 10, 2015</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="post-wrapper d-flex">
-                    <div class="thumb">
-                      <a href="blog-details.html"><img src="/assets/blog/sm-img/3.jpg" alt="blog images"></a>
-                    </div>
-                    <div class="content">
-                      <h4><a href="blog-details.html">Post with Video</a></h4>
-                      <p>	March 10, 2015</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="post-wrapper d-flex">
-                    <div class="thumb">
-                      <a href="blog-details.html"><img src="/assets/blog/sm-img/4.jpg" alt="blog images"></a>
-                    </div>
-                    <div class="content">
-                      <h4><a href="blog-details.html">Maecenas ultricies</a></h4>
-                      <p>	March 10, 2015</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="post-wrapper d-flex">
-                    <div class="thumb">
-                      <a href="blog-details.html"><img src="/assets/blog/sm-img/5.jpg" alt="blog images"></a>
-                    </div>
-                    <div class="content">
-                      <h4><a href="blog-details.html">Blog image post</a></h4>
-                      <p>	March 10, 2015</p>
-                    </div>
-                  </div>
-                </li>
+                <%= render partial: "recommendable_post", collection: @recommendable_posts, as: :post %>
               </ul>
             </div>
           </aside>

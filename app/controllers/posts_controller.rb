@@ -1,10 +1,22 @@
 class PostsController < ApplicationController
   before_action :find_post, except: %i(index new create user_posts)
   def index
-    @posts = Post.publish.order("updated_at DESC").page(params[:page]).per Settings.posts.per_page
+    @posts = Post.publish.order("updated_at DESC")
+                 .page(params[:page])
+                 .per Settings.posts.per_page
+    if user_signed_in?
+      recommendable_posts_redis = current_user.recommended_posts
+                                              .where.not(user_id: current_user.id)
+      @recommendable_posts = recommendable_posts_redis || current_user.recommend_posts
+    end
   end
 
   def show
+    if user_signed_in?
+      recommendable_posts_redis = current_user.recommended_posts
+                                              .where.not(user_id: current_user.id)
+      @recommendable_posts = recommendable_posts_redis || current_user.recommend_posts
+    end
   end
 
   def new
