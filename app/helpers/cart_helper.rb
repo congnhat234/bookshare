@@ -46,7 +46,7 @@ module CartHelper
   end
 
   def price_discounted price, discount
-    price - (price * discount / 100)
+    (price - (price * discount / 100)).round
   end
 
   def get_cart_total books
@@ -56,11 +56,11 @@ module CartHelper
     end
   end
 
-  def get_discount_total coupon = nil
-    return @discount_total = 0 if coupon.nil?
+  def get_coupon_discount coupon = nil
+    return @coupon_discount = 0 if coupon.nil?
   end
 
-  def get_grand_total
-    @cart_total - @discount_total
+  def get_grand_total cart_total, coupon_discount, shipping
+    cart_total - coupon_discount + shipping
   end
 end

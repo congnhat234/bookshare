@@ -62,4 +62,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.middleware.use I18n::JS::Middleware
+  Money.locale_backend = :i18n
 end

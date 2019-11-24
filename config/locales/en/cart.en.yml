@@ -3,3 +3,5 @@ en:
     index:
       continue_shopping: "Continue shopping"
       empty_cart: "Cart is empty!"
+      checkout: "Check out"
+      home: "Home"

@@ -65,4 +65,8 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('.checkout__title').click(function(e) {
+    $(this).find('input').prop('checked', 'checked');
+ });
 });

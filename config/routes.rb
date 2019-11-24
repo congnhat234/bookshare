@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   put "cart/update/:id", to: "cart#update", as: "cart_update"
   resources :relationships, only: %i(create destroy)
   resources :liked_posts, only: %i(create destroy)
+  resources :orders
   namespace :dashboard do
     resources :books
     resources :sharing_books, except: %i(show new edit)
