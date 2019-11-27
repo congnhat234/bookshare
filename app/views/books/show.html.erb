@@ -38,13 +38,8 @@
               <div class="product__info__main">
                 <h1><%= @book.title %></h1>
                 <div class="product-reviews-summary d-flex">
-                  <ul class="rating-summary d-flex">
-                    <li><i class="zmdi zmdi-star-outline"></i></li>
-                    <li><i class="zmdi zmdi-star-outline"></i></li>
-                    <li><i class="zmdi zmdi-star-outline"></i></li>
-                    <li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-                    <li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-                  </ul>
+                  <div data-rating="<%= @book.rating %>" class="rateyo-readonly" style="top: 2px;"></div>
+                  <span id="overrall">(<%= @book.rating %>/5)</span>
                 </div>
                 <div class="price-box">
                   <span><%= number_to_currency_format @book.price * (100 - @book.discount) / 100 %></span>
@@ -67,12 +62,11 @@
                   </div>
                   <div class="product-addto-links clearfix">
                     <a class="wishlist" href="#"></a>
-                    <a class="compare" href="#"></a>
                   </div>
                 </div>
                 <div class="product_meta">
                   <span class="posted_in">Categories:
-                    <%= link_to @book.category.name, books_path %>
+                    <%= link_to @book.category.name, category_path(@book.category) %>
                   </span>
                 </div>
                 <div class="product-share">
@@ -80,22 +74,22 @@
                     <li class="categories-title">Share :</li>
                     <li>
                       <a href="#">
-                        <i class="icon-social-twitter icons"></i>
+                        <i class="fab fa-twitter"></i>
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i class="icon-social-tumblr icons"></i>
+                        <i class="fab fa-google-plus-g"></i>
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i class="icon-social-facebook icons"></i>
+                        <i class="fab fa-facebook-f"></i>
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i class="icon-social-linkedin icons"></i>
+                        <i class="fab fa-instagram"></i>
                       </a>
                     </li>
                   </ul>
@@ -121,102 +115,20 @@
             <div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">
               <div class="review__attribute">
                 <h1>Customer Reviews</h1>
-                <h2>Hastech</h2>
+                <% if @reviews.empty? %>
+                  <h3 id="no_review">No reviews.</h3>
+                <% end %>
                 <div class="review__ratings__type d-flex">
-                  <div class="review-ratings">
-                    <div class="rating-summary d-flex">
-                      <span>Quality</span>
-                      <ul class="rating d-flex">
-                        <li><i class="zmdi zmdi-star"></i></li>
-                        <li><i class="zmdi zmdi-star"></i></li>
-                        <li><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="rating-summary d-flex">
-                      <span>Price</span>
-                      <ul class="rating d-flex">
-                        <li><i class="zmdi zmdi-star"></i></li>
-                        <li><i class="zmdi zmdi-star"></i></li>
-                        <li><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="rating-summary d-flex">
-                      <span>value</span>
-                      <ul class="rating d-flex">
-                        <li><i class="zmdi zmdi-star"></i></li>
-                        <li><i class="zmdi zmdi-star"></i></li>
-                        <li><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="review-content">
-                    <p>Hastech</p>
-                    <p>Review by Hastech</p>
-                    <p>Posted on 11/6/2018</p>
+                  <div class="comments_area">
+                    <ul class="comment__list" id="review_list">
+                      <%= render partial: "books/review", collection: @reviews %>
+                    </ul>
                   </div>
                 </div>
               </div>
-              <div class="review-fieldset">
-                <h2>You're reviewing:</h2>
-                <h3>Chaz Kangeroo Hoodie</h3>
-                <div class="review-field-ratings">
-                  <div class="product-review-table">
-                    <div class="review-field-rating d-flex">
-                      <span>Quality</span>
-                      <ul class="rating d-flex">
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="review-field-rating d-flex">
-                      <span>Price</span>
-                      <ul class="rating d-flex">
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="review-field-rating d-flex">
-                      <span>Value</span>
-                      <ul class="rating d-flex">
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                        <li class="off"><i class="zmdi zmdi-star"></i></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="review_form_field">
-                  <div class="input__box">
-                    <span>Nickname</span>
-                    <input id="nickname_field" type="text" name="nickname">
-                  </div>
-                  <div class="input__box">
-                    <span>Summary</span>
-                    <input id="summery_field" type="text" name="summery">
-                  </div>
-                  <div class="input__box">
-                    <span>Review</span>
-                    <textarea name="review"></textarea>
-                  </div>
-                  <div class="review-form-actions">
-                    <button>Submit Review</button>
-                  </div>
-                </div>
-              </div>
+              <% if user_signed_in? %>
+                <%= render "form_review" %>
+              <% end %>
             </div>
             <!-- End Single Tab Content -->
           </div>
@@ -691,8 +603,8 @@
             <ul>
               <% @categories.each do |category| %>
                 <li><%= link_to category_path(category) do %>
-                  <%= category.name %> <span>(<%= category.books.size %>)</span>
-                <% end %></li>
+                    <%= category.name %> <span>(<%= category.books.size %>)</span>
+                  <% end %></li>
               <% end %>
             </ul>
           </aside>
@@ -715,14 +627,6 @@
                 </form>
               </div>
             </div>
-          </aside>
-          <aside class="wedget__categories poroduct--compare">
-            <h3 class="wedget__title">Compare</h3>
-            <ul>
-              <li><a href="#">x</a><a href="#">Condimentum posuere</a></li>
-              <li><a href="#">x</a><a href="#">Condimentum posuere</a></li>
-              <li><a href="#">x</a><a href="#">Dignissim venenatis</a></li>
-            </ul>
           </aside>
           <aside class="wedget__categories poroduct--tag">
             <h3 class="wedget__title">Product Tags</h3>
@@ -747,7 +651,7 @@
             <div class="text">
               <h2>new products</h2>
               <h6>save up to <br>
-                 <strong>40%</strong>off</h6>
+                <strong>40%</strong>off</h6>
             </div>
           </aside>
         </div>
@@ -756,18 +660,3 @@
   </div>
 </div>
 <!-- End main Content -->
-<!-- Start Search Popup -->
-<div class="box-search-content search_active block-bg close__top">
-  <form id="search_mini_form--2" class="minisearch" action="#">
-    <div class="field__search">
-      <input type="text" placeholder="Search entire store here...">
-      <div class="action">
-        <a href="#"><i class="zmdi zmdi-search"></i></a>
-      </div>
-    </div>
-  </form>
-  <div class="close__wrap">
-    <span>close</span>
-  </div>
-</div>
-<!-- End Search Popup -->

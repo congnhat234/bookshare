@@ -1,0 +1,16 @@
+<div class="review-fieldset">
+  <h4>Your review for <%= @book.title %></h4>
+  <div class="review-field-ratings">
+    <div class="rateyo" data-id="<%= @book.id %>" style="top: 2px;"></div>
+  </div>
+  <form action="javascript:void(0)">
+    <div class="review_form_field">
+      <div class="input__box">
+        <textarea name="content" id="content" rows="1"></textarea>
+      </div>
+      <div class="review-form-actions">
+        <button id="rate" class="primary-btn"><%= t "submit" %></button>
+      </div>
+    </div>
+  </form>
+</div>
