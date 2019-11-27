@@ -16,3 +16,7 @@ en:
     error[update_book]: "Fail to update book"
     error[collect_book]: "Fail to collect book"
     success[collect_book]: "Collected book"
+    delete: "Deleted!"
+    error: "Error!"
+    followed: "Followed!"
+    unfollowed: "Unfollowed!"
