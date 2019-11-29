@@ -34,7 +34,8 @@ Rails.application.routes.draw do
   resources :relationships, only: %i(create destroy)
   resources :liked_posts, only: %i(create destroy)
   resources :orders
-  resources :reviews
+  resources :reviews, only: %i(create destroy)
+  resources :comments, only: %i(create destroy)
   namespace :dashboard do
     resources :books
     resources :sharing_books, except: %i(show new edit)
