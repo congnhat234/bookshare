@@ -29,3 +29,9 @@
 //= require relationship
 //= require like_post
 //= require admin-lte/plugins/summernote/summernote-bs4.min
+//= require rateyo/min/jquery.rateyo.min
+//= require rateyo_config
+//= require reviews
+//= require sweetalert2/dist/sweetalert2.all.min
+//= require pnotify/dist/umd/PNotify
+//= require pnotify/dist/umd/PNotifyButtons
