@@ -12,4 +12,14 @@ $(function () {
     rating: 0,
     fullStar: true
   });
+
+  $('.book-rating').each(function() {
+    rating = $(this).attr('data-rating');
+    if (rating > 5) rating = 5;
+    $(this).rateYo({
+      rating: rating,
+      readOnly: true,
+      starWidth: "20px"
+    });
+  });
 });

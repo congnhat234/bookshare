@@ -57,4 +57,6 @@ Rails.application.routes.draw do
     post "/posts/publish", to: "posts#publish"
     post "/posts/unpublish", to: "posts#unpublish"
   end
+  resources :search, only: :index
+  get "/search-posts", to: "search#index_post"
 end

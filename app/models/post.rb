@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  searchkick
+
   belongs_to :user
   has_many :liked_posts, foreign_key: "post_id", dependent: :destroy
   has_many :users, through: :liked_posts
@@ -12,5 +14,13 @@ class Post < ApplicationRecord
 
   def to_param
     "#{id}-#{title.parameterize}"
+  end
+
+  def search_data
+    {
+      title: title,
+      content: content,
+      preview: preview
+    }
   end
 end

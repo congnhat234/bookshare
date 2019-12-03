@@ -9,6 +9,8 @@ ruby "2.4.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "activerecord-session_store"
+gem "elasticsearch-rails", git: "git://github.com/elastic/elasticsearch-rails.git", branch: "5.x"
+gem "elasticsearch-model"
 gem "carrierwave"
 gem "ckeditor"
 gem "config"
@@ -37,6 +39,7 @@ gem "rubocop", "~> 0.54.0", require: false
 gem "puma"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
+gem "searchkick"
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

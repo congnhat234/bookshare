@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  searchkick
+
   has_many :book_photos, dependent: :destroy
   has_many :sharing_books, dependent: :destroy
   has_many :order_books, dependent: :destroy
@@ -21,5 +23,14 @@ class Book < ApplicationRecord
 
   def to_param
     "#{id}-#{title.parameterize}"
+  end
+
+  def search_data
+    {
+      title: title,
+      description: description,
+      brief_description: brief_description,
+      category_name: category.name
+    }
   end
 end
