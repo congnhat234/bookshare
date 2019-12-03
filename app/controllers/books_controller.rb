@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :find_book, only: %i(show)
+  before_action :load_reviews, only: %i(show)
 
   def index
     @books = Book.page(params[:page]).per Settings.books.per_page
@@ -7,8 +8,7 @@ class BooksController < ApplicationController
     @type = "all"
   end
 
-  def show
-  end
+  def show; end
 
   def selling
     @books = Book.selling.page(params[:page]).per Settings.books.per_page
@@ -38,5 +38,9 @@ class BooksController < ApplicationController
     return if @book
     flash.now[:danger] = "Not found"
     redirect_to books_path
+  end
+
+  def load_reviews
+    @reviews = @book.reviews.order(:updated_at).reverse
   end
 end

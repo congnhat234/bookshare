@@ -1,0 +1,27 @@
+<li>
+  <div class="wn__comment">
+    <div class="thumb">
+      <%= image_tag review.user.avatar_url %>
+    </div>
+    <div class="content">
+      <div class="comnt__author d-block d-sm-flex">
+        <span><%= link_to review.user.name, user_path(review.user) %></span>
+        <span><%= l review.created_at %></span>
+        <% if current_user.id == review.user.id %>
+          <div class="reply__btn">
+            <%= link_to "Delete", "javascript:void(0)", class: "delete_review_btn", "data-id": review.id %>
+          </div>
+        <% end %>
+      </div>
+      <ul class="rating d-flex">
+        <% review.rating.times.each do %>
+          <li><i class="zmdi zmdi-star"></i></li>
+        <% end %>
+        <% (5 - review.rating).times.each do %>
+          <li class="off"><i class="zmdi zmdi-star"></i></li>
+        <% end %>
+      </ul>
+      <p><%= review.content %></p>
+    </div>
+  </div>
+</li>

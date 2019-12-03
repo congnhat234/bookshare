@@ -3,3 +3,7 @@ en:
     save: "Save"
     reset: "Reset"
     cancel: "Cancel"
+  confirm:
+    you_sure: "Are you sure?"
+    delete: "Yes, delete it!"
+    cancel: "Cancel"

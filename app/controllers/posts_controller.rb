@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, except: %i(index new create user_posts)
+  before_action :load_comments, only: :show
   def index
     @posts = Post.publish.order("updated_at DESC")
                  .page(params[:page])
@@ -82,5 +83,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit :title, :preview, :content, :photo
+  end
+
+  def load_comments
+    @comments = @post.comments.where(parent_id: nil).order(:updated_at).reverse
   end
 end

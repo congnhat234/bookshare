@@ -47,7 +47,6 @@ $(document).ready(function () {
 
         reader.readAsDataURL(file);
         $(document).on('click', '.remove-image', function (e) {
-          console.log("ok")
           $(this).parent('.image').remove();
         });
       }

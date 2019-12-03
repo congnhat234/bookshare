@@ -20,7 +20,9 @@ class User < ApplicationRecord
   has_many :liked_posts, foreign_key: "user_id", dependent: :destroy
   has_many :l_posts, through: :liked_posts, source: :post
 
-  has_many :orders
+  has_many :orders, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   before_save :downcase_email
 
