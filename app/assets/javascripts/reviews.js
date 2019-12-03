@@ -17,7 +17,7 @@ $(document).ready(function() {
         $('.rateyo-readonly').rateYo('option', 'rating', data.overall);
         $('.rateyo').rateYo('option', 'rating', 0);
         $('#content').val('');
-        $('#review_list').append(data.review);
+        $('#review_list').prepend(data.review);
         $('#no_review').hide();
       },
       error: function () {

@@ -12,3 +12,5 @@ en:
       unpublish: "Unpublish"
     index:
       add_post: "Add new post"
+    comment:
+      reply: "Reply"

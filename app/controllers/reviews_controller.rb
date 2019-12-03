@@ -5,9 +5,8 @@ class ReviewsController < ApplicationController
 
   def create
     book_id = params[:book_id]
-    @review = Review.new book_id: book_id,
-      rating: params[:rating], content: params[:content],
-      user_id: current_user.id
+    @review = current_user.reviews.new book_id: book_id,
+      rating: params[:rating], content: params[:content]
     Review.transaction do
       @review.save
       load_reviews
@@ -44,7 +43,8 @@ class ReviewsController < ApplicationController
   end
 
   def renderhtml_review
-    ApplicationController.render partial: "books/review", locals: {review: @review}
+    ApplicationController.render partial: "books/review",
+      locals: {review: @review, current_user: current_user}
   end
 
   def find_review

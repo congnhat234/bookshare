@@ -8,8 +8,7 @@ class BooksController < ApplicationController
     @type = "all"
   end
 
-  def show
-  end
+  def show; end
 
   def selling
     @books = Book.selling.page(params[:page]).per Settings.books.per_page
@@ -42,6 +41,6 @@ class BooksController < ApplicationController
   end
 
   def load_reviews
-    @reviews = @book.reviews
+    @reviews = @book.reviews.order(:updated_at).reverse
   end
 end

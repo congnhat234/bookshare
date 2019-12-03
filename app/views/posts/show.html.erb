@@ -43,73 +43,20 @@
                   <%= render "btn_like" %>
                 </li>
                 <li>
-                  <span>0</span>
+                  <span><%= @post.comments.count %></span>
                   <i class="far fa-comment"></i>
                 </li>
               </ul>
             </div>
           </article>
           <div class="comments_area">
-            <h3 class="comment__title">1 comment</h3>
-            <ul class="comment__list">
-              <li>
-                <div class="wn__comment">
-                  <div class="thumb">
-                    <img src="/assets/blog/comment/1.jpeg" alt="comment images">
-                  </div>
-                  <div class="content">
-                    <div class="comnt__author d-block d-sm-flex">
-                      <span><a href="#">admin</a> Post author</span>
-                      <span>October 6, 2014 at 9:26 am</span>
-                      <div class="reply__btn">
-                        <a href="#">Reply</a>
-                      </div>
-                    </div>
-                    <p>Sed interdum at justo in efficitur. Vivamus gravida volutpat sodales. Fusce ornare sit</p>
-                  </div>
-                </div>
-              </li>
-              <li class="comment_reply">
-                <div class="wn__comment">
-                  <div class="thumb">
-                    <img src="/assets/blog/comment/1.jpeg" alt="comment images">
-                  </div>
-                  <div class="content">
-                    <div class="comnt__author d-block d-sm-flex">
-                      <span><a href="#">admin</a> Post author</span>
-                      <span>October 6, 2014 at 9:26 am</span>
-                      <div class="reply__btn">
-                        <a href="#">Reply</a>
-                      </div>
-                    </div>
-                    <p>Sed interdum at justo in efficitur. Vivamus gravida volutpat sodales. Fusce ornare sit</p>
-                  </div>
-                </div>
-              </li>
+            <ul id="comment_list" class="comment__list">
+              <%= render partial: "posts/comment", collection: @comments, as: :comment %>
             </ul>
           </div>
           <div class="comment_respond">
             <h3 class="reply_title">Leave a Reply <small><a href="#">Cancel reply</a></small></h3>
-            <form class="comment__form" action="#">
-              <p>Your email address will not be published.Required fields are marked </p>
-              <div class="input__box">
-                <textarea name="comment" placeholder="Your comment here"></textarea>
-              </div>
-              <div class="input__wrapper clearfix">
-                <div class="input__box name one--third">
-                  <input type="text" placeholder="name">
-                </div>
-                <div class="input__box email one--third">
-                  <input type="email" placeholder="email">
-                </div>
-                <div class="input__box website one--third">
-                  <input type="text" placeholder="website">
-                </div>
-              </div>
-              <div class="submite__btn">
-                <a href="#">Post Comment</a>
-              </div>
-            </form>
+            <%= render "posts/form_comment" %>
           </div>
         </div>
       </div>
@@ -137,91 +84,13 @@
           </aside>
           <!-- End Single Widget -->
           <!-- Start Single Widget -->
-          <aside class="widget comment_widget">
-            <h3 class="widget-title">Comments</h3>
-            <ul>
-              <li>
-                <div class="post-wrapper">
-                  <div class="thumb">
-                    <img src="/assets/blog/comment/1.jpeg" alt="Comment images">
-                  </div>
-                  <div class="content">
-                    <p>demo says:</p>
-                    <a href="#">Quisque semper nunc vitae...</a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="post-wrapper">
-                  <div class="thumb">
-                    <img src="/assets/blog/comment/1.jpeg" alt="Comment images">
-                  </div>
-                  <div class="content">
-                    <p>Admin says:</p>
-                    <a href="#">Curabitur aliquet pulvinar...</a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="post-wrapper">
-                  <div class="thumb">
-                    <img src="/assets/blog/comment/1.jpeg" alt="Comment images">
-                  </div>
-                  <div class="content">
-                    <p>Irin says:</p>
-                    <a href="#">Quisque semper nunc vitae...</a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="post-wrapper">
-                  <div class="thumb">
-                    <img src="/assets/blog/comment/1.jpeg" alt="Comment images">
-                  </div>
-                  <div class="content">
-                    <p>Boighor says:</p>
-                    <a href="#">Quisque semper nunc vitae...</a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="post-wrapper">
-                  <div class="thumb">
-                    <img src="/assets/blog/comment/1.jpeg" alt="Comment images">
-                  </div>
-                  <div class="content">
-                    <p>demo says:</p>
-                    <a href="#">Quisque semper nunc vitae...</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </aside>
-          <!-- End Single Widget -->
-          <!-- Start Single Widget -->
-          <aside class="widget category_widget">
-            <h3 class="widget-title">Categories</h3>
-            <ul>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Creative</a></li>
-              <li><a href="#">Electronics</a></li>
-              <li><a href="#">Kids</a></li>
-              <li><a href="#">Flower</a></li>
-              <li><a href="#">Books</a></li>
-              <li><a href="#">Jewelle</a></li>
-            </ul>
-          </aside>
-          <!-- End Single Widget -->
-          <!-- Start Single Widget -->
-          <aside class="widget archives_widget">
-            <h3 class="widget-title">Archives</h3>
-            <ul>
-              <li><a href="#">March 2015</a></li>
-              <li><a href="#">December 2014</a></li>
-              <li><a href="#">November 2014</a></li>
-              <li><a href="#">September 2014</a></li>
-              <li><a href="#">August 2014</a></li>
-            </ul>
+          <aside class="widget recent_widget">
+            <h3 class="widget-title">Follow</h3>
+            <div class="recent-posts">
+              <ul>
+                <%= render partial: "recommendable_post", collection: @recommendable_posts, as: :post %>
+              </ul>
+            </div>
           </aside>
           <!-- End Single Widget -->
         </div>

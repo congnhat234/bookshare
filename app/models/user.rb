@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   before_save :downcase_email
 

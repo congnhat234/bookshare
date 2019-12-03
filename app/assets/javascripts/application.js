@@ -36,3 +36,4 @@
 //= require rateyo/min/jquery.rateyo.min
 //= require rateyo_config
 //= require reviews
+//= require comments

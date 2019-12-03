@@ -12,3 +12,5 @@ vi:
       unpublish: "Riêng tư"
     index:
       add_post: "Thêm bài viết mới"
+    comment:
+      reply: "Trả lời"
