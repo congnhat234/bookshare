@@ -9,8 +9,14 @@ $(document).ready(function () {
         followed_id: user_id
       },
       success: function (data) {
+        PNotify.error({
+          text: I18n.t('alert.followed')
+        });
       },
       error: function () {
+        PNotify.error({
+          text: I18n.t('alert.error')
+        });
       }
     })
   })
@@ -21,8 +27,14 @@ $(document).ready(function () {
       type: 'DELETE',
       cache: false,
       success: function (data) {
+        PNotify.error({
+          text: I18n.t('alert.unfollowed')
+        });
       },
       error: function () {
+        PNotify.error({
+          text: I18n.t('alert.error')
+        });
       }
     })
   })

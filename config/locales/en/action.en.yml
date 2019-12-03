@@ -7,6 +7,3 @@ en:
     you_sure: "Are you sure?"
     delete: "Yes, delete it!"
     cancel: "Cancel"
-  alert:
-    delete: "Deleted!"
-    error: "Error!"

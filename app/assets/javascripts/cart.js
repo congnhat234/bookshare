@@ -12,10 +12,14 @@ $(document).ready(function() {
       },
       success: function (data) {
         $('.product_qun').text(data.size_cart);
-        alert(I18n.t("alert.success[add_cart]"));
+        PNotify.success({
+          text: I18n.t('alert.success[add_cart]')
+        });
       },
       error: function () {
-        alert(I18n.t("alert.error[add_cart]"));
+        PNotify.error({
+          text: I18n.t('alert.error')
+        });
       }
     });
   });
@@ -37,7 +41,9 @@ $(document).ready(function() {
         $('.grand-total').text(data.grand_total);
       },
       error: function () {
-        alert(I18n.t("alert.error[update_cart]"));
+        PNotify.error({
+          text: I18n.t('alert.error')
+        });
       }
     });
   });
@@ -55,13 +61,19 @@ $(document).ready(function() {
       },
       success: function (data) {
         if (data.status == "success") {
-          alert(I18n.t("alert.success[collect_book]"));
+          PNotify.success({
+            text: I18n.t('alert.success[collect_book]')
+          });
         } else {
-          alert(I18n.t("alert.error[delete_book]"));
+          PNotify.error({
+            text: I18n.t('alert.error')
+          });
         }
       },
       error: function () {
-        alert(I18n.t("alert.error[collect_book]"));
+        PNotify.error({
+          text: I18n.t('alert.error')
+        });
       }
     });
   });

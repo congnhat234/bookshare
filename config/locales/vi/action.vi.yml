@@ -7,6 +7,3 @@ vi:
     you_sure: "Bạn có chắc muốn xóa?"
     delete: "Có, xóa ngay!"
     cancel: "Hủy bỏ"
-  alert:
-    delete: "Đã xóa!"
-    error: "Có lỗi!"

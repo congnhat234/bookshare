@@ -21,7 +21,9 @@ $(document).ready(function() {
         $('#no_review').hide();
       },
       error: function () {
-        alert(I18n.t('alert.error[review_fail]'));
+        PNotify.error({
+          text: I18n.t('alert.error')
+        });
       }
     });
   });
@@ -35,7 +37,7 @@ $(document).ready(function() {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: I18n.t('confirm.delete'),
-      cancelButtonText: I18n.t('confirm.cancel'),
+      cancelButtonText: I18n.t('confirm.cancel')
     }).then((result) => {
       if (result.value) {
         var fdata = new FormData();

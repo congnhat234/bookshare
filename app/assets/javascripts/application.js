@@ -11,6 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require sweetalert2/dist/sweetalert2.all.min
+//= require pnotify/dist/umd/PNotify
+//= require pnotify/dist/umd/PNotifyButtons
+//= require sweetalert_default_confirm
 //= require rails-ujs
 //= require modernizr-3.5.0.min
 //= require popper.min
@@ -32,6 +36,3 @@
 //= require rateyo/min/jquery.rateyo.min
 //= require rateyo_config
 //= require reviews
-//= require sweetalert2/dist/sweetalert2.all.min
-//= require pnotify/dist/umd/PNotify
-//= require pnotify/dist/umd/PNotifyButtons

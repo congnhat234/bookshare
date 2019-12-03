@@ -11,6 +11,9 @@ $(document).ready(function () {
       success: function (data) {
       },
       error: function () {
+        PNotify.error({
+          text: I18n.t('alert.error')
+        });
       }
     })
   })
@@ -23,6 +26,9 @@ $(document).ready(function () {
       success: function (data) {
       },
       error: function () {
+        PNotify.error({
+          text: I18n.t('alert.error')
+        });
       }
     })
   })
