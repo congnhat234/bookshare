@@ -1,0 +1,10 @@
+vi:
+  public_activity:
+    review:
+      create:
+        message: "%{owner} đã đánh giá sách của bạn."
+    comment:
+        create:
+          message: "%{owner} đã bình luận về bài viết của bạn."
+        create_interested:
+          message: "%{owner} đã bình luận về bài viết bạn quan tâm."

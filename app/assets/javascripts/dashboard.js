@@ -1,5 +1,7 @@
 //= require admin-lte/plugins/jquery/jquery.min
 //= require rails-ujs
+//= require pnotify/dist/umd/PNotify
+//= require pnotify/dist/umd/PNotifyButtons
 //= require admin-lte/plugins/bootstrap/js/bootstrap.bundle.min
 //= require admin-lte/plugins/datatables/jquery.dataTables
 //= require admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4
@@ -14,6 +16,7 @@
 //= require i18n.js
 //= require i18n/translations
 //= require_self
+//= require cable
 
 $(document).ready(function () {
   $('#books_table').DataTable()

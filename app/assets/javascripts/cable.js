@@ -11,3 +11,7 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+
+function check_logged_in_user(){
+  return ($('meta[name=current-user]').length > 0);
+}

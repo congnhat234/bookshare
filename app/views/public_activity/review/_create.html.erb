@@ -1,0 +1,14 @@
+<% if activity.read %>
+  <%= link_to "javascript:void(0)", data_href: book_path(id: activity.parameters[:book_id]),
+    data_id: activity.id, class: "message dropdown-item" do %>
+    <%= t(".message", owner: activity.owner.name) %>
+    <span class="float-right text-muted text-sm"><%= time_ago_in_words activity.created_at %></span>
+  <% end %>
+<% else %>
+  <%= link_to "javascript:void(0)", data_href: book_path(id: activity.parameters[:book_id]),
+    data_id: activity.id, class: "message dropdown-item bg-success" do %>
+    <%= t(".message", owner: activity.owner.name) %>
+    <span class="float-right text-muted text-sm"><%= time_ago_in_words activity.created_at %></span>
+  <% end %>
+<% end %>
+<div class="dropdown-divider"></div>
