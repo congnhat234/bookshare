@@ -3,4 +3,6 @@ class Admin < ApplicationRecord
     :recoverable, :validatable,
     :trackable, :timeoutable, timeout_in: Settings.timeoutable.timeout.minutes
   validates_with PasswordValidator
+
+  mount_uploader :avatar, PhotoUploader
 end

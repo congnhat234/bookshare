@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  require 'sidekiq/web'
+  require "sidekiq/web"
   Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]
-  mount Sidekiq::Web => '/sidekiq'
-  mount Ckeditor::Engine => '/ckeditor'
+  mount Sidekiq::Web => "/sidekiq"
+  mount Ckeditor::Engine => "/ckeditor"
   mount ActionCable.server => "/cable"
   devise_for :admins, controllers: {
     sessions: "admins/sessions"
   }
+  devise_scope :user do
+    match "timeout" => "users/sessions#timeout", via: :get
+  end
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
@@ -43,4 +46,15 @@ Rails.application.routes.draw do
     get "/sharing_books/requests", to: "sharing_books#request_book"
   end
   resources :notifications, only: %i(index update)
+
+  namespace :admins do
+    get "/", to: "home#index"
+    resources :books
+    post "/books/active", to: "books#active"
+    post "/books/inactive", to: "books#inactive"
+    resources :posts, except: :index
+    get "/user-posts", to: "posts#index", as: "user_posts"
+    post "/posts/publish", to: "posts#publish"
+    post "/posts/unpublish", to: "posts#unpublish"
+  end
 end

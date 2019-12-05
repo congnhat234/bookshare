@@ -1,4 +1,10 @@
 $(document).ready(function () {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
   $(document).on('click', '.like-btn', function () {
     var post_id = $(this).attr('data-post-id')
     $.ajax({
@@ -11,9 +17,10 @@ $(document).ready(function () {
       success: function (data) {
       },
       error: function () {
-        PNotify.error({
-          text: I18n.t('alert.error')
-        });
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error')
+        })
       }
     })
   })
@@ -26,9 +33,10 @@ $(document).ready(function () {
       success: function (data) {
       },
       error: function () {
-        PNotify.error({
-          text: I18n.t('alert.error')
-        });
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error')
+        })
       }
     })
   })
