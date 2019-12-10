@@ -32,6 +32,16 @@ class User < ApplicationRecord
 
   enum role: [:normal_user, :charity_organization, :seller]
 
+  scope :other_comment_users, (lambda do |post, owner|
+    joins(:comments).where(comments: {post_id: post.id})
+                    .where.not(comments: {user_id: owner.id})
+  end)
+
+  # scope :review_users, (lambda do |book, owner|
+  #   joins(:reviews).where(reviews: {book_id: book.id})
+  #                   .where.not(reviews: {user_id: owner.id})
+  # end)
+
   recommends :posts
 
   def follow other_user

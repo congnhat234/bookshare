@@ -37,3 +37,4 @@
 //= require rateyo_config
 //= require reviews
 //= require comments
+//= require cable

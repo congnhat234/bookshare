@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]
   mount Sidekiq::Web => '/sidekiq'
   mount Ckeditor::Engine => '/ckeditor'
+  mount ActionCable.server => "/cable"
   devise_for :admins, controllers: {
     sessions: "admins/sessions"
   }
@@ -41,4 +42,5 @@ Rails.application.routes.draw do
     resources :sharing_books, except: %i(show new edit)
     get "/sharing_books/requests", to: "sharing_books#request_book"
   end
+  resources :notifications, only: %i(index update)
 end

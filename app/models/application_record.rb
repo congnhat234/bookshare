@@ -1,4 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
+  include PublicActivity::Model
+
   self.abstract_class = true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+[0-9a-z]@[a-z\d\-.]+[a-z]\.[a-z]+\z/i
   VALID_NAME_REGEX = /\A[[:alnum:][:space:]-]*\z/

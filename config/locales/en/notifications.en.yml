@@ -1,0 +1,4 @@
+en:
+  notifications:
+    review_create: "New review"
+    comment_create: "New comment"
