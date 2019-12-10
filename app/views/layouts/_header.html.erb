@@ -20,8 +20,8 @@
                   <li class="title">Categories</li>
                   <% @categories.each do |category| %>
                     <li><%= link_to category_path(category) do %>
-                      <%= category.name %> <span>(<%= category.books.size %>)</span>
-                    <% end %></li>
+                        <%= category.name %> <span>(<%= category.books.size %>)</span>
+                      <% end %></li>
                   <% end %>
                 </ul>
                 <ul class="item item03">
@@ -49,7 +49,7 @@
                 <div class="megamenu dropdown">
                   <ul class="item item01">
                     <li><%= link_to t(".blog_page"), posts_path %></li>
-                      <li><%= link_to t(".my_blog"), user_posts_path(current_user) %></li>
+                    <li><%= link_to t(".my_blog"), user_posts_path(current_user) %></li>
                   </ul>
                 </div>
               <% end %>
@@ -113,13 +113,13 @@
                   <div class="switcher-options">
                     <div class="switcher-currency-trigger">
                       <div class="setting__menu">
-                        <span>
-                          <%= link_to users_path do %>
-                            <%= t(".dashboard") %>
-                            <span class="product_qun"><%= @counter %></span>
-                          <% end %>
-                        </span>
                         <% if user_signed_in? %>
+                          <span>
+                            <%= link_to users_path do %>
+                              <%= t(".dashboard") %>
+                              <span class="product_qun"><%= @counter %></span>
+                            <% end %>
+                          </span>
                           <span><%= link_to current_user.name, user_path(current_user) %></span>
                           <span><a href="#">My Wishlist</a></span>
                           <span><%= link_to "Sign out", destroy_user_session_path, method: :delete %></span>
@@ -145,22 +145,22 @@
             <li><%= link_to t(".home"), root_path %></li>
             <li><%= link_to t(".shop"), selling_books_path %></li>
             <li><%= link_to t(".books"), books_path %>
-                <ul>
-                  <% @categories.each do |category| %>
-                    <li><%= link_to category_path(category) do %>
+              <ul>
+                <% @categories.each do |category| %>
+                  <li><%= link_to category_path(category) do %>
                       <%= category.name %> <span>(<%= category.books.size %>)</span>
                     <% end %></li>
-                  <% end %>
-                </ul>
+                <% end %>
+              </ul>
             </li>
             <li><%= link_to t(".share"), sharing_books_path %></li>
             <li><%= link_to t(".exchange"), exchange_books_path %></li>
             <li><%= link_to "Blog", posts_path %>
               <% if user_signed_in? %>
-                  <ul>
-                    <li><%= link_to t(".blog_page"), posts_path %></li>
-                      <li><%= link_to t(".my_blog"), user_posts_path(current_user) %></li>
-                  </ul>
+                <ul>
+                  <li><%= link_to t(".blog_page"), posts_path %></li>
+                  <li><%= link_to t(".my_blog"), user_posts_path(current_user) %></li>
+                </ul>
               <% end %>
             </li>
             <li><a href="contact.html">Contact</a></li>

@@ -20,3 +20,6 @@ en:
     error: "Error!"
     followed: "Followed!"
     unfollowed: "Unfollowed!"
+    spam_counter:
+      one: "%{counter} post has been blocked"
+      other: "%{counter} posts has been blocked"

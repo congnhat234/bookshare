@@ -3,21 +3,7 @@ class Admins::PostsController < ApplicationController
   layout "admins/application"
 
   def index
-    @posts = Post.all
-  end
-
-  def new
-    @post = Post.new
-  end
-
-  def create
-    @post = Post.new post_params
-    if @post.save
-      flash[:info] = t "alert.success[add_post]"
-      redirect_to admins_posts_path
-    else
-      render :new
-    end
+    @posts = Post.all.order_desc
   end
 
   def edit; end
@@ -43,6 +29,7 @@ class Admins::PostsController < ApplicationController
   def publish
     return unless request.xhr? || @notification
     if @post.publish!
+      CLASSIFIER_POST.train "Good", @post.title
       render json: {
         status: renderhtml_status("publish")
       }
@@ -54,12 +41,26 @@ class Admins::PostsController < ApplicationController
   def unpublish
     return unless request.xhr? || @notification
     if @post.unpublish!
+      CLASSIFIER_POST.train "Spam", @post.title
       render json: {
         status: renderhtml_status("unpublish")
       }
     else
       render json: {status: :error}
     end
+  end
+
+  def auto_classify
+    @posts = Post.publish
+    counter = 0
+    @posts.each do |post|
+      if CLASSIFIER_POST.classify(post.title) == "Spam"
+        post.unpublish!
+        counter += 1
+      end
+    end
+    cookies[:spam_counter] = counter
+    redirect_to admins_posts_path
   end
 
   private
@@ -72,8 +73,7 @@ class Admins::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit :title, :price, :quantity, :discount,
-      :brief_description, :description, :post_type, :category_id, photos: []
+    params.require(:post).permit :title, :preview, :content, :photo
   end
 
   def renderhtml_status status

@@ -20,9 +20,6 @@
   </td>
   <td><%= l book.created_at, format: :s_short %></td>
   <td>
-    <%= link_to edit_dashboard_book_path(book) do %>
-      <i class="fas fa-edit"></i>
-    <% end %>
     <%= link_to dashboard_book_path(book), method: :delete, data: { confirm: t("alert.confirm") } do %>
       <i class="fas fa-trash-alt text-danger"></i>
     <% end %>
