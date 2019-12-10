@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
   $('.cart').on('click', function () {
     var book_id = $(this).attr('data-book-id');
     var qty = $("#qty").val();
@@ -12,14 +18,16 @@ $(document).ready(function() {
       },
       success: function (data) {
         $('.product_qun').text(data.size_cart);
-        PNotify.success({
-          text: I18n.t('alert.success[add_cart]')
-        });
+        Toast.fire({
+          icon: 'success',
+          title: I18n.t('alert.success[add_cart]')
+        })
       },
       error: function () {
-        PNotify.error({
-          text: I18n.t('alert.error')
-        });
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error[add_cart]')
+        })
       }
     });
   });
@@ -41,9 +49,10 @@ $(document).ready(function() {
         $('.grand-total').text(data.grand_total);
       },
       error: function () {
-        PNotify.error({
-          text: I18n.t('alert.error')
-        });
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error[update_cart]')
+        })
       }
     });
   });
@@ -61,19 +70,22 @@ $(document).ready(function() {
       },
       success: function (data) {
         if (data.status == "success") {
-          PNotify.success({
-            text: I18n.t('alert.success[collect_book]')
-          });
+          Toast.fire({
+            icon: 'success',
+            title: I18n.t('alert.success[collect_book]')
+          })
         } else {
-          PNotify.error({
-            text: I18n.t('alert.error')
-          });
+          Toast.fire({
+            icon: 'error',
+            title: I18n.t('alert.error')
+          })
         }
       },
       error: function () {
-        PNotify.error({
-          text: I18n.t('alert.error')
-        });
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error')
+        })
       }
     });
   });

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :load_categories
   before_action :set_locale
+  before_action :load_notifications
 
   private
 
@@ -18,5 +19,11 @@ class ApplicationController < ActionController::Base
                   else
                     I18n.default_locale
                   end
+  end
+
+  def load_notifications
+    @counter = Notification.list_notifications(current_user).unread.size
+    @activities = Notification.list_notifications(current_user)
+                              .limit(4).order_desc
   end
 end

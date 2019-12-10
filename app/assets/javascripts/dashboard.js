@@ -1,12 +1,16 @@
 //= require admin-lte/plugins/jquery/jquery.min
+//= require sweetalert2/dist/sweetalert2.all.min
+//= require pnotify/dist/umd/PNotify
+//= require pnotify/dist/umd/PNotifyButtons
+//= require sweetalert_default_confirm
 //= require rails-ujs
+//= require cable
 //= require admin-lte/plugins/bootstrap/js/bootstrap.bundle.min
 //= require admin-lte/plugins/datatables/jquery.dataTables
 //= require admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4
 //= require admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min
 //= require admin-lte/plugins/select2/js/select2.full.min
 //= require admin-lte/dist/js/adminlte
-//= require admin-lte/plugins/chart.js/Chart.min
 //= require admin-lte/dist/js/demo
 //= require summernote-bs4.min
 //= require admin-lte/dist/js/pages/dashboard3
@@ -14,9 +18,12 @@
 //= require i18n.js
 //= require i18n/translations
 //= require_self
+//= require admin_post_status
+//= require admin_book_status
 
 $(document).ready(function () {
   $('#books_table').DataTable()
+  $('#posts_table').DataTable()
   $('.editor').summernote()
 
   $("#input_file").on("change", function () {

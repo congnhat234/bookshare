@@ -1,0 +1,10 @@
+en:
+  public_activity:
+    review:
+      create:
+        message: "%{owner} has reviewed your book."
+    comment:
+      create:
+        message: "%{owner} has commented on your post."
+      create_interested:
+        message: "%{owner} has commented on your interested post."

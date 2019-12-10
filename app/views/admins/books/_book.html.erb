@@ -1,0 +1,54 @@
+<tr>
+  <td>
+    <% if book.photos.any? %>
+      <%= image_tag book.photos[0].url, width: 100 %>
+    <% else %>
+      <%= image_tag "/assets/fallback/default.jpg", width: 100 %>
+    <% end %>
+  </td>
+  <td><%= link_to book.title, book_path(book) %></td>
+  <td><%= book.category.name %></td>
+  <td><%= number_to_currency_format book.price %></td>
+  <td><%= book.quantity %></td>
+  <td><%= book.discount %></td>
+  <td>
+    <% if book.activated %>
+      <%= render partial: "admins/books/active", locals: {book_id: book.id} %>
+    <% else %>
+      <%= render partial: "admins/books/inactive", locals: {book_id: book.id} %>
+    <% end %>
+  </td>
+  <td><%= l book.created_at, format: :s_short %></td>
+  <td>
+    <%= link_to edit_dashboard_book_path(book) do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <%= link_to dashboard_book_path(book), method: :delete, data: { confirm: t("alert.confirm") } do %>
+      <i class="fas fa-trash-alt text-danger"></i>
+    <% end %>
+    <%= link_to "javascript:void(0)", "data-toggle": "modal", "data-target": "#modal-book-#{book.id}" do %>
+      <i class="fas fa-eye"></i>
+    <% end %>
+  </td>
+</tr>
+<div class="modal fade" id="modal-book-<%= book.id %>">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= book.title %></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= book.description.html_safe %>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

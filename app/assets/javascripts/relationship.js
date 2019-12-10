@@ -1,4 +1,10 @@
 $(document).ready(function () {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
   $(document).on('click', '#follow-btn', function () {
     var user_id = $(this).attr('data-user-id')
     $.ajax({
@@ -9,14 +15,16 @@ $(document).ready(function () {
         followed_id: user_id
       },
       success: function (data) {
-        PNotify.error({
-          text: I18n.t('alert.followed')
-        });
+        Toast.fire({
+          icon: 'success',
+          title: I18n.t('alert.followed')
+        })
       },
       error: function () {
-        PNotify.error({
-          text: I18n.t('alert.error')
-        });
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error')
+        })
       }
     })
   })
@@ -27,14 +35,16 @@ $(document).ready(function () {
       type: 'DELETE',
       cache: false,
       success: function (data) {
-        PNotify.error({
-          text: I18n.t('alert.unfollowed')
-        });
+        Toast.fire({
+          icon: 'success',
+          title: I18n.t('alert.unfollowed')
+        })
       },
       error: function () {
-        PNotify.error({
-          text: I18n.t('alert.error')
-        });
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error')
+        })
       }
     })
   })

@@ -3,6 +3,11 @@
   <head>
     <title>Dashboard - Bookshare</title>
     <%= csrf_meta_tags %>
+    <% if user_signed_in? %>
+      <%= tag :meta, name: "user-type", data: {user_type: current_user.class.name} %>
+      <%= tag :meta, name: "current-user", data: user_meta_data %>
+    <% end %>
+    <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag "dashboard", media: "all", "data-turbolinks-track": "reload" %>
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">

@@ -22,6 +22,7 @@ gem "money"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "pnotify-rails"
+gem "public_activity"
 gem "rails", "~> 5.1.7"
 gem "rails-i18n"
 # Use Redis adapter to run Action Cable in production

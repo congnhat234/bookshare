@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
   $('#rate').on('click', function () {
     var fdata = new FormData();
     fdata.append('book_id', $('.rateyo').attr('data-id'));
@@ -21,9 +27,10 @@ $(document).ready(function() {
         $('#no_review').hide();
       },
       error: function () {
-        PNotify.error({
-          text: I18n.t('alert.error')
-        });
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error')
+        })
       }
     });
   });
@@ -57,14 +64,16 @@ $(document).ready(function() {
             $('.rateyo').rateYo('option', 'rating', 0);
             $('#content').val('');
             $(self).closest('li').remove();
-            PNotify.success({
-              text: I18n.t('alert.delete')
-            });
+            Toast.fire({
+              icon: 'success',
+              title: I18n.t('alert.delete')
+            })
           },
           error: function () {
-            PNotify.error({
-              text: I18n.t('alert.error')
-            });
+            Toast.fire({
+              icon: 'error',
+              title: I18n.t('alert.error')
+            })
           }
         });
       }

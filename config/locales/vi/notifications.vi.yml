@@ -1,0 +1,4 @@
+vi:
+  notifications:
+    review_create: "Đánh giá mới"
+    comment_create: "Bình luận mới"
