@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get "/unpublish/:id", to: "posts#unpublish", as: "unpublish_post"
   resources :categories, only: %i(show)
   resources :users, only: %i(index show)
-  get "/:id/posts", to: "users#posts", as: "user_posts"
+  get "/:id/user-posts", to: "users#posts", as: "user_posts"
   get "/:id/all-books", to: "users#books", as: "user_books"
   get "/cart", to: "cart#index"
   post "/cart/add", to: "cart#add"
@@ -52,9 +52,9 @@ Rails.application.routes.draw do
     resources :books
     post "/books/active", to: "books#active"
     post "/books/inactive", to: "books#inactive"
-    resources :posts, except: :index
-    get "/user-posts", to: "posts#index", as: "user_posts"
+    resources :posts
     post "/posts/publish", to: "posts#publish"
     post "/posts/unpublish", to: "posts#unpublish"
+    post "/posts/classify", to: "posts#auto_classify"
   end
 end

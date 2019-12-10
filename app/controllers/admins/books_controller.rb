@@ -1,5 +1,5 @@
 class Admins::BooksController < ApplicationController
-  before_action :find_book, only: %i(edit update destroy active inactive)
+  before_action :find_book, only: %i(destroy active inactive)
   layout "admins/application"
 
   def index
@@ -17,31 +17,6 @@ class Admins::BooksController < ApplicationController
                @type = "all"
                Book.all
              end
-  end
-
-  def new
-    @book = Book.new
-  end
-
-  def create
-    @book = Book.new book_params
-    if @book.save
-      flash[:info] = t "alert.success[add_book]"
-      redirect_to dashboard_books_path
-    else
-      render :new
-    end
-  end
-
-  def edit; end
-
-  def update
-    if @book.update_attributes! book_params
-      flash[:success] = t "alert.success[update_book]"
-      redirect_to dashboard_books_path
-    else
-      render :edit
-    end
   end
 
   def destroy
@@ -82,11 +57,6 @@ class Admins::BooksController < ApplicationController
     return if @book
     flash.now[:danger] = t "flash.not_found_book"
     redirect_to dashboard_books_path
-  end
-
-  def book_params
-    params.require(:book).permit :title, :price, :quantity, :discount,
-      :brief_description, :description, :book_type, :category_id, photos: []
   end
 
   def renderhtml_status status
