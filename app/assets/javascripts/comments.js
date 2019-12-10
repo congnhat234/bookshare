@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
   $('#comment_btn').on('click', function () {
     var fdata = new FormData();
     var parrent_id = $('#comment').attr('parentid');
@@ -22,9 +28,10 @@ $(document).ready(function() {
         }
       },
       error: function () {
-        PNotify.error({
-          text: I18n.t('alert.error')
-        });
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error')
+        })
       }
     });
   });
@@ -63,18 +70,19 @@ $(document).ready(function() {
           data: fdata,
           success: function (data) {
             $(self).closest('li').remove();
-            console.log(parent_id);
             if (parent_id) {
               $('#comment-' + parent_id).remove();
             }
-            PNotify.success({
-              text: I18n.t('alert.delete')
-            });
+            Toast.fire({
+              icon: 'success',
+              title: I18n.t('alert.delete')
+            })
           },
           error: function () {
-            PNotify.error({
-              text: I18n.t('alert.error')
-            });
+            Toast.fire({
+              icon: 'error',
+              title: I18n.t('alert.error')
+            })
           }
         });
       }

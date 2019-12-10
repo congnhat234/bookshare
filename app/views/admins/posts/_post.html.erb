@@ -1,0 +1,48 @@
+<tr>
+  <td>
+    <%= image_tag post.photo_url, width: 100 %>
+  </td>
+  <td><%= link_to post.title, post_path(post) %></td>
+  <td><%= post.preview %></td>
+  <td><%= link_to post.user.name, user_path(post.user) %></td>
+  <td>
+    <% if post.publish? %>
+      <%= render partial: "admins/posts/publish", locals: {post_id: post.id} %>
+    <% else %>
+      <%= render partial: "admins/posts/unpublish", locals: {post_id: post.id} %>
+    <% end %>
+  </td>
+  <td><%= l post.created_at, format: :short %></td>
+  <td>
+    <%= link_to edit_admins_post_path(post) do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <%= link_to admins_post_path(post), method: :delete, data: { confirm: t("alert.confirm") } do %>
+      <i class="fas fa-trash-alt text-danger"></i>
+    <% end %>
+    <%= link_to "javascript:void(0)", "data-toggle": "modal", "data-target": "#modal-post-#{post.id}" do %>
+      <i class="fas fa-eye"></i>
+    <% end %>
+  </td>
+</tr>
+<div class="modal fade" id="modal-post-<%= post.id %>">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= post.title %></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= post.content.html_safe %>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

@@ -7,3 +7,8 @@ en:
     you_sure: "Are you sure?"
     delete: "Yes, delete it!"
     cancel: "Cancel"
+    agree: "Yes"
+    publish: "Do you want to publish?"
+    unpublish: "Do you want to unpublish?"
+    active: "Status will change to active!"
+    inactive: "Status will change to inactive!"

@@ -7,3 +7,8 @@ vi:
     you_sure: "Bạn có chắc muốn xóa?"
     delete: "Có, xóa ngay!"
     cancel: "Hủy bỏ"
+    agree: "Có"
+    publish: "Bạn muốn công khai?"
+    unpublish: "Bạn muốn không công khai?"
+    active: "Trạng thái sẽ thay đổi thành hoạt động!"
+    inactive: "Trạng thái sẽ thay đổi thành không hoạt động!"
