@@ -23,6 +23,12 @@ class ApplicationController < ActionController::Base
 
   def load_notifications
     @counter = Notification.list_notifications(current_user).unread.size
+    if user_signed_in?
+      @inbox_counter = Conversation.user_conversations(current_user.id).sender_unread(current_user.id).count
+      @inbox_counter += Conversation.user_conversations(current_user.id).recipient_unread(current_user.id).count
+    else
+      @inbox_counter = 0
+    end
     @activities = Notification.list_notifications(current_user)
                               .limit(4).order_desc
   end

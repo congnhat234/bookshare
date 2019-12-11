@@ -15,6 +15,7 @@ class Book < ApplicationRecord
   attr_accessor :total_quantity, :price_discounted
 
   scope :activated, ->{where activated: true}
+  scope :order_desc, ->{order created_at: :desc}
 
   def get_total_price
     return (price_discounted * total_quantity).round if total_quantity.present?

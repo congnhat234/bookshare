@@ -87,15 +87,14 @@
             </p>
           </a>
         </li>
-        <li class="nav-header">EXAMPLES</li>
+        <li class="nav-header">Settings</li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
-            <i class="nav-icon fas fa-calendar-alt"></i>
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
+            <i class="nav-icon fas fa-power-off"></i>
             <p>
-              Calendar
-              <span class="badge badge-info right">2</span>
+              Logout
             </p>
-          </a>
+          <% end %>
         </li>
       </ul>
     </nav>

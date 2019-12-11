@@ -20,6 +20,7 @@
 //= require_self
 //= require admin_post_status
 //= require admin_book_status
+//= require message
 
 const Toast = Swal.mixin({
   toast: true,
