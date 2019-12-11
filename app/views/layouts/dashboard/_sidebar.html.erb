@@ -39,13 +39,13 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <a href="pages/widgets.html" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+          <%= link_to dashboard_conversations_path, class: "nav-link #{'active' if controller_name == 'conversations' && action_name == 'index'}" do %>
+            <i class="nav-icon fab fa-facebook-messenger"></i>
             <p>
-              Widgets
-              <span class="right badge badge-danger">New</span>
+              Inbox
+              <span class="badge badge-danger right" id="inbox-counter"><%= @inbox_counter %></span>
             </p>
-          </a>
+          <% end %>
         </li>
         <li class="nav-item has-treeview <%= 'menu-open' if controller_name == 'sharing_books' %>">
           <a href="#" class="nav-link <%= 'active' if controller_name == 'sharing_books' %>">

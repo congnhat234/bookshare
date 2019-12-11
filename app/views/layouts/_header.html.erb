@@ -69,7 +69,7 @@
               <span class="product_qun"><%= size_cart %></span>
             <% end %>
           </li>
-          <li class="setting__bar__icon"><a class="setting__active" href="#"><span class="product_qun"><%= @counter %></span></a>
+          <li class="setting__bar__icon"><a class="setting__active" href="#"><span class="product_qun"><%= @counter + @inbox_counter %></span></a>
             <div class="searchbar__content setting__block">
               <div class="content-inner">
                 <div class="switcher-currency">
@@ -117,7 +117,7 @@
                           <span>
                             <%= link_to users_path do %>
                               <%= t(".dashboard") %>
-                              <span class="product_qun"><%= @counter %></span>
+                              <span class="product_qun"><%= @counter + @inbox_counter %></span>
                             <% end %>
                           </span>
                           <span><%= link_to current_user.name, user_path(current_user) %></span>

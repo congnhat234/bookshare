@@ -44,6 +44,8 @@ Rails.application.routes.draw do
     resources :books
     resources :sharing_books, except: %i(show new edit)
     get "/sharing_books/requests", to: "sharing_books#request_book"
+    resources :conversations, only: %i(create index)
+    resources :messages, only: :create
   end
   resources :notifications, only: %i(index update)
 
