@@ -57,4 +57,6 @@ Rails.application.routes.draw do
     post "/posts/unpublish", to: "posts#unpublish"
     post "/posts/classify", to: "posts#auto_classify"
   end
+  resources :search, only: :index
+  get "/search-posts", to: "search#index_post"
 end
