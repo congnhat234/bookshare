@@ -8,3 +8,16 @@ vi:
     index:
       home: "Trang chủ"
       all: "Tất cả"
+    book:
+      sharing: "Sách chia sẻ"
+      exchange: "Sách trao đổi"
+    show:
+      related_books: "Cùng danh mục"
+      recommended_books: "Đề xuất cho bạn"
+      details: "Chi tiết"
+      reviews: "Đánh giá"
+      customer_reviews: "Đánh giá của người dùng"
+      no_reivews: "Chưa có đánh giá."
+      categories: "Danh mục sách"
+    form_review:
+      review_for: "Đánh giá của bạn cho %{title}"

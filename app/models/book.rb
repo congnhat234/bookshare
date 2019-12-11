@@ -16,6 +16,7 @@ class Book < ApplicationRecord
 
   scope :activated, ->{where activated: true}
   scope :order_desc, ->{order created_at: :desc}
+  scope :except_current_book, ->(book_id){where.not id: book_id}
 
   def get_total_price
     return (price_discounted * total_quantity).round if total_quantity.present?

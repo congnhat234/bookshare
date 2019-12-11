@@ -8,3 +8,15 @@ en:
     index:
       home: "Home"
       all: "All"
+      sharing: "Sharing book"
+      exchange: "Exchange book"
+    show:
+      related_books: "Related books"
+      recommended_books: "Recommended books"
+      details: "Details"
+      reviews: "Reviews"
+      customer_reviews: "Cutomer reviews"
+      no_reivews: "No reviews."
+      categories: "Book categories"
+    form_review:
+      review_for: "Your review for %{title}"

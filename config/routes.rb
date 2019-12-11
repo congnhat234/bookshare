@@ -44,8 +44,14 @@ Rails.application.routes.draw do
     resources :books
     resources :sharing_books, except: %i(show new edit)
     get "/sharing_books/requests", to: "sharing_books#request_book"
+    post "/sharing_books/confirm/:id", to: "sharing_books#confirm"
+    post "/sharing_books/reject/:id", to: "sharing_books#reject"
+    post "/sharing_books/approve/:id", to: "sharing_books#approve"
+    post "/sharing_books/done/:id", to: "sharing_books#done"
     resources :conversations, only: %i(create index)
     resources :messages, only: :create
+    resources :orders
+    get "/user-orders", to: "orders#user_order"
   end
   resources :notifications, only: %i(index update)
 

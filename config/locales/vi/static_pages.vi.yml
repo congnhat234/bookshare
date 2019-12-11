@@ -1,0 +1,14 @@
+vi:
+  static_pages:
+    home:
+      buy_your_favourite_html: "<h2>Mua <span>ngay </span></h2><h2>sách <span>yêu thích </span></h2><h2>tại <span>đây </span></h2>"
+      shop_now: "Mua ngay"
+      find_your_interesting_html: "<h2>Tìm <span>kiếm </span></h2><h2>sách <span>quan tâm </span></h2><h2>tại <span>đây </span></h2>"
+      find_now: "Xem ngay"
+      new_products_html: "Sách <span class='color--theme'>Mới</span>"
+      recommended_books_html: "Có thể <span class='color--theme'>Bạn quan tâm</span>"
+      blog: "Bài viết"
+      best_seller: "Bán chạy"
+    book:
+      exchange: "Sách trao đổi"
+      sharing: "Sách chia sẻ"

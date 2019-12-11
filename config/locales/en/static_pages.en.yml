@@ -1,0 +1,14 @@
+en:
+  static_pages:
+    home:
+      buy_your_favourite_html: "<h2>Buy <span>your </span></h2><h2>favourite <span>Book </span></h2><h2>from <span>Here </span></h2>"
+      shop_now: "Shop now"
+      find_your_interesting_html: "<h2>Find <span>your </span></h2><h2>interesting <span>Book </span></h2><h2>from <span>Here </span></h2>"
+      find_now: "Find now"
+      new_products_html: "New <span class='color--theme'>Products</span>"
+      recommended_books_html: "Recommend <span class='color--theme'>For You</span>"
+      blog: "Blog"
+      best_seller: "Best seller"
+    book:
+      exchange: "Exchange book"
+      sharing: "Sharing book"

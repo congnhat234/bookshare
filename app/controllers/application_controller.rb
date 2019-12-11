@@ -22,13 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def load_notifications
+    return unless user_signed_in?
     @counter = Notification.list_notifications(current_user).unread.size
-    if user_signed_in?
-      @inbox_counter = Conversation.user_conversations(current_user.id).sender_unread(current_user.id).count
-      @inbox_counter += Conversation.user_conversations(current_user.id).recipient_unread(current_user.id).count
-    else
-      @inbox_counter = 0
-    end
+    @inbox_counter = Conversation.user_conversations(current_user.id).sender_unread(current_user.id).count
+    @inbox_counter += Conversation.user_conversations(current_user.id).recipient_unread(current_user.id).count
+    @request_sharing_books_counter = SharingBook.where(owner: current_user).except_notconfirm.count
     @activities = Notification.list_notifications(current_user)
                               .limit(4).order_desc
   end

@@ -29,7 +29,7 @@ class Admins::BooksController < ApplicationController
   end
 
   def active
-    return unless request.xhr? || @notification
+    return unless request.xhr?
     if @book.update_attributes! activated: false
       render json: {
         status: renderhtml_status("active")
@@ -40,7 +40,7 @@ class Admins::BooksController < ApplicationController
   end
 
   def inactive
-    return unless request.xhr? || @notification
+    return unless request.xhr?
     if @book.update_attributes! activated: false
       render json: {
         status: renderhtml_status("inactive")
