@@ -6,6 +6,8 @@ class Comment < ApplicationRecord
 
   after_save :make_notification
 
+  validates :content, presence: true
+
   def make_notification
     unless user.id == post.user.id
       Notification.create trackable: self, owner: user,

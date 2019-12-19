@@ -15,6 +15,12 @@ class Book < ApplicationRecord
 
   attr_accessor :total_quantity, :price_discounted
 
+  validates :title, presence: true, length: {minimum: 3}
+  validates :price, presence: true, numericality: {greater_than_or_equal_to: 0}
+  validates :discount, presence: true, numericality: {greater_than_or_equal_to: 0}
+  validates :description, presence: true, length: {minimum: 10}
+  validates :brief_description, presence: true, length: {minimum: 10}
+
   scope :activated, ->{where activated: true}
   scope :order_desc, ->{order created_at: :desc}
   scope :except_current_book, ->(book_id){where.not id: book_id}
