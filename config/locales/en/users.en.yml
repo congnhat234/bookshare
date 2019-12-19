@@ -3,3 +3,8 @@ en:
     follow:
       follow: "Follow"
       unfollow: "Unfollow"
+    show:
+      title: "My account"
+      home: "Home"
+      edit: "Edit"
+      dashboard: "Dashboard"

@@ -1,0 +1,10 @@
+en:
+  form:
+    receiver_name: "Receiver name"
+    address: "Address"
+    phone: "Phone"
+    note: "Note"
+    title: "Title"
+    photo: "Photo"
+    preview: "Preview"
+    content: "Content"

@@ -17,3 +17,7 @@ vi:
       sign_in: "Đăng nhập"
       create_account: "Tạo tài khoản"
       my_wishlist: "Yêu thích"
+  shared:
+    quick_view_product:
+      reviews: "%{counter} đánh giá."
+      share: "Chia sẻ"

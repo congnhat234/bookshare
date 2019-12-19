@@ -1,24 +1,24 @@
 <%= form_for @post, html: {class: "form-horizontal"} do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div class="form-group">
-    <%= f.label :title, t(".title"), class: "control-label" %>
+    <%= f.label :title, t("form.title"), class: "control-label" %>
     <%= f.text_field :title, required: true, autocomplete: :off,
           class: "form-control", placeholder: t("placeholder.enter_title") %>
   </div>
   <div class="form-group">
-    <%= f.label :photo, t(".photo"), class: "control-label" %>
+    <%= f.label :photo, t("form.photo"), class: "control-label" %>
     <%= f.file_field :photo, class: "form-control upload-image", accept: Settings.accept_image%>
     <div class="thumb" id="preview-image" >
       <%= image_tag @post.photo_url %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :preview, t(".preview"), class: "control-label" %>
+    <%= f.label :preview, t("form.preview"), class: "control-label" %>
     <%= f.text_area :preview, required: true, autocomplete: :off,
           class: "form-control", placeholder: t("placeholder.enter_preview") %>
   </div>
   <div class="form-group">
-    <%= f.label :content, t(".content"), class: "control-label" %>
+    <%= f.label :content, t("form.content"), class: "control-label" %>
     <%= f.cktext_area :content, required: true, autocomplete: :off,
           class: "form-control", placeholder: t("placeholder.enter_content") %>
   </div>

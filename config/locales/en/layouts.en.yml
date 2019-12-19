@@ -17,3 +17,9 @@ en:
       sign_in: "Sign in"
       create_account: "Create an account"
       my_wishlist: "My wishlist"
+  shared:
+    quick_view_product:
+      reviews:
+        one: "%{counter} review."
+        other: "%{counter} reviews."
+      share: "Share"

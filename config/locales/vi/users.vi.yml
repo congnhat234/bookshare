@@ -3,3 +3,8 @@ vi:
     follow:
       follow: "Theo dõi"
       unfollow: "Bỏ theo dõi"
+    show:
+      title: "Tài khoản"
+      Home: "Trang chủ"
+      edit: "Chỉnh sửa"
+      dashboard: "Quản lí"

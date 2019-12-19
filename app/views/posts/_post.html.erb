@@ -39,13 +39,13 @@
       </div>
     <% end %>
     <ul class="post__meta">
-      <li>Posts by : <%= link_to post.user.name, user_path(post.user) %></li>
+      <li><%= t ".post_by" %> : <%= link_to post.user.name, user_path(post.user) %></li>
       <li class="post_separator">/</li>
       <li><%= l post.updated_at, format: :short %></li>
     </ul>
     <p><%= post.preview %></p>
     <div class="blog__btn">
-      <%= link_to "Read more", post_path(post) %>
+      <%= link_to t(".read_more"), post_path(post) %>
     </div>
   </div>
 </article>

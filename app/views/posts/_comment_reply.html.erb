@@ -8,11 +8,11 @@
         <span><%= link_to child_comment.user.name, user_path(child_comment.user) %></span>
         <span><%= l child_comment.created_at %></span>
         <div class="reply__btn">
-          <a href="javascript:void(0)" class="reply_btn" parent_id="<%= child_comment.parent_id %>" user="<%= child_comment.user.name %>">Reply</a>
+          <a href="javascript:void(0)" class="reply_btn" parent_id="<%= child_comment.parent_id %>" user="<%= child_comment.user.name %>"><%= t ".reply" %></a>
         </div>
         <% if current_user.id == child_comment.user.id %>
           <div class="reply__btn">
-            <%= link_to "Delete", "javascript:void(0)", class: "delete_comment_btn",
+            <%= link_to t(".delete"), "javascript:void(0)", class: "delete_comment_btn",
               commentid: child_comment.id, pid: child_comment.post.id %>
           </div>
         <% end %>
