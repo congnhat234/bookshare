@@ -27,6 +27,7 @@ en:
       exchange: "Exchange"
       share: "Share"
       new_products_html: "<h2>new products</h2><h6>save up to <br><strong>40%</strong>off</h6>"
+      owner: "Owner"
     form_review:
       review_for: "Your review for %{title}"
       submit: "Submit"

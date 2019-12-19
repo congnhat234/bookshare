@@ -13,3 +13,4 @@ en:
     active: "Status will change to active!"
     inactive: "Status will change to inactive!"
     change_status: "Do you want to change status?"
+    cancel_order: "Do you want to cancel order?"

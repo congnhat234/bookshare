@@ -31,6 +31,7 @@ vi:
       exchange: "Trao đổi"
       share: "Chia sẻ"
       new_products_html: "<h2>Sách mới</h2><h6>giảm đến <br><strong>40%</strong></h6>"
+      owner: "Người đăng"
     form_review:
       review_for: "Đánh giá của bạn cho %{title}"
       submit: "Đánh giá"

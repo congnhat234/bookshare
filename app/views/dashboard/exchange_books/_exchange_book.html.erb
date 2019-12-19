@@ -1,0 +1,17 @@
+<tr>
+  <td>
+    <% if exchange_book.book.photos.any? %>
+      <%= image_tag exchange_book.book.photos[0].url, {width: 130, height: 90} %>
+    <% else %>
+      <%= image_tag "/assets/fallback/default.jpg", {width: 130, height: 90} %>
+    <% end %>
+  </td>
+  <td><%= link_to exchange_book.book.title, book_path(exchange_book.book) %></td>
+  <td><%= exchange_book.quantity %></td>
+  <td><%= link_to exchange_book.collector.name, user_path(exchange_book.collector) %></td>
+  <td class="status"><%= exchange_book.status %></td>
+  <td><%= l exchange_book.created_at, format: :short %></td>
+  <td>
+    <%= render partial: "dashboard/exchange_books/action_btn", locals: {exchange_book: exchange_book} %>
+  </td>
+</tr>

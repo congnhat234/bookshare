@@ -1,23 +1,19 @@
-<% if sharing_book.notconfirm? && action_name == "index" %>
-  <%= link_to dashboard_sharing_book_path(sharing_book), method: :delete, data: { confirm: t("alert.confirm") } do %>
-    <i class="fas fa-trash-alt"></i>
+<% if order.pending? %>
+  <%= link_to "javascript:void(0)", title: "Process", class: "actionOrderBtn", type: "process", id_order: order.id do %>
+    <i class="fas fa-chevron-circle-right"></i>
   <% end %>
-  <%= link_to "javascript:void(0)", title: "Confirm", class: "actionBtn", type: "confirm", id_sb: sharing_book.id do %>
-    <i class="fas fa-check-circle"></i>
-  <% end %>
-<% elsif (sharing_book.done? || sharing_book.rejected?) && action_name == "index" %>
-  <%= link_to dashboard_sharing_book_path(sharing_book), method: :delete, data: { confirm: t("alert.confirm") } do %>
-    <i class="fas fa-trash-alt"></i>
-  <% end %>
-<% elsif action_name == "request_book" && sharing_book.inprogress? %>
-  <%= link_to "javascript:void(0)", title: "Approve", class: "actionBtn", type: "approve", id_sb: sharing_book.id do %>
-    <i class="fas fa-check-circle"></i>
-  <% end %>
-  <%= link_to "javascript:void(0)", title: "Reject", class: "actionBtn", type: "reject", id_sb: sharing_book.id do %>
+  <%= link_to "javascript:void(0)", title: "Cancel", class: "actionOrderBtn", type: "cancel", id_order: order.id do %>
     <i class="fas fa-times-circle"></i>
   <% end %>
-<% elsif action_name == "request_book" && sharing_book.approved? %>
-  <%= link_to "javascript:void(0)", title: "Done", class: "actionBtn", type: "done", id_sb: sharing_book.id do %>
+<% elsif order.processing? %>
+  <%= link_to "javascript:void(0)", title: "Cancel", class: "actionOrderBtn", type: "cancel", id_order: order.id do %>
+    <i class="fas fa-times-circle"></i>
+  <% end %>
+  <%= link_to "javascript:void(0)", title: "Done", class: "actionOrderBtn", type: "done", id_order: order.id do %>
     <i class="fas fa-check-circle"></i>
+  <% end %>
+<% else %>
+  <%= link_to dashboard_order_path(order), method: :delete, data: { confirm: t("alert.confirm") } do %>
+    <i class="fas fa-trash-alt"></i>
   <% end %>
 <% end %>

@@ -16,6 +16,7 @@ vi:
     error[update_book]: "Cập nhật sách không thành công"
     error[collect_book]: "Không thể nhận sách"
     success[collect_book]: "Đã nhận sách"
+    success[collect_book]: "Đã lưu sách để trao đổi"
     delete: "Đã xóa!"
     error: "Có lỗi!"
     followed: "Đã theo dõi"
