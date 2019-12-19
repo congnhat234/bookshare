@@ -7,3 +7,5 @@ vi:
     enter_brief_description: "Nhập mô tả tóm tắt"
     enter_quantity: "Nhập số lượng"
     search: "Tìm kiếm..."
+    enter_category: "Nhập danh mục"
+    type_message: "Nhập tin nhắn..."

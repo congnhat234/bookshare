@@ -26,10 +26,9 @@ class ApplicationController < ActionController::Base
     @counter = Notification.list_notifications(current_user).unread.size
     @inbox_counter = Conversation.user_conversations(current_user.id).sender_unread(current_user.id).count
     @inbox_counter += Conversation.user_conversations(current_user.id).recipient_unread(current_user.id).count
-    @request_sharing_books_counter = SharingBook.where(owner: current_user).except_notconfirm.count
-    @request_exchange_books_counter = ExchangeBook.where(owner: current_user).except_notconfirm.count
-    @activities = Notification.list_notifications(current_user)
-                              .limit(4).order_desc
+    @request_sharing_books_counter = SharingBook.where(owner: current_user).inprogress.count
+    @request_exchange_books_counter = ExchangeBook.where(owner: current_user).inprogress.count
+    @activities = Notification.list_notifications(current_user).order_desc
   end
 
   def verify_admin

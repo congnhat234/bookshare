@@ -8,7 +8,11 @@
   </td>
   <td><%= link_to exchange_book.book.title, book_path(exchange_book.book) %></td>
   <td><%= exchange_book.quantity %></td>
-  <td><%= link_to exchange_book.collector.name, user_path(exchange_book.collector) %></td>
+  <% if action_name == "request_book" %>
+    <td><%= link_to exchange_book.collector.name, user_path(exchange_book.collector) %></td>
+  <% else %>
+    <td><%= link_to exchange_book.owner.name, user_path(exchange_book.owner) %></td>
+  <% end %>
   <td class="status"><%= exchange_book.status %></td>
   <td><%= l exchange_book.created_at, format: :short %></td>
   <td>

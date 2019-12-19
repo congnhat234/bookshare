@@ -1,10 +1,5 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-  <!-- Brand Logo -->
-  <%= link_to users_path, class: "brand-link" do %>
-    <img src="/assets/admin-lte/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
-  <% end %>
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
@@ -26,15 +21,15 @@
           <%= link_to users_path, class: "nav-link #{'active' if controller_name == 'users' && action_name == 'index'}" do %>
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Dashboard
+              <%= t ".dashboard" %>
             </p>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to dashboard_books_path, class: "nav-link #{'active' if controller_name == 'books' && action_name == 'index'}" do %>
+          <%= link_to dashboard_books_path, class: "nav-link #{'active' if controller_name == 'books' && (action_name == 'index' || action_name == "new" || action_name == "edit")}" do %>
             <i class="nav-icon fas fa-book"></i>
             <p>
-              Books
+              <%= t ".books" %>
             </p>
           <% end %>
         </li>
@@ -42,7 +37,7 @@
           <%= link_to dashboard_conversations_path, class: "nav-link #{'active' if controller_name == 'conversations' && action_name == 'index'}" do %>
             <i class="nav-icon fab fa-facebook-messenger"></i>
             <p>
-              Inbox
+              <%= t ".inbox" %>
               <span class="badge badge-danger right" id="inbox-counter"><%= @inbox_counter %></span>
             </p>
           <% end %>
@@ -51,7 +46,7 @@
           <a href="#" class="nav-link <%= 'active' if controller_name == 'sharing_books' %>">
             <i class="nav-icon fas fa-copy"></i>
             <p>
-              Sharing
+              <%= t ".sharing" %>
               <i class="fas fa-angle-left right"></i>
               <span class="badge badge-info right"><%= @request_sharing_books_counter %></span>
             </p>
@@ -61,24 +56,24 @@
               <%= link_to dashboard_sharing_books_requests_path,
                 class: "nav-link #{'active' if controller_name == 'sharing_books' && action_name == 'request_book'}" do %>
                 <i class="far fa-circle nav-icon"></i>
-                <p>Requests</p>
-                <span class="badge badge-danger right"><%= "New" if @request_sharing_books_counter > 0 %></span>
+                <p><%= t ".requests" %></p>
+                <span class="badge badge-danger right"><%= t("labels.new") if @request_sharing_books_counter > 0 %></span>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to dashboard_sharing_books_path,
                 class: "nav-link #{'active' if controller_name == 'sharing_books' && action_name == 'index'}" do %>
                 <i class="far fa-circle nav-icon"></i>
-                <p>Collection</p>
+                <p><%= t ".collection" %></p>
               <% end %>
             </li>
           </ul>
         </li>
-        <li class="nav-item has-treeview <%= 'menu-open' if controller_name == 'sharing_books' %>">
-          <a href="#" class="nav-link <%= 'active' if controller_name == 'sharing_books' %>">
+        <li class="nav-item has-treeview <%= 'menu-open' if controller_name == 'exchange_books' %>">
+          <a href="#" class="nav-link <%= 'active' if controller_name == 'exchange_books' %>">
             <i class="nav-icon fas fa-exchange-alt"></i>
             <p>
-              Exchange
+              <%= t ".exchange" %>
               <i class="fas fa-angle-left right"></i>
               <span class="badge badge-info right"><%= @request_exchange_books_counter %></span>
             </p>
@@ -88,15 +83,15 @@
               <%= link_to dashboard_exchange_books_requests_path,
                 class: "nav-link #{'active' if controller_name == 'exchange_books' && action_name == 'request_book'}" do %>
                 <i class="far fa-circle nav-icon"></i>
-                <p>Requests</p>
-                <span class="badge badge-danger right"><%= "New" if @request_exchange_books_counter > 0 %></span>
+                <p><%= t ".requests" %></p>
+                <span class="badge badge-danger right"><%= t("labels.new") if @request_exchange_books_counter > 0 %></span>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to dashboard_exchange_books_path,
                 class: "nav-link #{'active' if controller_name == 'exchange_books' && action_name == 'index'}" do %>
                 <i class="far fa-circle nav-icon"></i>
-                <p>Collection</p>
+                <p><%= t ".collection" %></p>
               <% end %>
             </li>
           </ul>
@@ -105,7 +100,7 @@
           <%= link_to dashboard_orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" do %>
             <i class="nav-icon fas fa-scroll"></i>
             <p>
-              My Orders
+              <%= t ".my_orders" %>
             </p>
           <% end %>
         </li>
@@ -114,17 +109,17 @@
           <%= link_to dashboard_user_orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'user_order'}" do %>
             <i class="nav-icon fas fa-paper-plane"></i>
             <p>
-              Orders
+              <%= t ".orders" %>
             </p>
           <% end %>
         </li>
         <% end %>
-        <li class="nav-header">Settings</li>
+        <li class="nav-header"><%= t ".settings" %></li>
         <li class="nav-item">
           <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
             <i class="nav-icon fas fa-power-off"></i>
             <p>
-              Logout
+              <%= t ".logout" %>
             </p>
           <% end %>
         </li>

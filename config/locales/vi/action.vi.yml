@@ -3,6 +3,7 @@ vi:
     save: "Lưu"
     reset: "Đặt lại"
     cancel: "Hủy bỏ"
+    send: "Gửi"
   confirm:
     you_sure: "Bạn có chắc muốn xóa?"
     delete: "Có, xóa ngay!"

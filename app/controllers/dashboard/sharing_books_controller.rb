@@ -72,6 +72,9 @@ class Dashboard::SharingBooksController < ApplicationController
   def approve
     return unless request.xhr?
     if @sharing_book.approved!
+      book = Book.find_by id: @sharing_book.book_id
+      quantity = book.quantity - @sharing_book.quantity
+      book.update_attributes! quantity: quantity
       render json: {
         status: "approved",
         action: renderhtml_action("request_book")

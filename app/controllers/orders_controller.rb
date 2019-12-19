@@ -53,6 +53,9 @@ class OrdersController < ApplicationController
       books_order = order.order_books.new(book_id: book.id,
         quantity: book.total_quantity, actual_price: book.price_discounted)
       books_order.save
+      find_book book.id
+      quantity = @book.quantity - book.total_quantity
+      @book.update_attributes! quantity: quantity
       current_user.like(book)
       titles << book.title
       order_total += book.price_discounted
@@ -66,5 +69,9 @@ class OrdersController < ApplicationController
     return if @order
     flash[:danger] = t "helpers.error[order_not_found]"
     redirect_to cart_path
+  end
+
+  def find_book id
+    @book = Book.find_by id: id
   end
 end

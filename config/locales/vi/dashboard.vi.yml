@@ -1,0 +1,52 @@
+vi:
+  layouts:
+    dashboard:
+      navbar:
+        home: "Trang chủ"
+        see_all: "Xem tất cả"
+      sidebar:
+        dashboard: "Quản lí"
+        books: "Sách"
+        inbox: "Tin nhắn"
+        sharing: "Chia sẻ"
+        requests: "Yêu cầu"
+        collection: "Sưu tập"
+        exchange: "Trao đổi"
+        my_orders: "Đơn hàng của tôi"
+        orders: "Đơn hàng"
+        settings: "Cài đặt"
+        logout: "Đăng xuất"
+  dashboard:
+    books:
+      index:
+        your_books: "Sách của bạn"
+        new_book: "Thêm sách mới"
+      book:
+        sharing: "Chia sẻ"
+        exchange: "Trao đổi"
+        selling: "Bán"
+      new:
+        title: "Thêm sách mới"
+        your_books: "Sách của bạn"
+      edit:
+        title: "Chỉnh sửa sách"
+        your_books: "Sách của bạn"
+    conversations:
+      index:
+        inbox: "Tin nhắn"
+        users: "Người dùng"
+    sharing_books:
+      index:
+        request_books: "Yêu cầu"
+        collected_books: "Sách đã nhận"
+        title: "Yêu cầu từ người nhận"
+        title_collection: "Bộ sưu tập của bạn"
+    exchange_books:
+      index:
+        request_books: "Yêu cầu"
+        collected_books: "Sách đã nhận"
+        title: "Yêu cầu từ người nhận"
+        title_collection: "Bộ sưu tập của bạn"
+    orders:
+      index:
+        title: "Đơn hàng"

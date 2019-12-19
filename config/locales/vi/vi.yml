@@ -1,4 +1,6 @@
 vi:
+  labels:
+    new: "Mới"
   time:
     formats:
       default: "%Y-%m-%d %H:%M:%S"

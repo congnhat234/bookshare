@@ -1,8 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
-    @new_books = Book.activated.order_desc.limit(10)
+    @new_books = Book.activated.where("quantity > 0").order_desc.limit(10)
     best_seller_ids = Hash[OrderBook.group(:book_id).limit(10).count.sort_by{|_k, v| v}.reverse].keys
-    best_seller_books = Book.where(id: best_seller_ids).index_by(&:id)
+    best_seller_books = Book.where(id: best_seller_ids).where("quantity > 0").index_by(&:id)
     @best_seller_books = best_seller_ids.map{|id| best_seller_books[id]}
     if user_signed_in?
       recommendable_books_redis = current_user.recommended_books

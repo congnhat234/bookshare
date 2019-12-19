@@ -3,35 +3,35 @@
   <%= render "shared/error_messages", object: f.object %>
   <div class="card-body">
     <div class="form-group">
-      <%= f.label :title, t(".title"), class: "control-label" %>
+      <%= f.label :title, t("form.title"), class: "control-label" %>
       <%= f.text_field :title, required: true, class: "form-control",
         placeholder: t("placeholder.enter_title") %>
     </div>
     <div class="form-group">
-      <%= f.label :price, t(".price"), class: "control-label" %>
+      <%= f.label :price, t("form.price"), class: "control-label" %>
       <%= f.number_field :price, required: true, class: "form-control",
         placeholder: t("placeholder.enter_price"), min: "0" %>
     </div>
     <div class="form-group">
-      <%= f.label :quantity, t(".quantity"), class: "control-label" %>
+      <%= f.label :quantity, t("form.quantity"), class: "control-label" %>
       <%= f.number_field :quantity, required: true, class: "form-control",
         placeholder: t("placeholder.enter_quantity"), min: "1" %>
     </div>
     <div class="form-group">
-      <%= f.label :discount, t(".discount"), class: "control-label" %>
+      <%= f.label :discount, t("form.discount"), class: "control-label" %>
       <%= f.number_field :discount, required: true, class: "form-control",
         placeholder: t("placeholder.enter_discount"), min: "0" %>
     </div>
     <div class="form-group">
-      <%= f.label :category_id, t(".category"), class: "control-label" %>
+      <%= f.label :category_id, t("form.category"), class: "control-label" %>
       <%= f.collection_select :category_id, @categories, :id, :name, {}, {class: "form-control category"} %>
     </div>
     <div class="form-group">
-      <%= f.label :book_type, t(".book_type"), class: "control-label" %>
+      <%= f.label :book_type, t("form.book_type"), class: "control-label" %>
       <%= f.select :book_type, Book.book_types.map{|type| [type[0].humanize, type[0]]}, {}, {class: "form-control"} %>
     </div>
     <div class="form-group">
-      <%= f.label :photos, t(".photo"), class: "control-label" %>
+      <%= f.label :photos, t("form.photo"), class: "control-label" %>
       <div class="image-sortable">
         <% @book.photos.each do |photo| %>
           <div class="image">
@@ -44,17 +44,17 @@
       <div class="input-group">
         <div class="custom-file">
           <%= f.file_field :photos, multiple: true, class: "custom-file-input", id: "input_file" %>
-          <%= f.label :input_file, "Choose file", class: "custom-file-label" %>
+          <%= f.label :input_file, t("form.choose_file"), class: "custom-file-label" %>
         </div>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :brief_description, t(".brief_description"), class: "control-label" %>
+      <%= f.label :brief_description, t("form.brief_description"), class: "control-label" %>
       <%= f.text_area :brief_description, required: true, class: "form-control",
         placeholder: t("placeholder.enter_brief_description") %>
     </div>
     <div class="form-group">
-      <%= f.label :description, t(".description"), class: "control-label" %>
+      <%= f.label :description, t("form.description"), class: "control-label" %>
       <%= f.text_area :description, required: true, class: "form-control editor",
         placeholder: t("placeholder.enter_description") %>
     </div>

@@ -9,7 +9,7 @@ class Dashboard::ExchangeBooksController < ApplicationController
   end
 
   def request_book
-    @exchange_books = ExchangeBook.where(owner: current_user).inprogress
+    @exchange_books = ExchangeBook.where(owner: current_user).except_notconfirm
     render :index
   end
 
@@ -72,6 +72,9 @@ class Dashboard::ExchangeBooksController < ApplicationController
   def approve
     return unless request.xhr?
     if @exchange_book.approved!
+      book = Book.find_by id: @exchange_book.book_id
+      quantity = book.quantity - @exchange_book.quantity
+      book.update_attributes! quantity: quantity
       render json: {
         status: "approved",
         action: renderhtml_action("request_book")
