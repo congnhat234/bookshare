@@ -1,8 +1,9 @@
 class OrderMailer < ApplicationMailer
   add_template_helper MailerHelper
-  def order_complete user, order
+  def order_complete user, order, titles
     @user = user
     @order = order
+    @titles = titles
     mail to: user.email
   end
 

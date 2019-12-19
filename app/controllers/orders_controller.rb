@@ -46,6 +46,7 @@ class OrdersController < ApplicationController
 
   def save_book_order books, order, index
     titles = []
+    order_total = 0
     books.each do |book|
       next unless book.user.id == @owners[index]
       books_order = order.order_books.new(book_id: book.id,
@@ -53,7 +54,9 @@ class OrdersController < ApplicationController
       books_order.save
       current_user.like(book)
       titles << book.title
+      order_total += book.price_discounted
     end
+    order.update! total_price: order_total
     OrderMailer.order_complete(current_user, order, titles).deliver_later
   end
 
