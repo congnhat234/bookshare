@@ -8,7 +8,9 @@ class Post < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  validates :title, presence: true, length: {minimum: 3, maximum: 100}
+  validates :title, presence: true, length: {minimum: 3}
+  validates :preview, presence: true, length: {minimum: 10}
+  validates :content, presence: true, length: {minimum: 10}
 
   enum status: [:unpublish, :publish]
 

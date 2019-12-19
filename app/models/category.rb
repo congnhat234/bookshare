@@ -5,6 +5,8 @@ class Category < ApplicationRecord
   belongs_to :parent_category, class_name: Category.name,
     foreign_key: :parent_id
 
+  validates :name, presence: true, length: {minimum: 3}
+
   def to_param
     "#{id}-#{name.parameterize}"
   end

@@ -4,6 +4,8 @@ class Message < ApplicationRecord
 
   after_create_commit :send_notification
 
+  validates :body, presence: true
+
   private
 
   def send_notification
