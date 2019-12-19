@@ -21,15 +21,17 @@
       </div>
     </aside>
     <!-- End Single Widget -->
-    <!-- Start Single Widget -->
-    <aside class="widget recent_widget">
-      <h3 class="widget-title">Follow</h3>
-      <div class="recent-posts">
-        <ul>
-          <%= render partial: "posts/recommendable_post", collection: @following_posts, as: :post %>
-        </ul>
-      </div>
-    </aside>
-    <!-- End Single Widget -->
+    <% if user_signed_in? %>
+      <!-- Start Single Widget -->
+      <aside class="widget recent_widget">
+        <h3 class="widget-title">Follow</h3>
+        <div class="recent-posts">
+          <ul>
+            <%= render partial: "posts/recommendable_post", collection: @following_posts, as: :post %>
+          </ul>
+        </div>
+      </aside>
+      <!-- End Single Widget -->
+    <% end %>
   </div>
 </div>

@@ -21,3 +21,4 @@ vi:
     followed: "Đã theo dõi"
     unfollowed: "Đã hủy theo dõi"
     spam_counter: "%{counter} bài viết đã bị chặn"
+    error[access_denied]: "Truy cập bị từ chối"

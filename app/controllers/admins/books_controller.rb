@@ -1,4 +1,5 @@
 class Admins::BooksController < ApplicationController
+  before_action :verify_admin
   before_action :find_book, only: %i(destroy active inactive)
   layout "admins/application"
 

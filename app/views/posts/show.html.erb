@@ -54,10 +54,12 @@
               <%= render partial: "posts/comment", collection: @comments, as: :comment %>
             </ul>
           </div>
-          <div class="comment_respond">
-            <h3 class="reply_title">Leave a Reply <small><a href="#">Cancel reply</a></small></h3>
-            <%= render "posts/form_comment" %>
-          </div>
+          <% if user_signed_in? %>
+            <div class="comment_respond">
+              <h3 class="reply_title">Leave a Reply <small></small></h3>
+              <%= render "posts/form_comment" %>
+            </div>
+          <% end %>
         </div>
       </div>
       <%= render "posts/right_bar" %>
