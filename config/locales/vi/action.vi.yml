@@ -12,3 +12,4 @@ vi:
     unpublish: "Bạn muốn không công khai?"
     active: "Trạng thái sẽ thay đổi thành hoạt động!"
     inactive: "Trạng thái sẽ thay đổi thành không hoạt động!"
+    change_status: "Bạn có muốn thay đổi trạng thái?"

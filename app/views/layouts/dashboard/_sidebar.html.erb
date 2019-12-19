@@ -53,7 +53,7 @@
             <p>
               Sharing
               <i class="fas fa-angle-left right"></i>
-              <span class="badge badge-info right">6</span>
+              <span class="badge badge-info right"><%= @request_sharing_books_counter %></span>
             </p>
           </a>
           <ul class="nav nav-treeview">
@@ -62,6 +62,7 @@
                 class: "nav-link #{'active' if controller_name == 'sharing_books' && action_name == 'request_book'}" do %>
                 <i class="far fa-circle nav-icon"></i>
                 <p>Requests</p>
+                <span class="badge badge-danger right"><%= "New" if @request_sharing_books_counter > 0 %></span>
               <% end %>
             </li>
             <li class="nav-item">
@@ -73,15 +74,32 @@
             </li>
           </ul>
         </li>
-        <li class="nav-header">EXAMPLES</li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
-            <i class="nav-icon fas fa-calendar-alt"></i>
+          <%= link_to dashboard_orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" do %>
+            <i class="nav-icon fas fa-scroll"></i>
             <p>
-              Calendar
-              <span class="badge badge-info right">2</span>
+              My Orders
             </p>
-          </a>
+          <% end %>
+        </li>
+        <% if current_user.seller? %>
+          <li class="nav-item">
+          <%= link_to dashboard_user_orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'user_order'}" do %>
+            <i class="nav-icon fas fa-paper-plane"></i>
+            <p>
+              Orders
+            </p>
+          <% end %>
+        </li>
+        <% end %>
+        <li class="nav-header">Settings</li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <i class="nav-icon fas fa-power-off"></i>
+            <p>
+              Logout
+            </p>
+          <% end %>
         </li>
       </ul>
     </nav>

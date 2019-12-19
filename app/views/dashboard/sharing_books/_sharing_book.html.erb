@@ -8,21 +8,10 @@
   </td>
   <td><%= link_to sharing_book.book.title, book_path(sharing_book.book) %></td>
   <td><%= sharing_book.quantity %></td>
-  <td><%= sharing_book.status %></td>
+  <td><%= link_to sharing_book.owner.name, user_path(sharing_book.owner) %></td>
+  <td class="status"><%= sharing_book.status %></td>
   <td><%= l sharing_book.created_at, format: :short %></td>
   <td>
-    <% if sharing_book.inprogress? && action_name == "index" %>
-      <%= link_to dashboard_sharing_book_path(sharing_book), method: :delete, data: { confirm: t("alert.confirm") } do %>
-        <i class="fas fa-trash-alt"></i>
-      <% end %>
-    <% elsif action_name == "request_book" %>
-      <%= link_to "", title: "Approve" do %>
-        <i class="fas fa-check-circle"></i>
-      <% end %>
-      <%= link_to dashboard_sharing_book_path(sharing_book), method: :delete,
-        title: "Reject", data: { confirm: t("alert.confirm") } do %>
-        <i class="fas fa-times-circle"></i>
-      <% end %>
-    <% end %>
+    <%= render partial: "dashboard/sharing_books/action_btn", locals: {sharing_book: sharing_book} %>
   </td>
 </tr>

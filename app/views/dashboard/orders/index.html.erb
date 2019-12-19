@@ -32,25 +32,30 @@
             <table id="books_table" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Picture</th>
-                  <th>Title</th>
-                  <th>Qty</th>
-                  <th>Owner</th>
+                  <th>Receiver name</th>
+                  <th>Receiver phone</th>
+                  <th>Receiver address</th>
+                  <th>Total price</th>
+                  <th>Payment method</th>
                   <th>Status</th>
-                  <th>Created</th>
+                  <th>Created at</th>
+                  <th>Updated at</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <%= render @sharing_books %>
+                <%= render @orders %>
               </tbody>
               <tfoot>
                 <tr>
-                  <th>Picture</th>
-                  <th>Title</th>
-                  <th>Qty</th>
+                  <th>Receiver name</th>
+                  <th>Receiver phone</th>
+                  <th>Receiver address</th>
+                  <th>Total price</th>
+                  <th>Payment method</th>
                   <th>Status</th>
-                  <th>Created</th>
+                  <th>Created at</th>
+                  <th>Updated at</th>
                   <th>Action</th>
                 </tr>
               </tfoot>

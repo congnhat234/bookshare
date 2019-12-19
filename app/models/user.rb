@@ -45,7 +45,7 @@ class User < ApplicationRecord
   #                   .where.not(reviews: {user_id: owner.id})
   # end)
 
-  recommends :posts
+  recommends :posts, :books
 
   def follow other_user
     active_relationships.create(followed_id: other_user.id)
