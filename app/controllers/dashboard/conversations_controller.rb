@@ -1,4 +1,5 @@
 class Dashboard::ConversationsController < ApplicationController
+  before_action :verify_user
   layout "dashboard/application"
   def index
     session[:conversations] = params[:id]

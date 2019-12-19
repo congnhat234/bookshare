@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :verify_user
   before_action :find_comment, only: :destroy
 
   def create

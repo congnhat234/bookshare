@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :verify_user, only: :index
   before_action :find_user, only: %i(show posts books)
   layout "dashboard/application", only: %i(index)
 

@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :verify_user
   include ReviewsHelper
   before_action :find_review, only: :destroy
   before_action :find_book, only: %i(create destroy)

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :verify_user
   include CartHelper
 
   before_action :find_order, only: :show

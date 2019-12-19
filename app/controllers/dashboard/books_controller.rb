@@ -1,4 +1,5 @@
 class Dashboard::BooksController < ApplicationController
+  before_action :verify_user
   before_action :find_book, only: %i(edit update destroy)
   layout "dashboard/application"
 

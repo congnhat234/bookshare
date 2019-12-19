@@ -1,4 +1,5 @@
 class Dashboard::OrdersController < ApplicationController
+  before_action :verify_user
   before_action :find_order, except: %i(index user_order)
   layout "dashboard/application"
 

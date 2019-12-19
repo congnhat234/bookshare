@@ -37,4 +37,10 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "alert.error[access_denied]"
     redirect_to new_admin_session_path
   end
+
+  def verify_user
+    return if user_signed_in?
+    flash[:danger] = t "alert.error[sign_in]"
+    redirect_to new_user_session_path
+  end
 end
