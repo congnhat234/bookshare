@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :load_reviews, only: %i(show)
 
   def index
-    @books = Book.activated.page(params[:page]).per Settings.books.per_page
+    @books = Book.activated.order_desc.page(params[:page]).per Settings.books.per_page
     @title = t "books.title.all"
     @type = "all"
   end

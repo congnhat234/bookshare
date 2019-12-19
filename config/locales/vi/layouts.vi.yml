@@ -21,3 +21,21 @@ vi:
     quick_view_product:
       reviews: "%{counter} đánh giá."
       share: "Chia sẻ"
+  devise:
+    registrations:
+      new:
+        title: "Đăng kí"
+        character_minimum: "Ít nhất %{number} kí tự"
+      edit:
+        title: "Tài khoản"
+        edit_profile: "Chỉnh sửa thông tin"
+    sessions:
+      new:
+        title: "Đăng nhập"
+    shared:
+      links:
+        login: "Đăng nhập"
+        sign_up: "Đăng kí"
+        forgot_password: "Quên mật khẩu?"
+        confirmation_instruction: "Bạn không nhận được hướng dẫn đổi mật khẩu?"
+        unlock_instruction: "Bạn không nhận được hướng dẫn mở khóa?"
