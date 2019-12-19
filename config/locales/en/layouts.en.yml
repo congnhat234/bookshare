@@ -23,3 +23,21 @@ en:
         one: "%{counter} review."
         other: "%{counter} reviews."
       share: "Share"
+  devise:
+    registrations:
+      new:
+        title: "Registration"
+        character_minimum: "%{number} characters minimum"
+      edit:
+        title: "My account"
+        edit_profile: "Edit profile"
+    sessions:
+      new:
+        title: "Login"
+    shared:
+      links:
+        login: "Login"
+        sign_up: "Sign up"
+        forgot_password: "Forgot your password?"
+        confirmation_instruction: "Didn't receive confirmation instructions?"
+        unlock_instruction: "Didn't receive unlock instructions?"

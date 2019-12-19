@@ -4,11 +4,11 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="bradcaump__inner text-center">
-          <h2 class="bradcaump-title">My Account</h2>
+          <h2 class="bradcaump-title"><%= t ".title" %></h2>
           <nav class="bradcaump-content">
-            <a class="breadcrumb_item" href="index.html">Home</a>
+            <%= link_to t(".home"), root_path, class: "breadcrumb_item" %>
             <span class="brd-separetor">/</span>
-            <span class="breadcrumb_item active">My Account</span>
+            <span class="breadcrumb_item active"><%= t ".title" %></span>
           </nav>
         </div>
       </div>
@@ -22,7 +22,7 @@
     <div class="row content-center">
       <div class="col-lg-6 col-12">
         <div class="my__account__wrapper">
-          <h3 class="account__title">Registration</h3>
+          <h3 class="account__title"><%= t ".title" %></h3>
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
             <div class="account__form">
@@ -31,38 +31,38 @@
                 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
               </div>
               <div class="input__box">
-                <%= f.label :role %>
+                <%= f.label :role, t("form.role") %>
                 <%= f.select :role, User.roles.map{|role| [role[0].humanize, role[0]]} %>
               </div>
               <div class="input__box">
-                <%= f.label :password %>
+                <%= f.label :password, t("form.password") %>
                 <%= f.password_field :password, autocomplete: "current-password" %>
                 <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <em>(<%= t ".character_minimum", number: @minimum_password_length %>)</em>
                 <% end %>
               </div>
               <div class="input__box">
-                <%= f.label :password_confirmation %>
+                <%= f.label :password_confirmation, t("form.password_confirm") %>
                 <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
               </div>
               <div class="input__box">
-                <%= f.label :name %>
+                <%= f.label :name, t("form.name") %>
                 <%= f.text_field :name, autocomplete: "name" %>
               </div>
               <div class="input__box">
-                <%= f.label :phone %>
+                <%= f.label :phone, t("form.phone") %>
                 <%= f.telephone_field :phone, autocomplete: "phone" %>
               </div>
               <div class="input__box">
-                <%= f.label :address %>
+                <%= f.label :address, t("form.address") %>
                 <%= f.text_field :address, autocomplete: "address" %>
               </div>
               <div class="input__box">
-                <%= f.label :avatar %>
+                <%= f.label :avatar, t("form.avatar") %>
                 <%= f.file_field :avatar, accept: Settings.accept_image %>
               </div>
               <div class="form__btn">
-                <%= f.submit "Sign up" %>
+                <%= f.submit t("form.registration") %>
               </div>
               <%= render "devise/shared/links" %>
             </div>
