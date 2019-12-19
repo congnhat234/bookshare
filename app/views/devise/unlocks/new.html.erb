@@ -1,16 +1,44 @@
-<h2>Resend unlock instructions</h2>
-
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area bg-image--6">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="bradcaump__inner text-center">
+          <h2 class="bradcaump-title">Resend unlock instructions</h2>
+          <nav class="bradcaump-content">
+            <%= link_to t(".home"), root_path, class: "breadcrumb_item" %>
+            <span class="brd-separetor">/</span>
+            <span class="breadcrumb_item active">Resend unlock instructions</span>
+          </nav>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+</div>
+<!-- End Bradcaump area -->
+<!-- Start My Account Area -->
+<section class="my_account_area pt--80 pb--55 bg--white">
+  <div class="container">
+    <div class="row content-center">
+      <div class="col-lg-6 col-12">
+        <div class="my__account__wrapper">
+          <h3 class="account__title">Resend unlock instructions</h3>
+          <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="account__form">
+              <div class="input__box">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
+              <div class="form__btn">
+                <%= f.submit "Resend unlock instructions" %>
+              </div>
+              <%= render "devise/shared/links" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
+<!-- End My Account Area -->

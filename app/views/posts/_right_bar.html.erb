@@ -2,10 +2,10 @@
   <div class="wn__sidebar">
     <!-- Start Single Widget -->
     <aside class="widget search_widget">
-      <h3 class="widget-title">Search</h3>
+      <h3 class="widget-title"><%= t ".search" %></h3>
       <%= form_tag search_posts_path, method: :get do %>
         <div class="form-input">
-          <%= text_field_tag :q, "", placeholder: "Search..." %>
+          <%= text_field_tag :q, "", placeholder: t("placeholder.search") %>
           <button type="submit"><i class="fa fa-search"></i></button>
         </div>
       <% end %>
@@ -13,7 +13,7 @@
     <!-- End Single Widget -->
     <!-- Start Single Widget -->
     <aside class="widget recent_widget">
-      <h3 class="widget-title">Recommend for you</h3>
+      <h3 class="widget-title"><%= t ".recommend" %></h3>
       <div class="recent-posts">
         <ul>
           <%= render partial: "posts/recommendable_post", collection: @recommendable_posts, as: :post %>
@@ -24,7 +24,7 @@
     <% if user_signed_in? %>
       <!-- Start Single Widget -->
       <aside class="widget recent_widget">
-        <h3 class="widget-title">Follow</h3>
+        <h3 class="widget-title"><%= t ".follow" %></h3>
         <div class="recent-posts">
           <ul>
             <%= render partial: "posts/recommendable_post", collection: @following_posts, as: :post %>

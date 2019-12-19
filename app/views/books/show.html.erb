@@ -4,11 +4,11 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="bradcaump__inner text-center">
-          <h2 class="bradcaump-title">Shop Single</h2>
+          <h2 class="bradcaump-title"><%= t ".title" %></h2>
           <nav class="bradcaump-content">
-            <a class="breadcrumb_item" href="index.html">Home</a>
+            <%= link_to t(".home"), root_path, class: "breadcrumb_item" %>
             <span class="brd-separetor">/</span>
-            <span class="breadcrumb_item active">Shop Single</span>
+            <span class="breadcrumb_item active"><%= @book.title %></span>
           </nav>
         </div>
       </div>
@@ -49,15 +49,15 @@
                   <%= @book.brief_description %>
                 </div>
                 <div class="box-tocart d-flex">
-                  <span>Qty</span>
+                  <span><%= t ".qty" %></span>
                   <input id="qty" class="input-text qty" name="qty" min="1" max="<%= @book.quantity %>" value="1" title="Qty" type="number">
                   <div class="addtocart__actions">
                     <% if @book.selling? %>
-                      <button class="tocart cart" type="submit" title="Add to Cart" data-book-id="<%= @book.id %>">Add to Cart</button>
+                      <button class="tocart cart" type="submit" title="Add to Cart" data-book-id="<%= @book.id %>"><%= t ".add_to_cart" %></button>
                     <% elsif @book.sharing? %>
-                      <button class="tocart collect" type="submit" title="Collect" data-book-id="<%= @book.id %>">Collect</button>
+                      <button class="tocart collect" type="submit" title="Collect" data-book-id="<%= @book.id %>"><%= t ".collect" %></button>
                     <% elsif @book.exchange? %>
-                      <button class="tocart exchange" type="submit" title="Exchange" data-book-id="<%= @book.id %>">Exchange</button>
+                      <button class="tocart exchange" type="submit" title="Exchange" data-book-id="<%= @book.id %>"><%= t ".exchange" %></button>
                     <% end %>
                   </div>
                   <div class="product-addto-links clearfix">
@@ -65,13 +65,13 @@
                   </div>
                 </div>
                 <div class="product_meta">
-                  <span class="posted_in">Categories:
+                  <span class="posted_in"><%= t ".categories" %>:
                     <%= link_to @book.category.name, category_path(@book.category) %>
                   </span>
                 </div>
                 <div class="product-share">
                   <ul>
-                    <li class="categories-title">Share :</li>
+                    <li class="categories-title"><%= t ".share" %> :</li>
                     <li>
                       <a href="#">
                         <i class="fab fa-twitter"></i>
@@ -166,32 +166,10 @@
               <% end %>
             </ul>
           </aside>
-          <aside class="wedget__categories pro--range">
-            <h3 class="wedget__title">Filter by price</h3>
-            <div class="content-shopby">
-              <div class="price_filter s-filter clear">
-                <form action="#" method="GET">
-                  <div id="slider-range"></div>
-                  <div class="slider__range--output">
-                    <div class="price__output--wrap">
-                      <div class="price--output">
-                        <span>Price :</span><input type="text" id="amount" readonly="">
-                      </div>
-                      <div class="price--filter">
-                        <a href="#">Filter</a>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </aside>
           <aside class="wedget__categories sidebar--banner">
             <img src="/assets/others/banner_left.jpg" alt="banner images">
             <div class="text">
-              <h2>new products</h2>
-              <h6>save up to <br>
-                <strong>40%</strong>off</h6>
+              <%= t ".new_products_html" %>
             </div>
           </aside>
         </div>

@@ -1,0 +1,19 @@
+en:
+  orders:
+    show:
+      title: "Order"
+      message1: "Your order detail has been send to"
+      message2: "Please check your email."
+    new:
+      title: "Checkout"
+      billing_details: "Billing details"
+      cod: "Cash on delivery"
+      cod_info: "Pay with cash upon delivery."
+      dbt: "Direct Bank Transfer"
+      dbt_info: "Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account."
+      paypal: "PayPal"
+      paypal_info: "Pay with Paypal account."
+      checkout: "Check out"
+      your_order: "Your order"
+      order_total: "Order Total"
+      home: "Home"

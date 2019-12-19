@@ -1,0 +1,10 @@
+vi:
+  form:
+    receiver_name: "Tên người nhận"
+    address: "Địa chỉ"
+    phone: "Số điện thoại"
+    note: "Ghi chú"
+    title: "Tiêu đề"
+    photo: "Ảnh"
+    preview: "Tóm tắt"
+    content: "Nội dung"

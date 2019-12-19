@@ -1,0 +1,8 @@
+vi:
+  table:
+    image: "Ảnh"
+    product: "Sản phẩm"
+    price: "Giá"
+    quantity: "Số lượng"
+    total: "Tổng"
+    remove: "Xóa"

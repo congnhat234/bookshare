@@ -1,8 +1,8 @@
 <form class="comment__form" action="#">
   <div class="input__box">
-    <textarea id="comment" name="comment" placeholder="Your comment here" postid="<%= @post.id %>" parentid="" ></textarea>
+    <textarea id="comment" name="comment" placeholder="<%= t ".your_comment" %>" postid="<%= @post.id %>" parentid="" ></textarea>
   </div>
   <div class="submite__btn">
-    <a href="javascript:void(0)" id="comment_btn">Post Comment</a>
+    <a href="javascript:void(0)" id="comment_btn"><%= t ".post_comment" %></a>
   </div>
 </form>
