@@ -1,0 +1,19 @@
+vi:
+  orders:
+    show:
+      title: "Đơn hàng"
+      message1: "Chi tiết đơn hàng của bạn đã được gửi đến"
+      message2: "Vui lòng kiểm tra email."
+    new:
+      title: "Thanh toán"
+      billing_details: "Chi tiết thanh toán"
+      cod: "Thanh toán khi nhân hàng"
+      cod_info: "Trả bằng tiền mặt khi nhận hàng."
+      dbt: "Chuyển tiền qua ngân hàng"
+      dbt_info: "Thanh toán trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng ID đơn hàng của bạn làm nội dung thanh toán. Đơn hàng của bạn sẽ không được vận chuyển cho đến khi tiền được xác nhận trong tài khoản của chúng tôi."
+      paypal: "PayPal"
+      paypal_info: "Thanh toán bằng tài khoản Paypal"
+      checkout: "Thanh toán"
+      your_order: "Đơn hàng của bạn"
+      order_total: "Tổng tiền"
+      home: "Trang chủ"

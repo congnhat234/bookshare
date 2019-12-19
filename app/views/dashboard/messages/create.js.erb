@@ -1,0 +1,2 @@
+$('.direct-chat-messages').append("<%= j(render 'dashboard/messages/message', message: @message, current_user: current_user) %>");
+$('.input-group').find('input[type="text"]').val('');

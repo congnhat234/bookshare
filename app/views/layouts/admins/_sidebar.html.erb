@@ -71,7 +71,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <%= link_to admins_user_posts_path, class: "nav-link #{'active' if controller_name == 'posts'}" do %>
+          <%= link_to admins_posts_path, class: "nav-link #{'active' if controller_name == 'posts'}" do %>
             <i class="nav-icon fas fa-copy"></i>
             <p>
               Posts
@@ -79,23 +79,29 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <a href="pages/widgets.html" class="nav-link">
+          <%= link_to admins_users_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Users
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admins_categories_path, class: "nav-link" do %>
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Widgets
-              <span class="right badge badge-danger">New</span>
+              Categories
             </p>
-          </a>
+          <% end %>
         </li>
-        <li class="nav-header">EXAMPLES</li>
+        <li class="nav-header">Settings</li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
-            <i class="nav-icon fas fa-calendar-alt"></i>
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
+            <i class="nav-icon fas fa-power-off"></i>
             <p>
-              Calendar
-              <span class="badge badge-info right">2</span>
+              Logout
             </p>
-          </a>
+          <% end %>
         </li>
       </ul>
     </nav>

@@ -8,3 +8,18 @@ en:
       share: "Share"
       exchange: "Exchange"
       books: "Books"
+      blog: "Blog"
+      categories: "Categories"
+      language: "Language"
+      my_account: "My account"
+      dashboard: "Dashboard"
+      sign_out: "Sign out"
+      sign_in: "Sign in"
+      create_account: "Create an account"
+      my_wishlist: "My wishlist"
+  shared:
+    quick_view_product:
+      reviews:
+        one: "%{counter} review."
+        other: "%{counter} reviews."
+      share: "Share"

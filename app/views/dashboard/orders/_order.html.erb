@@ -1,0 +1,48 @@
+<tr>
+  <td><%= order.id %></td>
+  <td><%= order.receiver_name %></td>
+  <td><%= order.receiver_phone %></td>
+  <td><%= order.receiver_address %></td>
+  <td><%= number_to_currency_format order.total_price %></td>
+  <td><%= order.payment_method %></td>
+  <td class="status"><%= order.status %></td>
+  <td><%= l order.created_at, format: :short %></td>
+  <td><%= l order.updated_at, format: :short %></td>
+  <td>
+    <% if current_user.id == order.user_id %>
+      <%= link_to dashboard_order_path(order), method: :delete, data: { confirm: t("alert.confirm") } do %>
+        <i class="fas fa-trash-alt text-danger"></i>
+      <% end %>
+      <%= link_to "javascript:void(0)", "data-toggle": "modal", "data-target": "#modal-book-#{order.id}" do %>
+        <i class="fas fa-eye"></i>
+      <% end %>
+    <% else %>
+    <%= render partial: "dashboard/orders/action_btn", locals: {order: order} %>
+    <% end %>
+  </td>
+</tr>
+<div class="modal fade" id="modal-book-<%= order.id %>">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= l order.created_at, format: :short %></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <% order.order_books.each do |order_book| %>
+            <li><%= order_book.book.title %> x <%= order_book.quantity %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

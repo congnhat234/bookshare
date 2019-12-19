@@ -1,5 +1,7 @@
 class Dashboard::SharingBooksController < ApplicationController
-  before_action :find_book, :find_sharing_book, except: %i(index request_book)
+  before_action :verify_user
+  before_action :find_book, :find_sharing_book, only: %i(create)
+  before_action :find_sharing_book_by_id, only: %i(destroy confirm approve reject done)
   layout "dashboard/application"
 
   def index
@@ -7,7 +9,7 @@ class Dashboard::SharingBooksController < ApplicationController
   end
 
   def request_book
-    @sharing_books = SharingBook.where(owner: current_user)
+    @sharing_books = SharingBook.where(owner: current_user).inprogress
     render :index
   end
 
@@ -28,13 +30,67 @@ class Dashboard::SharingBooksController < ApplicationController
                  "fail"
                end
     end
+    current_user.like(@book)
     render json: {status: status}
   end
 
   def update; end
 
   def destroy
-    redirect_to cart_path
+    if @sharing_book.destroy
+      flash[:success] = t "alert.success[delete_book]"
+    else
+      flash[:danger] = t "alert.error[delete_book]"
+    end
+    redirect_to dashboard_books_path
+  end
+
+  def confirm
+    return unless request.xhr?
+    if @sharing_book.inprogress!
+      render json: {
+        status: "inprogress",
+        action: renderhtml_action("index")
+      }
+    else
+      render json: {status: :error}
+    end
+  end
+
+  def done
+    return unless request.xhr?
+    if @sharing_book.done!
+      render json: {
+        status: "done",
+        action: renderhtml_action("request_book")
+      }
+    else
+      render json: {status: :error}
+    end
+  end
+
+  def approve
+    return unless request.xhr?
+    if @sharing_book.approved!
+      render json: {
+        status: "approved",
+        action: renderhtml_action("request_book")
+      }
+    else
+      render json: {status: :error}
+    end
+  end
+
+  def reject
+    return unless request.xhr?
+    if @sharing_book.rejected!
+      render json: {
+        status: "rejected",
+        action: renderhtml_action("request_book")
+      }
+    else
+      render json: {status: :error}
+    end
   end
 
   private
@@ -48,5 +104,14 @@ class Dashboard::SharingBooksController < ApplicationController
 
   def find_sharing_book
     @sharing_book = SharingBook.find_by(book_id: params[:id], collector_id: current_user.id)
+  end
+
+  def find_sharing_book_by_id
+    @sharing_book = SharingBook.find_by(id: params[:id])
+  end
+
+  def renderhtml_action action_name
+    ApplicationController.render partial: "dashboard/sharing_books/action_btn",
+      locals: {sharing_book: @sharing_book, action_name: action_name}
   end
 end

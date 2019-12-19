@@ -1,6 +1,9 @@
 class Book < ApplicationRecord
+  searchkick
+
   has_many :book_photos, dependent: :destroy
   has_many :sharing_books, dependent: :destroy
+  has_many :exchange_books, dependent: :destroy
   has_many :order_books, dependent: :destroy
   has_many :reviews, dependent: :destroy
   belongs_to :category
@@ -13,6 +16,8 @@ class Book < ApplicationRecord
   attr_accessor :total_quantity, :price_discounted
 
   scope :activated, ->{where activated: true}
+  scope :order_desc, ->{order created_at: :desc}
+  scope :except_current_book, ->(book_id){where.not id: book_id}
 
   def get_total_price
     return (price_discounted * total_quantity).round if total_quantity.present?
@@ -21,5 +26,14 @@ class Book < ApplicationRecord
 
   def to_param
     "#{id}-#{title.parameterize}"
+  end
+
+  def search_data
+    {
+      title: title,
+      description: description,
+      brief_description: brief_description,
+      category_name: category.name
+    }
   end
 end

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get "/unpublish/:id", to: "posts#unpublish", as: "unpublish_post"
   resources :categories, only: %i(show)
   resources :users, only: %i(index show)
-  get "/:id/posts", to: "users#posts", as: "user_posts"
+  get "/:id/user-posts", to: "users#posts", as: "user_posts"
   get "/:id/all-books", to: "users#books", as: "user_books"
   get "/cart", to: "cart#index"
   post "/cart/add", to: "cart#add"
@@ -44,6 +44,23 @@ Rails.application.routes.draw do
     resources :books
     resources :sharing_books, except: %i(show new edit)
     get "/sharing_books/requests", to: "sharing_books#request_book"
+    post "/sharing_books/confirm/:id", to: "sharing_books#confirm"
+    post "/sharing_books/reject/:id", to: "sharing_books#reject"
+    post "/sharing_books/approve/:id", to: "sharing_books#approve"
+    post "/sharing_books/done/:id", to: "sharing_books#done"
+    resources :exchange_books, except: %i(show new edit)
+    get "/exchange_books/requests", to: "exchange_books#request_book"
+    post "/exchange_books/confirm/:id", to: "exchange_books#confirm"
+    post "/exchange_books/reject/:id", to: "exchange_books#reject"
+    post "/exchange_books/approve/:id", to: "exchange_books#approve"
+    post "/exchange_books/done/:id", to: "exchange_books#done"
+    resources :conversations, only: %i(create index)
+    resources :messages, only: :create
+    resources :orders
+    get "/user-orders", to: "orders#user_order"
+    post "/orders/processing/:id", to: "orders#processing"
+    post "/orders/cancel/:id", to: "orders#cancel"
+    post "/orders/done/:id", to: "orders#done"
   end
   resources :notifications, only: %i(index update)
 
@@ -52,9 +69,13 @@ Rails.application.routes.draw do
     resources :books
     post "/books/active", to: "books#active"
     post "/books/inactive", to: "books#inactive"
-    resources :posts, except: :index
-    get "/user-posts", to: "posts#index", as: "user_posts"
+    resources :posts
     post "/posts/publish", to: "posts#publish"
     post "/posts/unpublish", to: "posts#unpublish"
+    post "/posts/classify", to: "posts#auto_classify"
+    resources :users
+    resources :categories
   end
+  resources :search, only: :index
+  get "/search-posts", to: "search#index_post"
 end

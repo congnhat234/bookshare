@@ -1,16 +1,36 @@
 en:
   posts:
-    form:
-      title: "Title"
-      photo: "Photo"
-      preview: "Preview"
-      content: "Content"
     post:
       edit: "Edit"
       delete: "Delete"
       publish: "Publish"
       unpublish: "Unpublish"
+      post_by: "Posted by"
+      read_more: "Read more"
     index:
       add_post: "Add new post"
+      title: "Blog page"
+      home: "Home"
     comment:
       reply: "Reply"
+      delete: "Delete"
+    comment_reply:
+      reply: "Reply"
+      delete: "Delete"
+    right_bar:
+      search: "Search"
+      recommend: "Recommend for you"
+      follow: "Your following"
+    show:
+      home: "Home"
+      blog_details: "Blog details"
+      comment: "Your comment"
+    form_comment:
+      post_comment: "Post Comment"
+      your_comment: "Your comment here"
+    new:
+      home: "Home"
+      title: "New post"
+    edit:
+      home: "Home"
+      title: "Edit post"

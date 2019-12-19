@@ -1,0 +1,21 @@
+<div class="col-md-6 col-lg-4 col-sm-12">
+  <div class="post__itam">
+    <div class="content">
+      <h3><%= link_to post.title, post_path(post) %></h3>
+      <p><%= post.preview %></p>
+      <div class="post__time">
+        <span class="day"><%= l post.updated_at, format: :short %></span>
+        <div class="post-meta">
+          <ul>
+            <li><%= link_to post.user.name, user_path(post.user) %></li>
+            <li>
+              <%= link_to "javascript:void(0)" do %>
+                <i class="bi bi-love"></i><%= post.liked_posts.count %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

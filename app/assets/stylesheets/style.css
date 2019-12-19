@@ -2389,7 +2389,7 @@ Header Styles
   position: absolute;
   right: 50%;
   text-align: center;
-  top: 62%;
+  top: 53%;
   width: 16px;
 }
 .header__area .header__sidebar__right > li.setting__bar__icon {
@@ -4691,6 +4691,12 @@ h3.widget-title-modal {
   font-size: 13px;
   line-height: 25px;
   padding: 0;
+  display: -webkit-box;
+  height: 100px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .post-meta {
   float: right;

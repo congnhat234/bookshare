@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :verify_user, only: :index
   before_action :find_user, only: %i(show posts books)
   before_action :authenticate_user!, only: %i(index)
   layout "dashboard/application", only: %i(index)
@@ -7,16 +8,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @books = @user.books.limit Settings.books.per_page
+    @books = @user.books.order_desc.limit Settings.books.per_page
   end
 
   def posts
-    @posts = @user.posts.page(params[:page]).per Settings.posts.per_page
+    @posts = @user.posts.order_desc.page(params[:page]).per Settings.posts.per_page
     render "posts/index"
   end
 
   def books
-    @books = @user.books.page(params[:page]).per Settings.books.per_page
+    @books = @user.books.order_desc.page(params[:page]).per Settings.books.per_page
     render "books/index"
   end
 

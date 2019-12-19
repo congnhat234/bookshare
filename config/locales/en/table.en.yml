@@ -1,0 +1,8 @@
+en:
+  table:
+    image: "Image"
+    product: "Product"
+    price: "Price"
+    quantity: "Quantity"
+    total: "Total"
+    remove: "Remove"

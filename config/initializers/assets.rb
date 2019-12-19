@@ -11,4 +11,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w(ckeditor/config.js dashboard.js dashboard.css admin-lte/plugins/chart.js/Chart.min.js admin-lte/dist/js/pages/dashboard3.js)
+Rails.application.config.assets.precompile += %w(ckeditor/config.js dashboard.js dashboard.css admin-lte/plugins/chart.js/Chart.min.js admin-lte/dist/js/pages/dashboard.js)

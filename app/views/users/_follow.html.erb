@@ -3,4 +3,5 @@
 <% else %>
   <%= button_tag t(".follow"), class: "btn btn-success btn-sm", id: "follow-btn", "data-user-id": @user.hash_id %>
 <% end %>
-<button type="button" class="btn btn-danger btn-sm">Message</button>
+<%= link_to t(".message"), dashboard_conversations_path(user_id: @user.id), method: :post,
+  class: "btn btn-danger btn-sm", id: "message-btn" %>

@@ -1,16 +1,36 @@
 vi:
   posts:
-    form:
-      title: "Tiêu đề"
-      photo: "Ảnh"
-      preview: "Tóm tắt"
-      content: "Nội dung"
     post:
       edit: "Sửa"
       delete: "Xóa"
       publish: "Công khai"
       unpublish: "Riêng tư"
+      post_by: "Đăng bởi"
+      read_more: "Xem thêm"
     index:
       add_post: "Thêm bài viết mới"
+      title: "Bài viết"
+      home: "Trang chủ"
     comment:
       reply: "Trả lời"
+      delete: "Xóa"
+    comment_reply:
+      reply: "Trả lời"
+      delete: "Xóa"
+    right_bar:
+      search: "Tìm kiếm"
+      recommend: "Đề xuất cho bạn"
+      follow: "Bạn đang theo dõi"
+    show:
+      home: "Trang chủ"
+      blog_details: "Chi tiết bài viết"
+      comment: "Bình luận của bạn"
+    form_comment:
+      post_comment: "Bình luận"
+      your_comment: "Viết bình luận"
+    new:
+      home: "Trang chủ"
+      title: "Bài viết mới"
+    edit:
+      home: "Trang chủ"
+      title: "Chỉnh sửa bài viết"

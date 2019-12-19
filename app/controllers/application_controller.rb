@@ -22,8 +22,25 @@ class ApplicationController < ActionController::Base
   end
 
   def load_notifications
+    return unless user_signed_in?
     @counter = Notification.list_notifications(current_user).unread.size
+    @inbox_counter = Conversation.user_conversations(current_user.id).sender_unread(current_user.id).count
+    @inbox_counter += Conversation.user_conversations(current_user.id).recipient_unread(current_user.id).count
+    @request_sharing_books_counter = SharingBook.where(owner: current_user).except_notconfirm.count
+    @request_exchange_books_counter = ExchangeBook.where(owner: current_user).except_notconfirm.count
     @activities = Notification.list_notifications(current_user)
                               .limit(4).order_desc
+  end
+
+  def verify_admin
+    return if admin_signed_in?
+    flash[:danger] = t "alert.error[access_denied]"
+    redirect_to new_admin_session_path
+  end
+
+  def verify_user
+    return if user_signed_in?
+    flash[:danger] = t "alert.error[sign_in]"
+    redirect_to new_user_session_path
   end
 end

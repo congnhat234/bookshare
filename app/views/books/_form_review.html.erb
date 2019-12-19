@@ -1,5 +1,5 @@
 <div class="review-fieldset">
-  <h4>Your review for <%= @book.title %></h4>
+  <h4><%= t ".review_for", title: @book.title %></h4>
   <div class="review-field-ratings">
     <div class="rateyo" data-id="<%= @book.id %>" style="top: 2px;"></div>
   </div>
@@ -9,7 +9,7 @@
         <textarea name="content" id="content" rows="1"></textarea>
       </div>
       <div class="review-form-actions">
-        <button id="rate" class="primary-btn"><%= t "submit" %></button>
+        <button id="rate" class="primary-btn"><%= t ".submit" %></button>
       </div>
     </div>
   </form>

@@ -22,3 +22,8 @@
 .dropdown-item {
     white-space: normal !important;
 }
+
+.direct-chat-messages {
+  height: auto !important;
+  max-height: 450px !important;
+}

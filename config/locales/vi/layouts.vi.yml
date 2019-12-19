@@ -3,8 +3,21 @@ vi:
     header:
       home: "Trang chủ"
       shop: "Cửa hàng"
-      blog_page: "Trang blog"
-      my_blog: "Blog của tôi"
+      blog_page: "Tất cả"
+      my_blog: "Bài viết của tôi"
       share: "Chia sẻ"
       exchange: "Trao đổi"
       books: "Sách"
+      blog: "Bài viết"
+      categories: "Danh mục"
+      language: "Ngôn ngữ"
+      my_account: "Tài khoản"
+      dashboard: "Quản lí"
+      sign_out: "Đăng xuất"
+      sign_in: "Đăng nhập"
+      create_account: "Tạo tài khoản"
+      my_wishlist: "Yêu thích"
+  shared:
+    quick_view_product:
+      reviews: "%{counter} đánh giá."
+      share: "Chia sẻ"

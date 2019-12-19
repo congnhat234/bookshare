@@ -16,7 +16,13 @@ en:
     error[update_book]: "Fail to update book"
     error[collect_book]: "Fail to collect book"
     success[collect_book]: "Collected book"
+    success[exchange_book]: "Saved book to exchange"
     delete: "Deleted!"
     error: "Error!"
     followed: "Followed!"
     unfollowed: "Unfollowed!"
+    spam_counter:
+      one: "%{counter} post has been blocked"
+      other: "%{counter} posts has been blocked"
+    error[access_denied]: "Access denied"
+    error[sign_in]: "Use must sign in before"

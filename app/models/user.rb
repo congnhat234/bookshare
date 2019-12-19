@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :sharing_books
+  has_many :exchange_books
 
   has_many :liked_posts, foreign_key: "user_id", dependent: :destroy
   has_many :l_posts, through: :liked_posts, source: :post
@@ -23,6 +24,9 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  has_many :messages
+  has_many :conversations, foreign_key: :sender_id
 
   before_save :downcase_email
 
@@ -32,6 +36,7 @@ class User < ApplicationRecord
 
   enum role: [:normal_user, :charity_organization, :seller]
 
+  scope :order_desc, ->{order created_at: :desc}
   scope :other_comment_users, (lambda do |post, owner|
     joins(:comments).where(comments: {post_id: post.id})
                     .where.not(comments: {user_id: owner.id})
@@ -42,7 +47,7 @@ class User < ApplicationRecord
   #                   .where.not(reviews: {user_id: owner.id})
   # end)
 
-  recommends :posts
+  recommends :posts, :books
 
   def follow other_user
     active_relationships.create(followed_id: other_user.id)

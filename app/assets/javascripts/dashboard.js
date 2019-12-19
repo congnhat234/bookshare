@@ -3,6 +3,7 @@
 //= require pnotify/dist/umd/PNotify
 //= require pnotify/dist/umd/PNotifyButtons
 //= require sweetalert_default_confirm
+//= require js-cookie/src/js.cookie
 //= require rails-ujs
 //= require cable
 //= require admin-lte/plugins/bootstrap/js/bootstrap.bundle.min
@@ -20,6 +21,17 @@
 //= require_self
 //= require admin_post_status
 //= require admin_book_status
+//= require message
+//= require sharing_books
+//= require exchange_books
+//= require orders
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
 
 $(document).ready(function () {
   $('#books_table').DataTable()
@@ -68,4 +80,47 @@ $(document).ready(function () {
   $('.edit_book').on('reset', function() {
     $('.image-sortable').html('')
   })
+
+  if (Cookies.get('spam_counter') && Cookies.get('spam_counter') != 0) {
+    var counter = Cookies.get('spam_counter')
+    Toast.fire({
+      icon: 'warning',
+      title: I18n.t('alert.spam_counter', {counter: counter})
+    }).then(function() {
+      Cookies.remove('spam_counter');
+    })
+  }
 });
+
+$(function () {
+  $('.upload-image').on('change', function () {
+    var preview = document.querySelector('#preview-image')
+    var files = document.querySelector('input[type=file]').files
+
+    function readAndPreview (file) {
+      if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+        var reader = new FileReader()
+
+        reader.addEventListener(
+          'load',
+          function () {
+            var image = new Image()
+            image.height = 270;
+            image.width = 340;
+            image.title = file.name
+            image.src = this.result
+            preview.innerHTML = ''
+            preview.appendChild(image)
+          },
+          false
+        )
+
+        reader.readAsDataURL(file)
+      }
+    }
+
+    if (files) {
+      ;[].forEach.call(files, readAndPreview)
+    }
+  })
+})

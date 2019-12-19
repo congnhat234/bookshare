@@ -25,7 +25,7 @@ $(document).ready(function() {
       cancelButtonColor: '#d33',
       confirmButtonText: I18n.t('confirm.agree'),
       cancelButtonText: I18n.t('confirm.cancel')
-    }).then((result) => {
+    }).then(function(result) {
       if (result.value) {
         var fdata = new FormData();
         fdata.append('id', book_id);

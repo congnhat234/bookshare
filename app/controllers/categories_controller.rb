@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
                Book.where(category_id: params[:id])
                    .page(params[:page]).per Settings.books.per_page
              end
-    @type = params[:type]
+    @type = params[:type] || "all"
     @title = t "books.title.#{@type}"
     render "books/index"
   end

@@ -1,4 +1,5 @@
 class LikedPostsController < ApplicationController
+  before_action :verify_user
   before_action :find_post, only: %i(create)
   before_action :find_liked_post, only: %i(destroy)
 

@@ -4,11 +4,11 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="bradcaump__inner text-center">
-          <h2 class="bradcaump-title">Checkout</h2>
+          <h2 class="bradcaump-title"><%= t ".title" %></h2>
           <nav class="bradcaump-content">
             <%= link_to t(".home"), root_path, class: "breadcrumb_item" %>
             <span class="brd-separetor">/</span>
-            <span class="breadcrumb_item active">Checkout</span>
+            <span class="breadcrumb_item active"><%= t ".title" %></span>
           </nav>
         </div>
       </div>
@@ -19,7 +19,104 @@
 <!-- Start Checkout Area -->
 <section class="wn__checkout__area section-padding--lg bg__white">
   <div class="container">
-    <% unless user_signed_in? %>
+    <% if user_signed_in? %>
+      <%= form_for @order do |f| %>
+        <div class="row">
+          <div class="col-lg-6 col-12">
+            <div class="customer_details">
+              <h3><%= t ".billing_details" %></h3>
+              <div class="customar__field">
+                <div class="input_box">
+                  <%= f.label :receiver_name do %>
+                    <%= t "form.receiver_name" %> <span>*</span>
+                  <% end %>
+                  <%= f.text_field :receiver_name, value: current_user.name, required: :true %>
+                </div>
+                <div class="input_box">
+                  <%= f.label :receiver_address do %>
+                    <%= t "form.address" %> <span>*</span>
+                  <% end %>
+                  <%= f.text_field :receiver_address, value: current_user.address, required: :true %>
+                </div>
+                <div class="margin_between">
+                  <div class="input_box space_between">
+                    <%= f.label :receiver_phone do %>
+                      <%= t "form.phone" %> <span>*</span>
+                    <% end %>
+                    <%= f.text_field :receiver_phone, value: current_user.phone, required: :true %>
+                  </div>
+                  <div class="input_box space_between">
+                    <%= f.label :receiver_email do %>
+                      Email <span>*</span>
+                    <% end %>
+                    <%= f.text_field :receiver_email, value: current_user.email, required: :true %>
+                  </div>
+                </div>
+                <div class="input_box">
+                  <%= f.label :note, t("form.note") %>
+                  <%= f.text_field :note %>
+                </div>
+              </div>
+            </div>
+            <div id="accordion" class="checkout_accordion mt--30" role="tablist">
+              <div class="payment">
+                <div class="che__header" role="tab" id="headingTwo">
+                  <a class="checkout__title" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <%= f.radio_button :payment_method, :cod, checked: "checked" %>
+                    <span><%= t ".cod" %></span>
+                  </a>
+                </div>
+                <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="payment-body"><%= t ".cod_info" %></div>
+                </div>
+              </div>
+              <div class="payment">
+                <div class="che__header" role="tab" id="headingOne">
+                  <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <%= f.radio_button :payment_method, :bank_transfer %>
+                    <span><%= t ".dbt" %></span>
+                  </a>
+                </div>
+                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="payment-body"><%= t ".dbt_info" %></div>
+                </div>
+              </div>
+              <div class="payment">
+                <div class="che__header" role="tab" id="headingThree">
+                  <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <%= f.radio_button :payment_method, :paypal %>
+                    <span><%= t ".paypal" %> <img src="/assets/icons/payment.png" alt="payment images"> </span>
+                  </a>
+                </div>
+                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="payment-body"><%= t ".paypal_info" %></div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="input_box">
+              <%= f.submit t(".checkout") %>
+            </div>
+          </div>
+          <div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+            <div class="wn__order__box">
+              <h3 class="onder__title"><%= t ".your_order" %></h3>
+              <ul class="order__total">
+                <li><%= t "table.product" %></li>
+                <li><%= t "table.total" %></li>
+              </ul>
+              <ul class="order_product">
+                <%= render partial: "orders/book", collection: @books %>
+              </ul>
+              <ul class="total__amount">
+                <li><%= t ".order_total" %> <span><%= number_to_currency_format get_cart_total(@books) %></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <%= f.hidden_field :total_price, value: get_grand_total(@cart_total, 0, 20000) %>
+      <% end %>
+    <% else %>
       <div class="row">
         <div class="col-lg-12">
           <div class="wn_checkout_wrap">
@@ -63,106 +160,6 @@
           </div>
         </div>
       </div>
-    <% end %>
-    <%= form_for @order do |f| %>
-      <div class="row">
-        <div class="col-lg-6 col-12">
-          <div class="customer_details">
-            <h3>Billing details</h3>
-            <div class="customar__field">
-              <div class="input_box">
-                <%= f.label :receiver_name do %>
-                  Name <span>*</span>
-                <% end %>
-                <%= f.text_field :receiver_name, value: current_user.name, required: :true %>
-              </div>
-              <div class="input_box">
-                <%= f.label :receiver_address do %>
-                  Address <span>*</span>
-                <% end %>
-                <%= f.text_field :receiver_address, value: current_user.address, required: :true %>
-              </div>
-              <div class="margin_between">
-                <div class="input_box space_between">
-                  <%= f.label :receiver_phone do %>
-                    Phone <span>*</span>
-                  <% end %>
-                  <%= f.text_field :receiver_phone, value: current_user.phone, required: :true %>
-                </div>
-                <div class="input_box space_between">
-                  <%= f.label :receiver_email do %>
-                    Email <span>*</span>
-                  <% end %>
-                  <%= f.text_field :receiver_email, value: current_user.email, required: :true %>
-                </div>
-              </div>
-              <div class="input_box">
-                <%= f.label :note, "Note" %>
-                <%= f.text_field :note %>
-              </div>
-            </div>
-          </div>
-          <div id="accordion" class="checkout_accordion mt--30" role="tablist">
-            <div class="payment">
-              <div class="che__header" role="tab" id="headingTwo">
-                <a class="checkout__title" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  <%= f.radio_button :payment_method, :cod, checked: "checked" %>
-                  <span>Cash on Delivery</span>
-                </a>
-              </div>
-              <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="payment-body">Pay with cash upon delivery.</div>
-              </div>
-            </div>
-            <div class="payment">
-              <div class="che__header" role="tab" id="headingOne">
-                <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                  <%= f.radio_button :payment_method, :bank_transfer %>
-                  <span>Direct Bank Transfer</span>
-                </a>
-              </div>
-              <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="payment-body">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</div>
-              </div>
-            </div>
-            <div class="payment">
-              <div class="che__header" role="tab" id="headingThree">
-                <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  <%= f.radio_button :payment_method, :paypal %>
-                  <span>PayPal <img src="/assets/icons/payment.png" alt="payment images"> </span>
-                </a>
-              </div>
-              <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="payment-body">Pay with cash upon delivery.</div>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="input_box">
-            <%= f.submit "Check out" %>
-          </div>
-        </div>
-        <div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
-          <div class="wn__order__box">
-            <h3 class="onder__title">Your order</h3>
-            <ul class="order__total">
-              <li>Product</li>
-              <li>Total</li>
-            </ul>
-            <ul class="order_product">
-              <%= render partial: "orders/book", collection: @books %>
-            </ul>
-            <ul class="shipping__method">
-              <li>Cart Subtotal <span><%= number_to_currency_format get_cart_total(@books) %></span></li>
-              <li>Shipping <span><%= number_to_currency_format "20000" %></span></li>
-            </ul>
-            <ul class="total__amount">
-              <li>Order Total <span><%= number_to_currency_format get_grand_total(@cart_total, 0, 20000) %></span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <%= f.hidden_field :total_price, value: get_grand_total(@cart_total, 0, 20000) %>
     <% end %>
   </div>
 </section>

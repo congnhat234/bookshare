@@ -7,13 +7,15 @@
       <div class="comnt__author d-block d-sm-flex">
         <span><%= link_to comment.user.name, user_path(comment.user) %></span>
         <span><%= l comment.created_at %></span>
-        <div class="reply__btn">
-          <%= link_to "Reply", "javascript:void(0)", class: "reply_btn",
-            parent_id: comment.id, user: comment.user.name %>
-        </div>
-        <% if current_user.id == comment.user.id %>
+        <% if user_signed_in? %>
           <div class="reply__btn">
-            <%= link_to "Delete", "javascript:void(0)", class: "delete_comment_btn",
+            <%= link_to t(".reply"), "javascript:void(0)", class: "reply_btn",
+              parent_id: comment.id, user: comment.user.name %>
+          </div>
+        <% end %>
+        <% if user_signed_in? && current_user.id == comment.user.id %>
+          <div class="reply__btn">
+            <%= link_to t(".delete"), "javascript:void(0)", class: "delete_comment_btn",
               commentid: comment.id, pid: comment.post.id, parent_id: comment.id %>
           </div>
         <% end %>

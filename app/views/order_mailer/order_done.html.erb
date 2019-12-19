@@ -1,0 +1,49 @@
+<section class="order_details section_gap">
+  <div class="container">
+    <div class="row order_d_inner">
+      <h3>Your order is ready to delivery.</h3><br>
+      <div class="col-lg-4">
+        <div class="details_item">
+          <h4><%= t ".order_infor" %></h4>
+          <ul class="list">
+            <li><span><%= t ".date" %></span> : <%= l @order.created_at %></li>
+            <li><span><%= t ".payment_method" %></span> : <%= @order.payment_method %></li>
+            <li><span><%= t ".note" %></span> : <%= @order.note %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="details_item">
+          <h4><%= t ".reciever_information" %></h4>
+          <ul class="list">
+            <li><span><%= t ".name" %></span> : <%= @order.receiver_name %></li>
+            <li><span><%= t ".address" %></span> : <%= @order.receiver_address %></li>
+            <li><span><%= t ".phone" %></span> : <%= @order.receiver_phone %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="order_details_table">
+      <h2><%= t ".order_detail" %></h2>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th><%= t ".name" %></th>
+              <th><%= t ".price" %></th>
+              <th><%= t ".quantity" %></th>
+              <th><%= t ".total" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "order_mailer/book", collection: @order.order_books, as: :order_book %>
+          </tbody>
+        </table>
+        <ul>
+          <li><span><%= t ".total" %></span> : <%= number_to_currency_format(@order.total_price) %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

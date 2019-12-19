@@ -1,0 +1,10 @@
+<li class="nav-item" id="conversation-<%= conversation.id %>">
+  <%= link_to dashboard_conversations_path(id: conversation.id), class: "nav-link" do %>
+    <%= image_tag conversation.recipient.avatar_url, with: 28, height: 28, class: "direct-chat-img" %>
+    <%= conversation.opposed_user(current_user).name %>
+    <% unless (((current_user.id == conversation.sender_id) && conversation.sender_read) ||
+      ((current_user.id == conversation.recipient_id) && conversation.recipient_read)) %>
+      <span class="badge bg-danger float-right" id="conversation-label-<%= conversation.id %>">New</span>
+    <% end %>
+  <% end %>
+</li>

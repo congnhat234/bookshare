@@ -90,6 +90,39 @@ $(document).ready(function() {
     });
   });
 
+  $('.exchange').on('click', function () {
+    var book_id = $(this).attr('data-book-id');
+    var qty = $("#qty").val();
+    $.ajax({
+      url: '/dashboard/exchange_books',
+      type: 'POST',
+      cache: false,
+      data: {
+        id: book_id,
+        qty: qty
+      },
+      success: function (data) {
+        if (data.status == "success") {
+          Toast.fire({
+            icon: 'success',
+            title: I18n.t('alert.success[exchange_book]')
+          })
+        } else {
+          Toast.fire({
+            icon: 'error',
+            title: I18n.t('alert.error')
+          })
+        }
+      },
+      error: function () {
+        Toast.fire({
+          icon: 'error',
+          title: I18n.t('alert.error')
+        })
+      }
+    });
+  });
+
   $('.checkout__title').click(function(e) {
     $(this).find('input').prop('checked', 'checked');
  });

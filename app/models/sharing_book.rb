@@ -6,5 +6,7 @@ class SharingBook < ApplicationRecord
   validates :collector_id, presence: true
   validates :book_id, presence: true
 
-  enum status: [:inprogress, :approved, :rejected]
+  enum status: [:notconfirm, :inprogress, :approved, :rejected, :done]
+
+  scope :except_notconfirm, ->{where.not status: 0}
 end
