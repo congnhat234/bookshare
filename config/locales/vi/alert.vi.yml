@@ -23,3 +23,4 @@ vi:
     unfollowed: "Đã hủy theo dõi"
     spam_counter: "%{counter} bài viết đã bị chặn"
     error[access_denied]: "Truy cập bị từ chối"
+    error[sign_in]: "Bạn phải đăng nhập"

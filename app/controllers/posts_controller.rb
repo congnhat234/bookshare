@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :verify_user, except: %i(index show)
   before_action :find_post, except: %i(index new create user_posts)
   before_action :load_comments, only: :show
   def index

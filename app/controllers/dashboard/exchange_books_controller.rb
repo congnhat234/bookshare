@@ -1,4 +1,5 @@
 class Dashboard::ExchangeBooksController < ApplicationController
+  before_action :verify_user
   before_action :find_book, :find_exchange_book, only: %i(create)
   before_action :find_exchange_book_by_id, only: %i(destroy confirm approve reject done)
   layout "dashboard/application"

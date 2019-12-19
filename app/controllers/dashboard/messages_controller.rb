@@ -1,4 +1,5 @@
 class Dashboard::MessagesController < ApplicationController
+  before_action :verify_user
   def create
     @conversation = Conversation.includes(:recipient).find(params[:message][:conversation_id])
     @message = @conversation.messages.create(message_params)

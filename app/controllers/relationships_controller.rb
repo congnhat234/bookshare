@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+  before_action :verify_user
   before_action :find_user, only: %i(create)
   before_action :find_relationship, only: %i(destroy)
 

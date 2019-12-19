@@ -25,3 +25,4 @@ en:
       one: "%{counter} post has been blocked"
       other: "%{counter} posts has been blocked"
     error[access_denied]: "Access denied"
+    error[sign_in]: "Use must sign in before"

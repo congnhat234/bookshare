@@ -1,4 +1,5 @@
 class Dashboard::SharingBooksController < ApplicationController
+  before_action :verify_user
   before_action :find_book, :find_sharing_book, only: %i(create)
   before_action :find_sharing_book_by_id, only: %i(destroy confirm approve reject done)
   layout "dashboard/application"
