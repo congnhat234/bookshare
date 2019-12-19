@@ -1,0 +1,23 @@
+<% if exchange_book.notconfirm? && action_name == "index" %>
+  <%= link_to dashboard_exchange_book_path(exchange_book), method: :delete, data: { confirm: t("alert.confirm") } do %>
+    <i class="fas fa-trash-alt"></i>
+  <% end %>
+  <%= link_to "javascript:void(0)", title: "Confirm", class: "actionExchangeBtn", type: "confirm", id_sb: exchange_book.id do %>
+    <i class="fas fa-check-circle"></i>
+  <% end %>
+<% elsif (exchange_book.done? || exchange_book.rejected?) && action_name == "index" %>
+  <%= link_to dashboard_exchange_book_path(exchange_book), method: :delete, data: { confirm: t("alert.confirm") } do %>
+    <i class="fas fa-trash-alt"></i>
+  <% end %>
+<% elsif action_name == "request_book" && exchange_book.inprogress? %>
+  <%= link_to "javascript:void(0)", title: "Approve", class: "actionExchangeBtn", type: "approve", id_sb: exchange_book.id do %>
+    <i class="fas fa-check-circle"></i>
+  <% end %>
+  <%= link_to "javascript:void(0)", title: "Reject", class: "actionExchangeBtn", type: "reject", id_sb: exchange_book.id do %>
+    <i class="fas fa-times-circle"></i>
+  <% end %>
+<% elsif action_name == "request_book" && exchange_book.approved? %>
+  <%= link_to "javascript:void(0)", title: "Done", class: "actionExchangeBtn", type: "done", id_sb: exchange_book.id do %>
+    <i class="fas fa-check-circle"></i>
+  <% end %>
+<% end %>

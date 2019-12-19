@@ -74,6 +74,33 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item has-treeview <%= 'menu-open' if controller_name == 'sharing_books' %>">
+          <a href="#" class="nav-link <%= 'active' if controller_name == 'sharing_books' %>">
+            <i class="nav-icon fas fa-exchange-alt"></i>
+            <p>
+              Exchange
+              <i class="fas fa-angle-left right"></i>
+              <span class="badge badge-info right"><%= @request_exchange_books_counter %></span>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <%= link_to dashboard_exchange_books_requests_path,
+                class: "nav-link #{'active' if controller_name == 'exchange_books' && action_name == 'request_book'}" do %>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Requests</p>
+                <span class="badge badge-danger right"><%= "New" if @request_exchange_books_counter > 0 %></span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to dashboard_exchange_books_path,
+                class: "nav-link #{'active' if controller_name == 'exchange_books' && action_name == 'index'}" do %>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Collection</p>
+              <% end %>
+            </li>
+          </ul>
+        </li>
         <li class="nav-item">
           <%= link_to dashboard_orders_path, class: "nav-link #{'active' if controller_name == 'orders' && action_name == 'index'}" do %>
             <i class="nav-icon fas fa-scroll"></i>

@@ -3,6 +3,7 @@ class Book < ApplicationRecord
 
   has_many :book_photos, dependent: :destroy
   has_many :sharing_books, dependent: :destroy
+  has_many :exchange_books, dependent: :destroy
   has_many :order_books, dependent: :destroy
   has_many :reviews, dependent: :destroy
   belongs_to :category

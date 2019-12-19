@@ -69,6 +69,11 @@
                     <%= link_to @book.category.name, category_path(@book.category) %>
                   </span>
                 </div>
+                <div class="product_meta">
+                  <span class="posted_in"><%= t ".owner" %>:
+                    <%= link_to @book.user.name, user_path(@book.user) %>
+                  </span>
+                </div>
                 <div class="product-share">
                   <ul>
                     <li class="categories-title"><%= t ".share" %> :</li>

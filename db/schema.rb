@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191211080958) do
+ActiveRecord::Schema.define(version: 20191219091212) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "trackable_type"
@@ -126,6 +126,19 @@ ActiveRecord::Schema.define(version: 20191211080958) do
     t.string "prefix"
     t.bigint "province_id"
     t.index ["province_id"], name: "index_districts_on_province_id"
+  end
+
+  create_table "exchange_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.bigint "book_id"
+    t.integer "quantity", default: 1
+    t.bigint "owner_id"
+    t.bigint "collector_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.index ["book_id", "collector_id"], name: "index_exchange_books_on_book_id_and_collector_id", unique: true
+    t.index ["book_id"], name: "index_exchange_books_on_book_id"
+    t.index ["collector_id"], name: "index_exchange_books_on_collector_id"
   end
 
   create_table "liked_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

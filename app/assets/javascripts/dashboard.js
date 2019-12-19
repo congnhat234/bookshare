@@ -22,6 +22,8 @@
 //= require admin_book_status
 //= require message
 //= require sharing_books
+//= require exchange_books
+//= require orders
 
 const Toast = Swal.mixin({
   toast: true,

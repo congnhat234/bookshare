@@ -27,7 +27,7 @@
       cancelButtonColor: '#d33',
       confirmButtonText: I18n.t('confirm.delete'),
       cancelButtonText: I18n.t('confirm.cancel'),
-    }).then((result) => {
+    }).then(function(result) {
       if (result.value) {
         confirmed(element, confirm)
       }

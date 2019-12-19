@@ -48,10 +48,19 @@ Rails.application.routes.draw do
     post "/sharing_books/reject/:id", to: "sharing_books#reject"
     post "/sharing_books/approve/:id", to: "sharing_books#approve"
     post "/sharing_books/done/:id", to: "sharing_books#done"
+    resources :exchange_books, except: %i(show new edit)
+    get "/exchange_books/requests", to: "exchange_books#request_book"
+    post "/exchange_books/confirm/:id", to: "exchange_books#confirm"
+    post "/exchange_books/reject/:id", to: "exchange_books#reject"
+    post "/exchange_books/approve/:id", to: "exchange_books#approve"
+    post "/exchange_books/done/:id", to: "exchange_books#done"
     resources :conversations, only: %i(create index)
     resources :messages, only: :create
     resources :orders
     get "/user-orders", to: "orders#user_order"
+    post "/orders/processing/:id", to: "orders#processing"
+    post "/orders/cancel/:id", to: "orders#cancel"
+    post "/orders/done/:id", to: "orders#done"
   end
   resources :notifications, only: %i(index update)
 

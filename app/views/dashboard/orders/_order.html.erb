@@ -1,4 +1,5 @@
 <tr>
+  <td><%= order.id %></td>
   <td><%= order.receiver_name %></td>
   <td><%= order.receiver_phone %></td>
   <td><%= order.receiver_address %></td>
@@ -8,11 +9,15 @@
   <td><%= l order.created_at, format: :short %></td>
   <td><%= l order.updated_at, format: :short %></td>
   <td>
-    <%= link_to dashboard_book_path(order), method: :delete, data: { confirm: t("alert.confirm") } do %>
-      <i class="fas fa-trash-alt text-danger"></i>
-    <% end %>
-    <%= link_to "javascript:void(0)", "data-toggle": "modal", "data-target": "#modal-book-#{order.id}" do %>
-      <i class="fas fa-eye"></i>
+    <% if current_user.id == order.user_id %>
+      <%= link_to dashboard_order_path(order), method: :delete, data: { confirm: t("alert.confirm") } do %>
+        <i class="fas fa-trash-alt text-danger"></i>
+      <% end %>
+      <%= link_to "javascript:void(0)", "data-toggle": "modal", "data-target": "#modal-book-#{order.id}" do %>
+        <i class="fas fa-eye"></i>
+      <% end %>
+    <% else %>
+    <%= render partial: "dashboard/orders/action_btn", locals: {order: order} %>
     <% end %>
   </td>
 </tr>

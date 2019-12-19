@@ -5,17 +5,25 @@ $(document).ready(function() {
     showConfirmButton: false,
     timer: 3000
   });
-  jQuery('body').on('click', '.statusBtn', function () {
+  jQuery('body').on('click', '.actionExchangeBtn', function () {
     var self = this;
-    var post_id = $(this).attr("data-id")
-    var title = I18n.t('confirm.you_sure')
+    var exchange_book_id = $(this).attr("id_sb")
+    var type = $(this).attr("type")
+    var title = I18n.t('confirm.change_status')
     var url = ''
-    if ($(this).hasClass('publish')) {
-      title = I18n.t('confirm.unpublish')
-      url = '/admins/posts/unpublish'
-    } else if ($(this).hasClass('unpublish')) {
-      title = I18n.t('confirm.publish')
-      url = '/admins/posts/publish'
+    switch(type) {
+      case "confirm":
+        url = '/dashboard/exchange_books/confirm/' + exchange_book_id
+        break
+      case "approve":
+        url = '/dashboard/exchange_books/approve/' + exchange_book_id
+        break
+      case "reject":
+        url = '/dashboard/exchange_books/reject/' + exchange_book_id
+        break
+      case "done":
+        url = '/dashboard/exchange_books/done/' + exchange_book_id
+        break
     }
     Swal.fire({
       title: title,
@@ -28,7 +36,6 @@ $(document).ready(function() {
     }).then(function(result) {
       if (result.value) {
         var fdata = new FormData();
-        fdata.append('id', post_id);
         $.ajax({
           url: url,
           type: 'POST',
@@ -37,16 +44,17 @@ $(document).ready(function() {
           contentType: false,
           data: fdata,
           success: function (data) {
-            $(self).closest('td').html(data.status)
+            $('.status').html(data.status)
+            $(self).closest('td').html(data.action)
             Toast.fire({
               icon: 'success',
-              title: I18n.t('alert.success[update_post]')
+              title: I18n.t('alert.success[update_book]')
             })
           },
           error: function () {
             Toast.fire({
               icon: 'error',
-              title: I18n.t('alert.error[update_post]')
+              title: I18n.t('alert.error[update_book]')
             })
           }
         });

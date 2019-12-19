@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :sharing_books
+  has_many :exchange_books
 
   has_many :liked_posts, foreign_key: "user_id", dependent: :destroy
   has_many :l_posts, through: :liked_posts, source: :post
