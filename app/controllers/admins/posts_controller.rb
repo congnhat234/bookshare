@@ -1,4 +1,5 @@
 class Admins::PostsController < ApplicationController
+  before_action :verify_admin
   before_action :find_post, only: %i(edit update destroy publish unpublish)
   layout "admins/application"
 

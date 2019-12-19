@@ -30,4 +30,10 @@ class ApplicationController < ActionController::Base
     @activities = Notification.list_notifications(current_user)
                               .limit(4).order_desc
   end
+
+  def verify_admin
+    return if admin_signed_in?
+    flash[:danger] = t "alert.error[access_denied]"
+    redirect_to new_admin_session_path
+  end
 end

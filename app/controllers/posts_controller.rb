@@ -5,30 +5,39 @@ class PostsController < ApplicationController
     @posts = Post.publish.order("updated_at DESC")
                  .page(params[:page])
                  .per Settings.posts.per_page
-    if user_signed_in?
-      recommendable_posts_redis = current_user.recommended_posts
-                                              .where.not(user_id: current_user.id)
-      @recommendable_posts = if recommendable_posts_redis.any?
-                               recommendable_posts_redis
-                             else
-                               current_user.recommend_posts
-                             end
-      user_following = current_user.following.ids
-      user_following_posts = Post.publish.where(user_id: user_following).order_desc.limit(5)
-      @following_posts = if user_following_posts.any?
-                           user_following_posts
-                         else
-                           Post.publish.order_desc.limit(5)
-                         end
-    end
+    return @recommendable_posts = Post.publish.order_desc.limit(5) unless user_signed_in?
+    recommendable_posts_redis = current_user.recommended_posts
+                                            .where.not(user_id: current_user.id)
+    @recommendable_posts = if recommendable_posts_redis.any?
+                             recommendable_posts_redis
+                           else
+                             current_user.recommend_posts
+                           end
+    user_following = current_user.following.ids
+    user_following_posts = Post.publish.where(user_id: user_following).order_desc.limit(5)
+    @following_posts = if user_following_posts.any?
+                         user_following_posts
+                       else
+                         Post.publish.order_desc.limit(5)
+                       end
   end
 
   def show
-    if user_signed_in?
-      recommendable_posts_redis = current_user.recommended_posts
-                                              .where.not(user_id: current_user.id)
-      @recommendable_posts = recommendable_posts_redis || current_user.recommend_posts
-    end
+    return @recommendable_posts = Post.publish.order_desc.limit(5) unless user_signed_in?
+    recommendable_posts_redis = current_user.recommended_posts
+                                            .where.not(user_id: current_user.id)
+    @recommendable_posts = if recommendable_posts_redis.any?
+                             recommendable_posts_redis
+                           else
+                             current_user.recommend_posts
+                           end
+    user_following = current_user.following.ids
+    user_following_posts = Post.publish.where(user_id: user_following).order_desc.limit(5)
+    @following_posts = if user_following_posts.any?
+                         user_following_posts
+                       else
+                         Post.publish.order_desc.limit(5)
+                       end
   end
 
   def new

@@ -45,7 +45,7 @@
           <div class="card card-prirary cardutline direct-chat direct-chat-primary">
             <div class="card-body">
               <!-- Conversations are loaded here -->
-              <div class="direct-chat-messages" id="direct-convesation-<%= @conversation.id %>">
+              <div class="direct-chat-messages" id="direct-conversation-<%= @conversation.id %>">
                 <%= render partial: "dashboard/messages/message", collection: @conversation.messages, as: :message %>
               </div>
               <!--/.direct-chat-messages-->

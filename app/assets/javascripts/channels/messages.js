@@ -4,7 +4,7 @@ $(document).ready(function() {
       connected: function() {},
       disconnected: function() {},
       received: function(data) {
-        $('#direct-conversation'  + data.id).append(data.body);
+        $('#direct-conversation-'  + data.id).append(data.body);
         $('#inbox-counter').text(data.counter);
         if ($('#conversation-label-' + data.id).length == 0) {
           $('#conversation-' + data.id).find('a').append('<span class="badge bg-danger float-right" id="conversation-label-' + data.id + '">New</span>')

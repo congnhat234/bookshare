@@ -35,6 +35,7 @@ class User < ApplicationRecord
 
   enum role: [:normal_user, :charity_organization, :seller]
 
+  scope :order_desc, ->{order created_at: :desc}
   scope :other_comment_users, (lambda do |post, owner|
     joins(:comments).where(comments: {post_id: post.id})
                     .where.not(comments: {user_id: owner.id})

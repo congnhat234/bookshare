@@ -79,13 +79,20 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <a href="pages/widgets.html" class="nav-link">
+          <%= link_to admins_users_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Users
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admins_categories_path, class: "nav-link" do %>
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Widgets
-              <span class="right badge badge-danger">New</span>
+              Categories
             </p>
-          </a>
+          <% end %>
         </li>
         <li class="nav-header">Settings</li>
         <li class="nav-item">
