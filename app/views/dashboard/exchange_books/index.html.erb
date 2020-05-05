@@ -5,13 +5,11 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Your books</h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><%= link_to "Dash board", users_path %></li>
-            <li class="breadcrumb-item active">Requests</li>
-          </ol>
+          <% if action_name == "request_book" %>
+            <h1><%= t ".request_books" %></h1>
+          <% else %>
+            <h1><%= t ".collected_books" %></h1>
+          <% end %>
         </div>
       </div>
     </div>
@@ -24,7 +22,11 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
-              Requests from collectors
+              <% if action_name == "request_book" %>
+                <%= t ".title" %>
+              <% else %>
+                <%= t ".title_collection" %>
+              <% end %>
             </h3>
           </div>
           <!-- /.card-header -->
@@ -32,13 +34,17 @@
             <table id="books_table" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Picture</th>
-                  <th>Title</th>
-                  <th>Qty</th>
-                  <th>Collector</th>
-                  <th>Status</th>
-                  <th>Created</th>
-                  <th>Action</th>
+                  <th><%= t "table.photo" %></th>
+                  <th><%= t "table.title" %></th>
+                  <th><%= t "table.qty" %></th>
+                  <% if action_name == "request_book" %>
+                    <th><%= t "table.collector" %></th>
+                  <% else %>
+                    <th><%= t "table.owner" %></th>
+                  <% end %>
+                  <th><%= t "table.status" %></th>
+                  <th><%= t "table.created" %></th>
+                  <th><%= t "table.action" %></th>
                 </tr>
               </thead>
               <tbody>
@@ -46,13 +52,17 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>Picture</th>
-                  <th>Title</th>
-                  <th>Qty</th>
-                  <th>Collector</th>
-                  <th>Status</th>
-                  <th>Created</th>
-                  <th>Action</th>
+                  <th><%= t "table.photo" %></th>
+                  <th><%= t "table.title" %></th>
+                  <th><%= t "table.qty" %></th>
+                  <% if action_name == "request_book" %>
+                    <th><%= t "table.collector" %></th>
+                  <% else %>
+                    <th><%= t "table.owner" %></th>
+                  <% end %>
+                  <th><%= t "table.status" %></th>
+                  <th><%= t "table.created" %></th>
+                  <th><%= t "table.action" %></th>
                 </tr>
               </tfoot>
             </table>

@@ -27,3 +27,12 @@
   height: auto !important;
   max-height: 450px !important;
 }
+
+.alert {
+  opacity: 1;
+}
+
+#notifications_list {
+  max-height: 300px !important;
+  overflow-y: scroll;
+}

@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :load_reviews, only: %i(show)
 
   def index
-    @books = Book.activated.order_desc.page(params[:page]).per Settings.books.per_page
+    @books = Book.activated.where("quantity > 0").order_desc.page(params[:page]).per Settings.books.per_page
     @title = t "books.title.all"
     @type = "all"
   end
@@ -18,21 +18,21 @@ class BooksController < ApplicationController
   end
 
   def selling
-    @books = Book.activated.selling.page(params[:page]).per Settings.books.per_page
+    @books = Book.activated.selling.where("quantity > 0").page(params[:page]).per Settings.books.per_page
     @title = t "books.title.selling"
     @type = "selling"
     render :index
   end
 
   def sharing
-    @books = Book.activated.sharing.page(params[:page]).per Settings.books.per_page
+    @books = Book.activated.sharing.where("quantity > 0").page(params[:page]).per Settings.books.per_page
     @title = t "books.title.sharing"
     @type = "sharing"
     render :index
   end
 
   def exchange
-    @books = Book.activated.exchange.page(params[:page]).per Settings.books.per_page
+    @books = Book.activated.exchange.where("quantity > 0").page(params[:page]).per Settings.books.per_page
     @title = t "books.title.exchange"
     @type = "exchange"
     render :index

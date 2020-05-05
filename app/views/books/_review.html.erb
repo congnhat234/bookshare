@@ -7,7 +7,7 @@
       <div class="comnt__author d-block d-sm-flex">
         <span><%= link_to review.user.name, user_path(review.user) %></span>
         <span><%= l review.created_at %></span>
-        <% if current_user.id == review.user.id %>
+        <% if user_signed_in? && current_user.id == review.user.id %>
           <div class="reply__btn">
             <%= link_to "Delete", "javascript:void(0)", class: "delete_review_btn", "data-id": review.id %>
           </div>

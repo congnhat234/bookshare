@@ -1,4 +1,6 @@
 en:
+  labels:
+    new: "New"
   time:
     formats:
       default: "%Y-%m-%d %H:%M:%S"

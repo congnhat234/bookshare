@@ -1,12 +1,18 @@
 <tr>
   <td><%= link_to book.title, book_path(book) %></td>
   <td><%= book.category.name %></td>
+  <td><%= t ".#{book.book_type}" %></td>
   <td><%= number_to_currency_format book.price %></td>
   <td><%= book.quantity %></td>
   <td><%= book.rating %></td>
-  <td><%= book.view %></td>
-  <td><%= book.discount %></td>
-  <td><%= book.activated ? "Active" : "Non-active" %></td>
+  <td><%= book.discount %>%</td>
+  <td>
+    <% if book.activated %>
+      <i class="fas fa-check-circle text-success"></i>
+    <% else %>
+      <i class="fas fa-times-circle text-danger"></i>
+    <% end %>
+  </td>
   <td><%= l book.created_at, format: :s_short %></td>
   <td>
     <%= link_to edit_dashboard_book_path(book) do %>

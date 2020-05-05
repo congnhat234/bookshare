@@ -5,18 +5,13 @@
       <%= category.name %>
     <% end %>
   </td>
-  <td>
-    <%= link_to category_path(category) do %>
-      <%= category.parent_category.name unless category.parent_id.nil? %>
-    <% end %>
-  </td>
   <td><%= category.books.count %></td>
   <td><%= l category.created_at, format: :s_short %></td>
   <td>
-    <%= link_to "javascript:void(0)" do %>
+    <%= link_to edit_admins_category_path(category) do %>
       <i class="fas fa-edit"></i>
     <% end %>
-    <%= link_to "javascript:void(0)", method: :delete, data: { confirm: t("alert.confirm") } do %>
+    <%= link_to admins_category_path(category), method: :delete, data: { confirm: t("alert.confirm") } do %>
       <i class="fas fa-trash-alt text-danger"></i>
     <% end %>
   </td>

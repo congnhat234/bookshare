@@ -8,7 +8,11 @@
   </td>
   <td><%= link_to sharing_book.book.title, book_path(sharing_book.book) %></td>
   <td><%= sharing_book.quantity %></td>
-  <td><%= link_to sharing_book.owner.name, user_path(sharing_book.owner) %></td>
+  <% if action_name == "request_book" %>
+    <td><%= link_to sharing_book.collector.name, user_path(sharing_book.collector) %></td>
+  <% else %>
+    <td><%= link_to sharing_book.owner.name, user_path(sharing_book.owner) %></td>
+  <% end %>
   <td class="status"><%= sharing_book.status %></td>
   <td><%= l sharing_book.created_at, format: :short %></td>
   <td>

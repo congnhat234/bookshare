@@ -1,0 +1,52 @@
+en:
+  layouts:
+    dashboard:
+      navbar:
+        home: "Home"
+        see_all: "See all notifications"
+      sidebar:
+        dashboard: "Dashboard"
+        books: "Books"
+        inbox: "Inbox"
+        sharing: "Sharing"
+        requests: "Requests"
+        collection: "Collection"
+        exchange: "Exchange"
+        my_orders: "My orders"
+        orders: "Orders"
+        settings: "Settings"
+        logout: "Logout"
+  dashboard:
+    books:
+      index:
+        your_books: "Your books"
+        new_book: "New book"
+      book:
+        sharing: "Sharing"
+        exchange: "Exchange"
+        selling: "Selling"
+      new:
+        title: "New book"
+        your_books: "Your books"
+      edit:
+        title: "Edit book"
+        your_books: "Your books"
+    conversations:
+      index:
+        inbox: "Inbox"
+        users: "Users"
+    sharing_books:
+      index:
+        request_books: "Request books"
+        collected_books: "Collected books"
+        title: "Requests from collectors"
+        title_collection: "Your collection"
+    exchange_books:
+      index:
+        request_books: "Request books"
+        collected_books: "Collected books"
+        title: "Requests from collectors"
+        title_collection: "Your collection"
+    orders:
+      index:
+        title: "Orders"

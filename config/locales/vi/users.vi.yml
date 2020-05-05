@@ -5,6 +5,13 @@ vi:
       unfollow: "Bỏ theo dõi"
     show:
       title: "Tài khoản"
-      Home: "Trang chủ"
+      home: "Trang chủ"
       edit: "Chỉnh sửa"
       dashboard: "Quản lí"
+    index:
+      your_orders: "Đơn hàng của bạn"
+      books: "Sách"
+      followings: "Đang theo dõi"
+      followers: "Người theo dõi"
+      dashboard: "Quản lí"
+      more_info: "Xem chi tiết"

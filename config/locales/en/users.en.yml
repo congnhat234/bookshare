@@ -8,3 +8,10 @@ en:
       home: "Home"
       edit: "Edit"
       dashboard: "Dashboard"
+    index:
+      your_orders: "Your orders"
+      books: "Books"
+      followings: "Followings"
+      followers: "Followers"
+      dashboard: "Dashboard"
+      more_info: "More info"
