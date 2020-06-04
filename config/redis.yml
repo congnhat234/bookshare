@@ -5,7 +5,3 @@ development:
 test:
   host: "localhost"
   port: "6379"
-
-production:
-  host: "redis://redistogo:399603464242ddbe7e24ddbc7b176748@dory.redistogo.com"
-  port: "10292"
